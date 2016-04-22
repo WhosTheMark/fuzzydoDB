@@ -1,15 +1,5 @@
 source 'https://rubygems.org'
 
-group :development, :test do
-  gem "heroku_hatchet"
-  gem "rspec-core"
-  gem "rspec-expectations"
-  gem "excon"
-  gem "rake"
-  gem "parallel_tests"
-  gem 'rspec-retry'
-  gem "netrc"
-  gem "git", github: "hone/ruby-git", branch: "master"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
@@ -23,8 +13,10 @@ gem 'bson_ext'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+
+gem 'typescript-rails'
+gem 'angularjs-rails'
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -46,13 +38,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+# Call 'byebug' anywhere in the code to stop execution and get a debugger console
+gem 'byebug'
 
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+# Access an IRB console on exception pages or by using <%= console %> in views
+gem 'web-console', '~> 2.0'
 
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+gem 'spring'
 
-end
