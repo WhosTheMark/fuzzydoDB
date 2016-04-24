@@ -17,4 +17,5 @@
 //= require angular
 //= require angular-route
 //= require angular-rails-templates
+//= require angular-translate
 //= require_tree .
