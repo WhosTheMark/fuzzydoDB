@@ -16,7 +16,7 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'typescript-rails'
 gem 'angularjs-rails'
-
+gem 'angular-rails-templates'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
