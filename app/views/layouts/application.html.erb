@@ -13,7 +13,12 @@
 
 <div ng-view></div>
 
--- Termina inyeccion
+<footer>
+<p><%= flash[:notice] %></p>
+  <%= image_tag("logousb.png") %>
+  <p><%=t :university_footer %></p>
+  <p><%=t :info_footer %></p>
+</footer>
 
 </body>
 </html>

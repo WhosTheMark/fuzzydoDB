@@ -20,4 +20,5 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  university_footer: "Simon Bolivar University - Venezuela"
+  info_footer: "Legal information - Contact information"
