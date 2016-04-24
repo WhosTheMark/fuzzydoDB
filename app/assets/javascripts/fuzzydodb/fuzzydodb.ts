@@ -17,15 +17,18 @@ var app = angular.module("fuzzydodb", [
           templateUrl: "home/_home.html",
           controller: "HomeController"
         })
-        /*.when("/", {
-          templateUrl: "home/_about.html",
+        .when("/", {
+          templateUrl: "home/_home.html",
           controller: "HomeController"
-        });*/
+        });
 
       $locationProvider.html5Mode(true);
     }])
 
-app.config(['$translateProvider', function ($translateProvider) {
+app
+
+.config(['$translateProvider', function ($translateProvider) {
+  $translateProvider.preferredLanguage('es');
   $translateProvider.translations('en', {
     'university-footer': 'Hello',
   });
