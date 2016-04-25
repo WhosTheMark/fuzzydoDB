@@ -1,0 +1,102 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$white: #fff;
+
+.home-container {
+  $dark-turquoise: #0d6a72;
+  $light-tourquoise: #69a6ab;
+  $cream: #f2f2f2;
+  $turqouise-bg-size: 270px;
+
+  background-image: linear-gradient(to right, $light-tourquoise, $dark-turquoise, $light-tourquoise),
+    linear-gradient(to right, $cream, $cream);
+  background-position: 0 0, 0 $turqouise-bg-size;
+  background-repeat: no-repeat;
+  background-size: 100% $turqouise-bg-size, 100% 100%;
+
+  .row {
+    padding: 25px 0;
+  }
+
+  .middle-column {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+}
+
+.home-top-container {
+  color: $white;
+  font-size: 2.5em;
+  text-align: center;
+}
+
+.home-bottom-container {
+  text-align: center;
+
+  .college {
+    font-size: 1.5em;
+    margin-top: 15px;
+  }
+
+  .country {
+    font-size: 1.3em;
+    font-weight: bold;
+  }
+}
+
+.home-carousel {
+
+  $indicators-position: 35px;
+  $gray-border: #dfe4e8;
+
+  background-color: $white;
+  border: 3px solid $gray-border;
+  height: 150px;
+  margin-left: 50px;
+  margin-top: 50px;
+  padding: 7px;
+  width: 230px;
+
+  .carousel-indicators {
+    bottom: -$indicators-position;
+  }
+
+  .carousel-inner {
+    margin-bottom: $indicators-position;
+  }
+
+  .item {
+    padding-top: 10px;
+  }
+}
+
+$widget-green: #097778;
+
+.info-carousel-title {
+  $ribbon-shadow: #888;
+
+  background-color: $widget-green;
+  box-shadow: 0 2px 2px $ribbon-shadow;
+  color: $white;
+  font-weight: bold;
+  margin: 30px 10px 10px -30px;
+  padding: 4px 20px 4px 160px;
+  position: relative;
+  text-shadow: 0 1px 2px darken($widget-green, 15%);
+  width: 100px;
+}
+
+.info-carousel-title::after {
+  border-color: darken($widget-green, 15%) darken($widget-green, 15%) transparent transparent;
+  border-style: solid;
+  border-width: 5px 10px;
+  content: ' ';
+  height: 0;
+  left: 0;
+  position: absolute;
+  top: 100%;
+  width: 0;
+}
