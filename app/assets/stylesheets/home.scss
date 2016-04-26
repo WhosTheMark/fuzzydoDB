@@ -118,7 +118,36 @@ $widget-green: #097778;
   .college-place {
     margin-left: 1%;
     margin-top: 2%;
-    position: relative;
+    position: absolute;
+  }
+
+}
+
+.header-container {
+
+  .top-options-container {
+    margin-top: 3%;
+    position: absolute;
+    right: 5%;
+  }
+
+  img {
+    margin-left: 5%;
+  }
+
+  .header-menu {
+    margin-bottom: 1%;
+    margin-left: 3%;
+  }
+
+  ul {
+    display: inline-flex;
+    min-width: 920px;
+
+    li {
+      list-style-type: none;
+      margin-right: 3%;
+    }
   }
 
 }
