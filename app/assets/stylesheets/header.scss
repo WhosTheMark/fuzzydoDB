@@ -1,7 +1,6 @@
 
 .header-container {
-
-  height: 90px;
+  height: 110px;
 
   .top-options-container {
     display: inline-flex;
@@ -18,28 +17,37 @@
 
   .logo {
     padding-left: 4%;
+
+    img {
+      margin-top: 25px;
+    }
   }
 
   .header-right-container {
+    margin-top: 10px;
     padding-right: 4%;
   }
 
   .header-menu {
-    margin-left: 3%;
-    margin-top: 5%;
+    margin: 0 auto;
+    width: 885px;
   }
 
   ul {
-    display: inline-flex;
-    min-width: 800px;
+    min-width: 893px;
 
     li {
-      list-style-type: none;
-      margin-right: 2.3%;
+      color: Black;
     }
+  }
+}
 
-    .last-item {
-      margin-right: 0;
-    }
+.w3-hover-teal {
+  a {
+    color: Black;
+  }
+
+  &:hover {
+    color: White;
   }
 }
