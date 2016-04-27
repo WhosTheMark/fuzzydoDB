@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$white: #fff;
+@import 'application';
 
 .home-container {
   $dark-turquoise: #0d6a72;
@@ -73,8 +73,6 @@ $white: #fff;
   }
 }
 
-$widget-green: #097778;
-
 .info-carousel-title {
   $ribbon-shadow: #888;
 
@@ -101,53 +99,4 @@ $widget-green: #097778;
   width: 0;
 }
 
-.footer-container {
-  display: flex;
 
-  img {
-    margin-left: 5%;
-    margin-top: 1%;
-  }
-
-  .info {
-    margin-top: 2%;
-    position: absolute;
-    right: 5%;
-  }
-
-  .college-place {
-    margin-left: 1%;
-    margin-top: 2%;
-    position: absolute;
-  }
-
-}
-
-.header-container {
-
-  .top-options-container {
-    margin-top: 3%;
-    position: absolute;
-    right: 5%;
-  }
-
-  img {
-    margin-left: 5%;
-  }
-
-  .header-menu {
-    margin-bottom: 1%;
-    margin-left: 3%;
-  }
-
-  ul {
-    display: inline-flex;
-    min-width: 920px;
-
-    li {
-      list-style-type: none;
-      margin-right: 3%;
-    }
-  }
-
-}

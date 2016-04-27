@@ -17,6 +17,24 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
+$widget-green: #097778;
+$white: #fff;
+
+
 html {
   min-width: 1000px;
 }
+
+// Make buttons and input forms smaller
+.btn, .form-control {
+  height: 30px;
+  padding: 5px 11px;
+  font-size: 13px;
+}
+
+.btn {
+  background-color: $widget-green;
+  color: $white;
+  border-color: $widget-green
+}
+
