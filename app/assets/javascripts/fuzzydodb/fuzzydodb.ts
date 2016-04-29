@@ -8,33 +8,33 @@ var app = angular.module("fuzzydodb", [
   "templates",
   "pascalprecht.translate",
   // FuzzydoDB modules
+  "fuzzydodb.header",
   "fuzzydodb.home"])
 
   .config(["$routeProvider", "$locationProvider",
     function($routeProvider, $locationProvider) {
       $routeProvider
-        .when("/:language", {
-          templateUrl: "home/_home.html",
-          controller: "HomeController"
-        })
         .when("/", {
           templateUrl: "home/_home.html",
           controller: "HomeController"
-        });
+          })
+        .when("/aboutus", {
+          templateUrl: "about/_about.html",
+          controller: "HomeController"
+          });
 
       $locationProvider.html5Mode(true);
-    }])
+  }])
 
-app
-
-.config(['$translateProvider', function ($translateProvider) {
+app.config(['$translateProvider', function ($translateProvider) {
   $translateProvider.preferredLanguage('es');
   $translateProvider.translations('en', {
     'university-footer': 'Hello'
   });
- 
+
   $translateProvider.translations('es', {
     'university-footer': 'Hola'
   });
- 
+
 }])
+

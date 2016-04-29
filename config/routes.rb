@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   scope "(:locale)", locale: /es|en/ do
     root 'home#index'
+    get 'aboutus', to: 'home#index'
   end
 
   #get '/:locale' => 'dashboard#index'

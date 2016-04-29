@@ -1,0 +1,23 @@
+.footer-container {
+  display: flex;
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+
+  img {
+    margin-left: 5%;
+  }
+
+  .info {
+    margin-top: 17px;
+    position: absolute;
+    right: 5%;
+  }
+
+  .college-place {
+    margin-left: 1%;
+    margin-top: 17px;
+    position: absolute;
+  }
+
+}

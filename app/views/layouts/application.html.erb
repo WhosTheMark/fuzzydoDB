@@ -8,16 +8,13 @@
   <base href="/">
 </head>
 <body>
--- Empieza inyeccion
+  <%= render :partial => "shared/header" %>
 
-<div ng-view></div>
+  <div class="content">
+    <div ng-view></div>
+  </div>
 
-<footer>
-<p><%= flash[:notice] %></p>
-  <%= image_tag("logousb.png") %>
-  <p><%=t :university_footer %></p>
-  <p><%=t :info_footer %></p>
-</footer>
+  <%= render :partial => "shared/footer" %>
 
 </body>
 </html>
