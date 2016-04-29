@@ -18,7 +18,7 @@
         </div>
         <div class="col-xs-10 header-right-container">
           <div class="top-options-container">
-            <button type="button" class="btn btn-default"> Iniciar Sesión </button>
+            <button type="button" class="btn"> Iniciar Sesión </button>
             <div class="input-group">
               <input type="text" name="search" class="form-control" placeholder="Buscar">
               <span class="input-group-btn">
@@ -31,17 +31,19 @@
 
     </div>
     <div class="header-menu">
-        <ul class="w3-navbar w3-light-grey">
-        <% menu_tags = ["INICIO","EQUIPO","DESCARGA","API","DOCUMENTACIÓN","PRUEBAS EN LÍNEA", "DESEMPEÑO","COMUNIDAD"] -%>
+        <ul class="home-menu-bar w3-light-grey">
+        <% menu_tags = ["INICIO","EQUIPO","DESCARGA","API","DOCUMENTACIÓN","PRUEBAS EN LÍNEA", "DESEMPEÑO","COMUNIDAD","IDIOMA"] -%>
         <% print menu_tags -%>
         <% menu_tags.each do |x| -%>
-           <li class="w3-hover-teal">
-             <a><%= x -%></a>
+           <li class="w3-hover-teal <%= "w3-right" if x.eql? menu_tags.last %>" >
+             <a>
+               <% if x.eql? menu_tags.last then-%>
+                 <span class="glyphicon glyphicon-globe language-icon"></span>
+               <% end -%>
+               <%= x -%>
+             </a>
            </li>
         <% end -%>
-          <li class="w3-right w3-hover-teal">
-            <a><span class="glyphicon glyphicon-globe" style="font-size: 15px; margin-right: 4px;"></span>IDIOMA</a>
-          </li>
         </ul>
       </div>
   </header>

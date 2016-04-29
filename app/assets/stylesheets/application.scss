@@ -20,6 +20,8 @@
 @import 'bootstrap';
 
 $widget-green: #097778;
+$btn-hover: #3A9293;
+$btn-active: #053D3E;
 $white: #fff;
 
 
@@ -40,7 +42,17 @@ html {
   border-color: $widget-green
 }
 
+.btn:hover {
+  background-color: $btn-hover;
+}
+
+.btn:focus {
+  color: $white;
+  background-color: $btn-active;
+}
+
 .content {
   position: static;
-  margin-top: 109px;
+  margin-top: 100px;
 }
+

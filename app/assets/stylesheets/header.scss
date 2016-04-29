@@ -1,9 +1,9 @@
 .header-fixed {
   background-color: White;
   position: fixed;
+  top: 0;
   width: 100%;
   z-index: 100;
-  top: 0;
 }
 
 .header-container {
@@ -58,4 +58,30 @@
   &:hover {
     color: White;
   }
+}
+
+.home-menu-bar {
+  height: 30px;
+  list-style-type: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+
+  li {
+    float: left;
+    height: 100%;
+
+    a {
+      color: Black;
+      display: block;
+      padding: 4px 16px;
+      text-align: center;
+      text-decoration: none;
+    }
+  }
+}
+
+.language-icon {
+  font-size: 15px;
+  margin-right: 4px;
 }
