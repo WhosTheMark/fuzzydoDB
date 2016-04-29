@@ -16,10 +16,10 @@ angular.module("fuzzydodb", [
                     templateUrl: "home/_home.html",
                     controller: "HomeController"
                 })
-                /*.when("/", {
+                .when("/aboutus", {
                     templateUrl: "home/_about.html",
                     controller: "HomeController"
-                });*/
+                });
 
             $locationProvider.html5Mode(true);
     }])
