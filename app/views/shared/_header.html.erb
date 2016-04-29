@@ -20,13 +20,13 @@
       </div>
 
     </div>
-    <div class="header-menu">
+    <div class="header-menu" ng-controller="HeaderController">
       <ul class="home-menu-bar w3-light-grey">
       <% menu_tags = ["INICIO","EQUIPO","DESCARGA","API","DOCUMENTACIÓN","PRUEBAS EN LÍNEA", "DESEMPEÑO","COMUNIDAD","IDIOMA"] -%>
-      <% menu_hrefs = [" ","\\aboutus","","","","","","",""] -%>
+      <% menu_functions = ["","\\aboutus","","","","","","",""] -%>
       <% menu_tags.each do |x| -%>
          <li class="w3-hover-teal <%= "w3-right" if x.eql? menu_tags.last %>" >
-           <a href="<%= menu_hrefs[menu_tags.index x] -%>">
+           <a ng-click="sendTo('<%=menu_functions[menu_tags.index x] -%>')">
              <% if x.eql? menu_tags.last then-%>
                <span class="glyphicon glyphicon-globe language-icon"></span>
              <% end -%>

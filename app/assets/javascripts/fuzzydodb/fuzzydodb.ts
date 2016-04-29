@@ -7,6 +7,7 @@ angular.module("fuzzydodb", [
     "ngRoute",
     "templates",
     // FuzzydoDB modules
+    "fuzzydodb.header",
     "fuzzydodb.home"])
 
     .config(["$routeProvider", "$locationProvider",
@@ -17,7 +18,7 @@ angular.module("fuzzydodb", [
                     controller: "HomeController"
                 })
                 .when("/aboutus", {
-                    templateUrl: "home/_about.html",
+                    templateUrl: "about/_about.html",
                     controller: "HomeController"
                 });
 
