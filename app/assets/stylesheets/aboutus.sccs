@@ -1,0 +1,4 @@
+.fuzzydo-menu-page-bg {
+    background-color: Black;
+    height: 320px;
+}
