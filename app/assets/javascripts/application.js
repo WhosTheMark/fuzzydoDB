@@ -18,3 +18,8 @@
 //= require angular-route
 //= require angular-rails-templates
 //= require_tree .
+
+// Changes the position of the fixed header when scrolling horizontally.
+$(window).scroll(function() {
+    $('.header-x-scroll').css('left', -$(this).scrollLeft() + "px");
+});
