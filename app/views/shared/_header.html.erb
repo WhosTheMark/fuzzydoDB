@@ -23,10 +23,10 @@
     <div class="header-menu">
       <ul class="home-menu-bar w3-light-grey">
       <% menu_tags = ["INICIO","EQUIPO","DESCARGA","API","DOCUMENTACIÓN","PRUEBAS EN LÍNEA", "DESEMPEÑO","COMUNIDAD","IDIOMA"] -%>
-      <% print menu_tags -%>
+      <% menu_hrefs = ["","\\aboutus","","","","","","",""] -%>
       <% menu_tags.each do |x| -%>
          <li class="w3-hover-teal <%= "w3-right" if x.eql? menu_tags.last %>" >
-           <a>
+           <a href="<%= menu_hrefs[menu_tags.index x] -%>">
              <% if x.eql? menu_tags.last then-%>
                <span class="glyphicon glyphicon-globe language-icon"></span>
              <% end -%>
