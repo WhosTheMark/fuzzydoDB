@@ -14,17 +14,17 @@
  *= require_self
  */
 
+ //= require w3
+
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
-@import 'http://www.w3schools.com/lib/w3.css';
 
 $widget-green: #097778;
 $white: #fff;
 
 
 html {
-  min-width: 1000px;
-  overflow-x: initial;
+  min-width: 1100px;
 }
 
 // Make buttons and input forms smaller
