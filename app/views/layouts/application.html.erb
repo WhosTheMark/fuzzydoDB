@@ -32,30 +32,13 @@
     </div>
     <div class="header-menu">
         <ul class="w3-navbar w3-light-grey">
-          <li class="w3-hover-teal">
-            <a>INICIO</a>
-          </li>
-          <li class="w3-hover-teal">
-            <a>EQUIPO</a>
-          </li>
-          <li class="w3-hover-teal">
-            <a>DESCARGA</a>
-          </li>
-          <li class="w3-hover-teal">
-            <a>API</a>
-          </li>
-          <li class="w3-hover-teal">
-            <a>DOCUMENTACIÓN</a>
-          </li>
-          <li class="w3-hover-teal">
-            <a>PRUEBAS EN LÍNEA</a>
-          </li>
-          <li class="w3-hover-teal">
-            <a>DESEMPEÑO</a>
-          </li>
-          <li class="w3-hover-teal">
-            <a>COMUNIDAD</a>
-          </li>
+        <% menu_tags = ["INICIO","EQUIPO","DESCARGA","API","DOCUMENTACIÓN","PRUEBAS EN LÍNEA", "DESEMPEÑO","COMUNIDAD"] -%>
+        <% print menu_tags -%>
+        <% menu_tags.each do |x| -%>
+           <li class="w3-hover-teal">
+             <a><%= x -%></a>
+           </li>
+        <% end -%>
           <li class="w3-right w3-hover-teal">
             <a><span class="glyphicon glyphicon-globe" style="font-size: 15px; margin-right: 4px;"></span>IDIOMA</a>
           </li>
