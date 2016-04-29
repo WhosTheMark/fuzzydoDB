@@ -30,11 +30,11 @@ app
 .config(['$translateProvider', function ($translateProvider) {
   $translateProvider.preferredLanguage('es');
   $translateProvider.translations('en', {
-    'university-footer': 'Hello',
+    'university-footer': 'Hello'
   });
  
   $translateProvider.translations('es', {
-    'university-footer': 'Hola',
+    'university-footer': 'Hola'
   });
  
-}]);
+}])
