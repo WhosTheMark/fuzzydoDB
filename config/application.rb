@@ -30,7 +30,6 @@ module FuzzydoDB
     config.i18n.default_locale = :es
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     Typescript::Rails::Compiler.default_options = %w(--target ES6)
-    config.angular_templates.ignore_prefix  = [""]
 
   end
 end

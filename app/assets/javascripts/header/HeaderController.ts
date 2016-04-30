@@ -1,10 +1,10 @@
 /// <reference path="../typings/angular.d.ts" />
 
-angular.module("fuzzydodb.header", ["ngRoute"])
-    .controller("HeaderController", ["$scope","$location",
-       function($scope, $location) {
+angular.module("fuzzydodb.header", [])
+    .controller("HeaderController", ["$scope","$window",
+       function($scope, $window) {
          $scope.sendTo = function(path) {
-           $location.path(path);
+           $window.location.href = path;
          };
     }]);
 

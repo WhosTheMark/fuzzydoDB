@@ -46,12 +46,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    angular-rails-templates (1.0.0)
-      railties (>= 4.2, < 6)
-      sprockets (~> 3.0)
-      tilt
-    angular-translate-rails (2.6.0)
-      railties (>= 3.1)
     angularjs-rails (1.5.0)
     arel (6.0.3)
     autoprefixer-rails (6.3.6)
@@ -179,8 +173,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  angular-rails-templates
-  angular-translate-rails
   angularjs-rails
   bootstrap-sass (~> 3.3.6)
   bson_ext

@@ -1,15 +1,45 @@
-<h1>Welcome#index</h1>
-<div class="row">
-<div class="col-lg-6 col-md-6">
-<p>Find me in app/views/welcome/index.html.erb</p>
-<span class="glyphicon glyphicon glyphicon-heart" style="color: red; font-size: 100px"></span>
-</div>
-    <div class="col-lg-6 col-md-6">
-    <p>Find me in app/views/welcome/index.html.erb</p>
-    <span class="glyphicon glyphicon glyphicon-thumbs-up" style="color: blue; font-size: 100px"></span>
+<div ng-controller="HomeController" class="home-container container-fluid">
+  <div class="row">
+    <div class="col-xs-4"></div>
+
+    <div class="col-xs-4 middle-column">
+    <div class="home-top-container">
+      <div>Base de datos con atributos difusos</div>
+      <%= image_tag("mascota.png", width: "365px", height: "256px") %>
     </div>
-</div>
-<div ng-app="root">
-    <p>Find me in app/views/welcome/index.html.erb</p>
-    <div ng-controller="index">{{ message }}</div>
+
+    <div class="home-bottom-container">
+      <div class="college">Universidad Simón Bolívar</div>
+      <span class="country"> Venezuela </span>
+    </div>
+    </div>
+
+    <div class="col-xs-4">
+      <div id="info-carousel" class="carousel slide home-carousel" data-ride="carousel" data-pause="hover">
+
+        <span class="info-carousel-title">Noticias</span>
+
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            Info 1
+          </div>
+
+          <div class="item">
+            Info 2
+          </div>
+
+          <div class="item">
+            Info 3
+          </div>
+        </div>
+
+        <ol class="carousel-indicators">
+          <li data-target="#info-carousel" data-slide-to="0" class="active"></li>
+          <li data-target="#info-carousel" data-slide-to="1"></li>
+          <li data-target="#info-carousel" data-slide-to="2"></li>
+        </ol>
+
+      </div>
+  </div>
+
 </div>

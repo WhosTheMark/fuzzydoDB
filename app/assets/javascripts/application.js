@@ -15,9 +15,6 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require angular
-//= require angular-route
-//= require angular-rails-templates
-//= require angular-translate
 //= require_tree .
 
 // Changes the position of the fixed header when scrolling horizontally.
