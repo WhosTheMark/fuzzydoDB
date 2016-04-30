@@ -8,9 +8,9 @@
         </div>
         <div class="col-xs-10 header-right-container">
           <div class="top-options-container">
-            <button type="button" class="btn btn-default"> Iniciar Sesión </button>
+            <button type="button" class="btn btn-default"> <%=t 'header.login' %> </button>
             <div class="input-group">
-              <input type="text" name="search" class="form-control" placeholder="Buscar">
+              <input type="text" name="search" class="form-control" placeholder="<%=t 'header.search' %>">
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"/></button>
               </span>
@@ -21,8 +21,19 @@
 
     </div>
     <div class="header-menu" ng-controller="HeaderController">
-      <ul class="home-menu-bar w3-light-grey">
-      <% menu_tags = ["INICIO","EQUIPO","DESCARGA","API","DOCUMENTACIÓN","PRUEBAS EN LÍNEA", "DESEMPEÑO","COMUNIDAD","IDIOMA"] -%>
+      <ul class="main-menu-bar w3-light-grey">
+      <% menu_tags = [t("header.menu.home"),
+        t("header.menu.team"),
+        t("header.menu.download"),
+        t("header.menu.api"),
+        t("header.menu.doc"),
+        t("header.menu.onlineTests"),
+        t("header.menu.performance"),
+        t("header.menu.community"),
+        t("header.menu.language")]
+      -%>
+
+      <%# TODO: controller names missing !!!!!!! %>
       <% menu_controllers = ["home","about","home","home","home","home","home","home","home"] -%>
 
       <% menu_tags.each_with_index do |tag, i| -%>

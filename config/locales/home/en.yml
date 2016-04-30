@@ -20,24 +20,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  university: "Simon Bolivar University"
-
-  country: "Venezuela"
-
-  header:
-    login: "Log in"
-    search: "Search"
-
-    menu:
-      home: "HOME"
-      team: "TEAM"
-      download: "DOWNLOAD"
-      api: "API"
-      doc: "DOCUMENTATION"
-      onlineTests: "ONLINE TESTS"
-      performance: "PERFORMANCE"
-      community: "COMMUNITY"
-      language: "LANGUAGE"
-
-  footer:
-    info: "Legal information - Contact information"
+  home:
+    title: "Database with fuzzy attributes"
+    news: "News"

@@ -1,4 +1,22 @@
 es:
+  university: "Universidad Simón Bolívar"
+
+  country: "Venezuela"
+
+  header:
+    login: "Iniciar Sesión"
+    search: "Buscar"
+
+    menu:
+      home: "INICIO"
+      team: "EQUIPO"
+      download: "DESCARGA"
+      api: "API"
+      doc: "DOCUMENTACIÓN"
+      onlineTests: "PRUEBAS EN LÍNEA"
+      performance: "DESEMPEÑO"
+      community: "COMUNIDAD"
+      language: "IDIOMA"
+
   footer:
-    university: "Universidad Simón Bolívar - Venezuela"
     info: "Información legal - Información de contacto"

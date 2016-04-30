@@ -20,9 +20,8 @@
 @import 'bootstrap';
 
 $widget-green: #097778;
-$btn-hover: #3A9293;
-$btn-active: #053D3E;
-$white: #fff;
+$btn-hover: #3a9293;
+$btn-active: #053d3e;
 
 
 html {
@@ -30,7 +29,8 @@ html {
 }
 
 // Make buttons and input forms smaller
-.btn, .form-control {
+.btn,
+.form-control {
   height: 30px;
   padding: 5px 11px;
   font-size: 13px;
@@ -38,8 +38,8 @@ html {
 
 .btn {
   background-color: $widget-green;
-  color: $white;
-  border-color: $widget-green
+  color: White;
+  border-color: $widget-green;
 }
 
 .btn:hover {
@@ -47,7 +47,7 @@ html {
 }
 
 .btn:focus {
-  color: $white;
+  color: White;
   background-color: $btn-active;
 }
 
@@ -57,6 +57,6 @@ html {
 }
 
 .fuzzydo-menu-page-bg {
-    background-color: $widget-green;
-    height: 320px;
+  background-color: $widget-green;
+  height: 320px;
 }
