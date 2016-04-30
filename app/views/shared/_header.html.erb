@@ -1,10 +1,10 @@
-<header class="header-fixed">
+<header class="header-fixed w3-card-2">
   <div class="header-x-scroll">
     <div class="container-fluid header-container">
 
       <div class="row">
         <div class="col-xs-2 logo">
-          <%= image_tag("fuzzydodb.png", width: "190px", height: "50px") %>
+          <%= link_to image_tag("fuzzydodb.png", width: "190px", height: "50px"), controller: "home" %>
         </div>
         <div class="col-xs-10 header-right-container">
           <div class="top-options-container">
@@ -29,31 +29,29 @@
         t("header.menu.doc"),
         t("header.menu.onlineTests"),
         t("header.menu.performance"),
-        t("header.menu.community"),
-        t("header.menu.language")]
+        t("header.menu.community")]
       -%>
 
       <%# TODO: controller names missing !!!!!!! %>
-      <% menu_controllers = ["home","about","home","home","home","home","home","home","home"] -%>
+      <% menu_controllers = ["home","about","home","home","home","home","home","home"] -%>
 
       <% menu_tags.each_with_index do |tag, i| -%>
-
-        <% if menu_tags.size - 1 != i then %>
         <li class="w3-hover-teal" >
           <%= link_to(tag, controller: menu_controllers[i]) %>
         </li>
-
-        <% else %>
-        <li class="w3-hover-teal w3-right">
-          <a>
-            <span class="glyphicon glyphicon-globe language-icon"></span>
-            <%= tag -%>
-          </a>
-        </li>
-        <% end -%>
-
       <% end -%>
 
+        <li class="w3-hover-teal w3-right w3-dropdown-hover">
+          <a>
+            <span class="glyphicon glyphicon-globe language-icon"></span>
+            <%= t("header.menu.language") %>
+          </a>
+
+          <div class="w3-dropdown-content w3-light-grey w3-card-4">
+            <%= link_to("English", url_for(:locale => "en"), {:class => "w3-hover-teal"}) %>
+            <%= link_to("Español", url_for(:locale => "es"), {:class => "w3-hover-teal"}) %>
+          </div>
+        </li>
       </ul>
     </div>
 </header>
