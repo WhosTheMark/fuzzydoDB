@@ -26,9 +26,14 @@ module FuzzydoDB
     # config.time_zone = 'Central Time (US & Canada)'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    # config.i18n.default_locale = :de
+
+    # App default lang
     config.i18n.default_locale = :es
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+
+    # Tells Rails to search files in nested locale folders
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+
+    # Sets TypeScript to be more forgivable.
     Typescript::Rails::Compiler.default_options = %w(--target ES6)
 
   end

@@ -1,2 +1,2 @@
-module AboutusHelper
+module AboutHelper
 end
