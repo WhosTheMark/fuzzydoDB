@@ -23,17 +23,26 @@
     <div class="header-menu" ng-controller="HeaderController">
       <ul class="home-menu-bar w3-light-grey">
       <% menu_tags = ["INICIO","EQUIPO","DESCARGA","API","DOCUMENTACIÓN","PRUEBAS EN LÍNEA", "DESEMPEÑO","COMUNIDAD","IDIOMA"] -%>
-      <% menu_functions = ["/","/about","","","","","","",""] -%>
-      <% menu_tags.each do |x| -%>
-         <li class="w3-hover-teal <%= "w3-right" if x.eql? menu_tags.last %>" >
-           <a ng-click="sendTo('<%=menu_functions[menu_tags.index x] -%>')">
-             <% if x.eql? menu_tags.last then-%>
-               <span class="glyphicon glyphicon-globe language-icon"></span>
-             <% end -%>
-             <%= x -%>
-           </a>
-         </li>
+      <% menu_controllers = ["home","about","home","home","home","home","home","home","home"] -%>
+
+      <% menu_tags.each_with_index do |tag, i| -%>
+
+        <% if menu_tags.size - 1 != i then %>
+        <li class="w3-hover-teal" >
+          <%= link_to(tag, controller: menu_controllers[i]) %>
+        </li>
+
+        <% else %>
+        <li class="w3-hover-teal w3-right">
+          <a>
+            <span class="glyphicon glyphicon-globe language-icon"></span>
+            <%= tag -%>
+          </a>
+        </li>
+        <% end -%>
+
       <% end -%>
+
       </ul>
     </div>
 </header>
