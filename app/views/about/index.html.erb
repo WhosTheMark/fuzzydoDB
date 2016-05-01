@@ -3,25 +3,18 @@
     <div class="contentWrapper">
       <div class="contentLeft w3-card-4">
         <ul class="leftNavigation">
+        <% side_menu_tokens = ["introduction", "history", "members"] -%>
+        <% side_menu_tokens.each do |token| -%>
           <li>
-            <a href="#">
-             INTRODUCCION
+            <a id="<%=token-%>_ref" onclick="setTimeout(teamHideShowSections(this), 1500)">
+             <%=t("about-us.menu." + token)-%>
             </a>
           </li>
-          <li>
-            <a href="">
-             HISTORIA
-            </a>
-          </li>
-          <li>
-            <a href="#">
-             MIEMBROS
-            </a>
-          </li>
+        <% end -%>
         </ul>
       </div>
     <!--Introduction section-->
-      <div id="members" class="contentRight">
+      <div id="introduction" class="contentRight about-us-sections section-active">
         <h1>
           INTRODUCCIÓN
         </h1>
@@ -31,7 +24,7 @@
       </div>
     <!--end introduction section-->
     <!--History section-->
-      <div id="members" class="contentRight">
+      <div id="history" class="contentRight about-us-sections section-inactive">
         <h1>
           HISTORIA
         </h1>
@@ -41,7 +34,7 @@
       </div>
     <!--end history section-->
     <!--Members section-->
-      <div id="members" class="contentRight">
+      <div id="members" class="contentRight about-us-sections section-inactive">
         <h1>
           MIEMBROS
         </h1>
