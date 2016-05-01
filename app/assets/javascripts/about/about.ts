@@ -8,14 +8,14 @@ function teamHideShowSections(elem) {
   if (!selected_section.classList.contains("section-active")) {
     var sections = document.getElementsByClassName("about-us-sections");
     var i;
-  
+
     for (i = 0; i < sections.length; i++) {
-       $('#' + sections[i].id).fadeOut(10);
+       $('#' + sections[i].id).fadeOut(100);
        document.getElementById(sections[i].id).classList.remove("section-active");
     }
-  
+
     selected_section.classList.add("section-active");
-    setTimeout(function() {}, 200);
+    setTimeout(function() {}, 400);
     $('#' + selected_section_id).fadeIn(500);
   }
 }

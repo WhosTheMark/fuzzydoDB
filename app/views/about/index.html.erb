@@ -22,9 +22,9 @@
         <div class="container-fluid">
         <% case token
         when "introduction" %>
-           Introoooo
+           <%=t("about-us-"+token+".content")-%>
         <% when "history" %>
-           Echame un cuento
+           <%=t("about-us-"+token+".content")-%>
         <% when "members" %>
           <% team_names = ["Rosseline Rodriguez","Leonid Tineo","Soraya Carrasquel","David Coronado","Jose Cadenas","Josue Ramirez","Ricardo Monascal", "Darwin Rocha"] -%>
           <% team_photos = ["darwin","darwin","darwin","darwin","darwin","darwin","darwin","darwin"] -%>
