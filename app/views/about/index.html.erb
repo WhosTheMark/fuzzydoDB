@@ -7,52 +7,40 @@
         <% side_menu_tokens.each do |token| -%>
           <li>
             <a id="<%=token-%>_ref" onclick="setTimeout(teamHideShowSections(this), 1500)">
-             <%=t("about-us.menu." + token)-%>
+             <%=t("about-us-menu." + token)-%>
             </a>
           </li>
         <% end -%>
         </ul>
       </div>
-    <!--Introduction section-->
-      <div id="introduction" class="contentRight about-us-sections section-active">
+      <% side_menu_tokens.each do |token| -%>
+      <!--<%=token-%> section-->
+      <div id="<%=token-%>" class="contentRight about-us-sections section-<%=token.eql? "introduction" ? "active" : "inactive"-%>">
         <h1>
-          INTRODUCCIÓN
+           <%=t("about-us-"+token+".title")-%>
         </h1>
         <div class="container-fluid">
+        <% case token
+        when "introduction" %>
            Introoooo
-        </div>
-      </div>
-    <!--end introduction section-->
-    <!--History section-->
-      <div id="history" class="contentRight about-us-sections section-inactive">
-        <h1>
-          HISTORIA
-        </h1>
-        <div class="container-fluid">
+        <% when "history" %>
            Echame un cuento
-        </div>
-      </div>
-    <!--end history section-->
-    <!--Members section-->
-      <div id="members" class="contentRight about-us-sections section-inactive">
-        <h1>
-          MIEMBROS
-        </h1>
-        <div class="container-fluid">
-        <% team_names = ["Rosseline Rodriguez","Leonid Tineo","Soraya Carrasquel","David Coronado","Jose Cadenas","Josue Ramirez","Ricardo Monascal", "Darwin Rocha"] -%>
-        <% team_photos = ["darwin","darwin","darwin","darwin","darwin","darwin","darwin","darwin"] -%>
+        <% when "members" %>
+          <% team_names = ["Rosseline Rodriguez","Leonid Tineo","Soraya Carrasquel","David Coronado","Jose Cadenas","Josue Ramirez","Ricardo Monascal", "Darwin Rocha"] -%>
+          <% team_photos = ["darwin","darwin","darwin","darwin","darwin","darwin","darwin","darwin"] -%>
 
-        <% team_names.each_with_index do |tag, i| -%>
-          <div class="col-xs-4 member-container" >
-            <a>
-              <%= image_tag(team_photos[i] + ".png", width: "200px", height: "200px") -%>
-              <h4><%= tag -%></h4>
-            </a>
-          </div>
+          <% team_names.each_with_index do |tag, i| -%>
+            <div class="col-xs-4 member-container" >
+              <a>
+                <%= image_tag(team_photos[i] + ".png", width: "200px", height: "200px") -%>
+                <h4><%= tag -%></h4>
+              </a>
+            </div>
+          <% end -%>
         <% end -%>
         </div>
       </div>
-    <!--end members section-->
-
+      <!--<%=token-%> end section-->
+      <% end -%>
   </div>
 </div>

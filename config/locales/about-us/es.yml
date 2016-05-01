@@ -1,0 +1,11 @@
+es:
+  about-us-menu:
+    introduction: "INTRODUCCIÓN"
+    history: "HISTORIA"
+    members: "MIEMBROS"
+  about-us-introduction:
+    title: "INTRODUCCIÓN"
+  about-us-history:
+    title: "HISTORIA"
+  about-us-members:
+    title: "MIEMBROS"
