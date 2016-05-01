@@ -1,5 +1,7 @@
-<footer class="footer-container">
-  <%= image_tag("logoUSB.png", width: "80px", height: "50px") %>
-  <div class="college-place"><%=t 'university' %> - <%=t 'country' %></div>
-  <div class="info"><%=t 'footer.info' %></div>
+<footer class="footer-container container-fluid">
+  <div class="row">
+  <div class="col-xs-1"><%= image_tag("logoUSB.png", width: "80px", height: "50px") %></div>
+  <div class="col-xs-4 info"><%=t 'university' %> - <%=t 'country' %></div>
+  <div class="col-xs-offset-3 col-xs-4 info legal"><%=t 'footer.info' %></div>
+  </div>
 </footer>

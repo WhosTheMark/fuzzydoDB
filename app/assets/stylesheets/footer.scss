@@ -1,23 +1,17 @@
 .footer-container {
-  display: flex;
-  padding-top: 15px;
   padding-bottom: 15px;
-
+  padding-top: 15px;
 
   img {
-    margin-left: 5%;
+    margin-left: 15%;
   }
 
   .info {
     margin-top: 17px;
-    position: absolute;
-    right: 5%;
   }
 
-  .college-place {
-    margin-left: 1%;
-    margin-top: 17px;
-    position: absolute;
+  .legal {
+    text-align: right;
   }
 
 }
