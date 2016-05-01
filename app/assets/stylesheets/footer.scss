@@ -1,3 +1,17 @@
+.page-wrap {
+  //Same height of the footer here
+  margin-bottom: -83px;
+  min-height: 100%;
+}
+
+.page-wrap:after {
+  display: block;
+}
+
+.site-footer, .page-wrap:after {
+  height: 83px;
+}
+
 .footer-container {
   padding-bottom: 15px;
   padding-top: 15px;
