@@ -144,7 +144,7 @@ pre,textarea {
 /*End extract from normalize.css*/
 
 h1 {
-  font-size: 36px;
+  font-size: 45px;
 }
 
 h2 {
@@ -173,7 +173,6 @@ h6 {
 
 h1,h2,h3,h4,h5,h6 {
   font-weight: 400;
-  margin: 10px 0;
 }
 
 .w3-wide {

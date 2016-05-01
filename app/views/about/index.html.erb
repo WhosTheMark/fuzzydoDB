@@ -1,27 +1,65 @@
 <div ng-controller="HomeController">
   <!--{{message}}!-->
-   <div class="contentWrapper">
-     <div class="contentLeft w3-card-4">
-       <ul class="leftNavigation">
-         <li>
-           <a href="#">
+    <div class="contentWrapper">
+      <div class="contentLeft w3-card-4">
+        <ul class="leftNavigation">
+          <li>
+            <a href="#">
              INTRODUCCION
-           </a>
-         </li>
-         <li>
-           <a href="">
-            HISTORIA
-           </a>
-         </li>
-         <li>
-           <a href="#">
-            MIEMBROS
-           </a>
-         </li>
-       </ul>
-     </div>
-     <div class="contentRight">
-       Your main content goes here
-     </div>
-   </div>
+            </a>
+          </li>
+          <li>
+            <a href="">
+             HISTORIA
+            </a>
+          </li>
+          <li>
+            <a href="#">
+             MIEMBROS
+            </a>
+          </li>
+        </ul>
+      </div>
+    <!--Introduction section-->
+      <div id="members" class="contentRight">
+        <h1>
+          INTRODUCCIÓN
+        </h1>
+        <div class="container-fluid">
+           Introoooo
+        </div>
+      </div>
+    <!--end introduction section-->
+    <!--History section-->
+      <div id="members" class="contentRight">
+        <h1>
+          HISTORIA
+        </h1>
+        <div class="container-fluid">
+           Echame un cuento
+        </div>
+      </div>
+    <!--end history section-->
+    <!--Members section-->
+      <div id="members" class="contentRight">
+        <h1>
+          MIEMBROS
+        </h1>
+        <div class="container-fluid">
+        <% team_names = ["Rosseline Rodriguez","Leonid Tineo","Soraya Carrasquel","David Coronado","Jose Cadenas","Josue Ramirez","Ricardo Monascal", "Darwin Rocha"] -%>
+        <% team_photos = ["darwin","darwin","darwin","darwin","darwin","darwin","darwin","darwin"] -%>
+
+        <% team_names.each_with_index do |tag, i| -%>
+          <div class="col-xs-4 member-container" >
+            <a>
+              <%= image_tag(team_photos[i] + ".png", width: "200px", height: "200px") -%>
+              <h4><%= tag -%></h4>
+            </a>
+          </div>
+        <% end -%>
+        </div>
+      </div>
+    <!--end members section-->
+
+  </div>
 </div>

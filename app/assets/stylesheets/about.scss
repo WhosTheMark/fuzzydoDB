@@ -1,0 +1,22 @@
+
+.member-container {
+  a {
+    img {
+      border: 2px solid Gray;
+      border-radius: 50%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: .5;
+    }
+
+    img:hover {
+      opacity: 1;
+    }
+
+    h4 {
+      padding-top: 15px;
+      text-align: center;
+    }
+  }
+}

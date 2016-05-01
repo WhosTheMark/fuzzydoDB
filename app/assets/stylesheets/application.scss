@@ -66,3 +66,9 @@ body {
   background-color: $widget-green;
   height: 320px;
 }
+
+h1 {
+  color: $widget-green;
+  font-family: 'Lato';
+  border-bottom: 2px solid gray;
+}
