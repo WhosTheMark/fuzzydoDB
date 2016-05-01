@@ -15,7 +15,7 @@
       </div>
       <% side_menu_tokens.each do |token| -%>
       <!--<%=token-%> section-->
-      <div id="<%=token-%>" class="contentRight about-us-sections section-<%=token.eql? "introduction" ? "active" : "inactive"-%>">
+      <div id="<%=token-%>" class="contentRight about-us-sections section-<%=if token.eql? "introduction" then "active" else "inactive" end-%>">
         <h1>
            <%=t("about-us-"+token+".title")-%>
         </h1>
