@@ -1,6 +1,9 @@
+@import 'variables';
+
+$footer-height: 83px;
+
 .page-wrap {
-  //Same height of the footer here
-  margin-bottom: -83px;
+  margin-bottom: -$footer-height;
   min-height: 100%;
 }
 
@@ -9,7 +12,7 @@
 }
 
 .site-footer, .page-wrap:after {
-  height: 83px;
+  height: $footer-height;
 }
 
 .footer-container {
@@ -22,11 +25,20 @@
 
   .info {
     margin-top: 17px;
+    padding-left: 40px;
   }
 
   .legal {
+    margin-top: 17px;
     text-align: right;
     padding-right: 30px;
   }
 
+}
+
+.footer-sidebar-fluid {
+  margin-right: auto;
+  margin-left: $side-bar-width;
+  padding-left: 15px;
+  padding-right: 15px;
 }

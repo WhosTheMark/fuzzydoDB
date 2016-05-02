@@ -1,7 +1,6 @@
 
 @import 'variables';
 
-$side-bar-width: 185px;
 $side-bar-item-color: #e7e7e7;
 
 .content-wrapper {
@@ -16,6 +15,7 @@ $side-bar-item-color: #e7e7e7;
   position: fixed;
   top: 100px;
   left: 0;
+  height: 100%;
   background-color: $widget-green;
 }
 
@@ -28,7 +28,6 @@ $side-bar-item-color: #e7e7e7;
 
 .left-navigation {
   margin: 2rem 0;
-  height: 100%;
   list-style: none;
   padding: 0;
 

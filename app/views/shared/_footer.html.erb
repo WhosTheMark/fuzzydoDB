@@ -1,7 +1,16 @@
-<footer class="footer-container site-footer container-fluid">
+<% if @isHome %>
+
+<footer class="footer-container site-footer content-fluid">
+
+<% else %>
+
+<footer class="footer-container site-footer footer-sidebar-fluid">
+
+<% end -%>
+
   <div class="row">
   <div class="col-xs-1"><%= image_tag("logoUSB.png", width: "80px", height: "50px") %></div>
-  <div class="col-xs-4 info"><%=t 'university' %> - <%=t 'country' %></div>
-  <div class="col-xs-offset-3 col-xs-4 info legal"><%=t 'footer.info' %></div>
+  <div class="col-xs-5 info"><%=t 'university' %> - <%=t 'country' %></div>
+  <div class="col-xs-6 legal"><%=t 'footer.info' %></div>
   </div>
 </footer>

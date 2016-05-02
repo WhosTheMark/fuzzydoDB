@@ -4,9 +4,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :set_locale
+  before_action :isHome?
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+  def isHome?
+    @isHome = controller_name == "home"
   end
 
   # Get locale from top-level domain or return nil if such locale is not available
