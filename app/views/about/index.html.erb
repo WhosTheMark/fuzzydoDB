@@ -24,15 +24,17 @@
     <% when "history" %>
        <%=t("about-us-"+token+".content")-%>
     <% when "members" %>
-      <% team_names = ["Rosseline Rodriguez","Leonid Tineo","Soraya Carrasquel","David Coronado","Jose Cadenas","Josue Ramirez","Ricardo Monascal", "Darwin Rocha"] -%>
+      <% team_names = ["Rosseline Rodríguez","Leonid Tineo","Soraya Carrasquel","David Coronado","José Cadenas","Josué Ramírez","Ricardo Monascal", "Darwin Rocha"] -%>
       <% team_photos = ["darwin","darwin","darwin","darwin","darwin","darwin","darwin","darwin"] -%>
 
       <% team_names.each_with_index do |tag, i| -%>
         <div class="col-xs-4 member-container" >
-          <a>
-            <%= image_tag(team_photos[i] + ".png", width: "200px", height: "200px") -%>
-            <h4><%= tag -%></h4>
-          </a>
+          <div class="member-card">
+            <a>
+              <%= image_tag(team_photos[i] + ".png", width: "120px", height: "120px") -%>
+              <h4><%= tag -%></h4>
+            </a>
+          </div>
         </div>
       <% end -%>
     <% end -%>

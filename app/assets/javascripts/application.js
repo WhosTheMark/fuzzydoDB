@@ -20,4 +20,5 @@
 // Changes the position of the fixed header when scrolling horizontally.
 $(window).scroll(function() {
     $('.header-x-scroll').css('left', -$(this).scrollLeft() + "px");
+    $('.content-left').css('left', -$(this).scrollLeft() + "px");
 });
