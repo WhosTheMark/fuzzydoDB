@@ -18,12 +18,8 @@
 
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
-@import url(http://fonts.googleapis.com/css?family=Lato&subset=latin);
-
-$widget-green: #097778;
-$btn-hover: #3a9293;
-$btn-active: #053d3e;
-
+@import 'variables';
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,300);
 
 html {
   min-width: 1100px;
@@ -71,4 +67,7 @@ h1 {
   color: $widget-green;
   font-family: 'Lato';
   border-bottom: 2px solid gray;
+  font-weight: 700;
+  padding-bottom: 6px;
+  margin-bottom: 12px;
 }

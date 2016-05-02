@@ -1,81 +1,60 @@
-$widget-green: #097778;
-$btn-active: #053d3e;
 
-.contentWrapper {
+@import 'variables';
+
+$side-bar-width: 185px;
+$side-bar-item-color: #e7e7e7;
+
+.content-wrapper {
   width: 100%;
   height: 100%;
   position: relative;
 }
 
-.contentLeft {
+.content-left {
   z-index: 10;
-  width: 185px;
+  width: $side-bar-width;
   position: fixed;
-  top: 101px;
+  top: 100px;
   left: 0;
   background-color: $widget-green;
 }
 
-.contentRight {
+.content-right {
   min-height: 300px;
-  margin-left: 200px;
+  margin-left: $side-bar-width;
   margin-bottom: 100px;
+  padding: 17px 50px;
 }
 
-.leftNavigation {
+.left-navigation {
   margin: 2rem 0;
   height: 100%;
-}
-
-.leftNavigation li {
-  background-color: $widget-green;
-}
-
-.leftNavigation,
-.leftNavigation li ul {
   list-style: none;
   padding: 0;
+
+  li {
+    background-color: $widget-green;
+    transition: background-color .3s;
+  }
+
+  li:hover {
+    background-color: $btn-active;
+  }
+
+  a {
+    display: block;
+    padding: 0.8rem 1rem 0.8rem 3rem;
+    color: $side-bar-item-color;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
+    line-height: 120%;
+  }
+
+  a:hover {
+    color: White;
+    text-decoration: none;
+  }
 }
 
-.leftNavigation li a {
-  display: block;
-  padding: 0.8rem 1rem 0.8rem 3rem;
-  color: #d3d3d3;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  position: relative;
-  -webkit-transition: color 0.2s ease;
-  -moz-transition: color 0.2s ease;
-  -o-transition: color 0.2s ease;
-  transition: color 0.2s ease;
-}
-
-.leftNavigation li a,
-.leftNavigation li a .leftNavIcon {
-  line-height: 120%;
-}
-
-.leftNavigation li a .leftNavIcon {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 3rem;
-  padding: 0.8rem 0;
-  text-align: center;
-}
-
-.leftNavigation li a:hover {
-  color: White;
-  background-color: $btn-active;
-}
-
-.leftNavigation li ul {
-  display: none;
-  margin: 0;
-  background-color: #17232f;
-}
-
-.leftNavigation li ul li a {
-  border-bottom: solid 1px #233547;
-}
 
