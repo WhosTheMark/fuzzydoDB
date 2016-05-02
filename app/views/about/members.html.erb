@@ -1,0 +1,31 @@
+<div class="content-wrapper">
+
+  <% @sidebar_bar = ["introduction", "history", "members"] %>
+  <% @token_sidebar_namespace = "about-us-menu." %>
+  <% @links = [ url_for(controller: controller_name, action: "index"),
+                url_for(controller: controller_name, action: "history"),
+                url_for(controller: controller_name, action: "members")] %>
+
+  <%= render :partial => "shared/sidebar",
+      locals: { sidebar_bar: @sidebar_bar,
+                token_sidebar_namespace: @token_sidebar_namespace,
+                links: @links } %>
+
+  <div class="content-right about-us-sections">
+    <h1>
+       <%=t("about-us-members.title")-%>
+    </h1>
+    <div class="container-fluid">
+      <% @team_members.each_with_index do |tag, i| -%>
+        <div class="col-xs-4 member-container" >
+          <div class="member-card">
+            <a>
+              <%= image_tag("team/" + @team_photos[i] + ".png", width: "120px", height: "120px") -%>
+              <h4><%= tag -%></h4>
+            </a>
+          </div>
+        </div>
+      <% end -%>
+    </div>
+  </div>
+</div>

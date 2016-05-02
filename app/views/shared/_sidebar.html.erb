@@ -1,0 +1,11 @@
+<div class="content-left w3-card-4">
+  <ul class="left-navigation">
+  <% sidebar_bar.each_with_index do |token,i| -%>
+    <li>
+      <a href="<%= links[i] %>">
+       <%=t(token_sidebar_namespace + token)-%>
+      </a>
+    </li>
+  <% end -%>
+  </ul>
+</div>
