@@ -1,15 +1,7 @@
 <div class="content-wrapper">
 
-  <% @sidebar_bar = ["introduction", "history", "members"] %>
-  <% @token_sidebar_namespace = "about-us-menu." %>
-  <% @links = [ url_for(controller: controller_name, action: "index"),
-                url_for(controller: controller_name, action: "history"),
-                url_for(controller: controller_name, action: "members")] %>
-
-  <%= render :partial => "shared/sidebar",
-      locals: { sidebar_bar: @sidebar_bar,
-                token_sidebar_namespace: @token_sidebar_namespace,
-                links: @links } %>
+  <%= render :partial => "about_us_sidebar",
+        locals: { active_item: @active_item} %>
 
   <div class="content-right about-us-sections">
     <%= render :partial => "shared/plain_content",

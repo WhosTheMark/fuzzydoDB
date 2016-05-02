@@ -1,4 +1,4 @@
 $widget-green: #097778;
-$btn-hover: #3a9293;
-$btn-active: #053d3e;
+$btn-active: darken($widget-green, 10);
+$btn-hover: lighten($widget-green, 9);
 $side-bar-width: 185px;

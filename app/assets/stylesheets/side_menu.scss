@@ -54,6 +54,11 @@ $side-bar-item-color: #e7e7e7;
     color: White;
     text-decoration: none;
   }
+
+  .active-item {
+    background-color: $btn-hover;
+    color: White;
+  }
 }
 
 

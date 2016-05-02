@@ -1,9 +1,9 @@
 <div class="content-left w3-card-4">
   <ul class="left-navigation">
-  <% sidebar_bar.each_with_index do |token,i| -%>
+  <% sidebar_bar_items.each_with_index do |item,i| -%>
     <li>
-      <a href="<%= links[i] %>">
-       <%=t(token_sidebar_namespace + token)-%>
+      <a href="<%= links[i] %>" class="<% if (sidebar_bar_items[i] == active_item) %> active-item <% end -%>">
+       <%=t(token_sidebar_namespace + item)%>
       </a>
     </li>
   <% end -%>
