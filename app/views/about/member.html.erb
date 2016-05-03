@@ -5,10 +5,10 @@
 
   <div class="content-right about-us-sections">
     <h1>
-    <%= @title %>
+    <%= @member.name %>
     </h1>
     <div class="container-fluid">
-      <%= image_tag("team/" + @photo, width: "120px", height: "120px", :class =>"member-img-card") %>
+      <%= image_tag("team/" + @member.photo, width: "120px", height: "120px", :class =>"member-img-card") %>
       <%= t(@content_token) %>
     </div>
   </div>

@@ -8,12 +8,12 @@
        <%=t("about-us-members.title")-%>
     </h1>
     <div class="container-fluid">
-      <% @team_members.each_with_index do |tag, i| %>
+      <% @members.each_with_index do |member, i| %>
         <div class="col-xs-6 col-lg-4 member-container" >
           <div class="member-card">
-            <a href="<%= url_for(controller: controller_name, action: "member", id: @team_ids[i]) %>">
-              <%= image_tag("team/" + @team_photos[i], width: "120px", height: "120px", class: "member-img-card") %>
-              <h4><%= tag %></h4>
+            <a href="<%= url_for(controller: controller_name, action: "member", id: member.memberId) %>">
+              <%= image_tag("team/" + member.photo, width: "120px", height: "120px", class: "member-img-card") %>
+              <h4><%= member.name %></h4>
             </a>
           </div>
         </div>
