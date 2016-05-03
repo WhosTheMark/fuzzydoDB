@@ -27,23 +27,23 @@ class AboutController < ApplicationController
                       "Ricardo Monascal",
                       "Darwin Rocha"]
 
-    @team_photos = ["rosseline",
-                    "darwin",
-                    "darwin",
-                    "darwin",
-                    "darwin",
-                    "darwin",
-                    "darwin",
-                    "darwin"]
+    @team_photos = ["rosseline.png",
+                    "darwin.png",
+                    "darwin.png",
+                    "darwin.png",
+                    "darwin.png",
+                    "darwin.png",
+                    "darwin.png",
+                    "darwin.png"]
 
-    @team_links = [url_for(controller: controller_name, action: "member", id: "rodriguez"),
-                   url_for(controller: controller_name, action: "member", id: "tineo"),
-                   url_for(controller: controller_name, action: "member", id: "carrasquel"),
-                   url_for(controller: controller_name, action: "member", id: "coronado"),
-                   url_for(controller: controller_name, action: "member", id: "cadenas"),
-                   url_for(controller: controller_name, action: "member", id: "ramirez"),
-                   url_for(controller: controller_name, action: "member", id: "monascal"),
-                   url_for(controller: controller_name, action: "member", id: "rocha")]
+    @team_ids = [ "rodriguez",
+                  "tineo",
+                  "carrasquel",
+                  "coronado",
+                  "cadenas",
+                  "ramirez",
+                  "monascal",
+                  "rocha"]
   end
 
   def member
@@ -52,39 +52,37 @@ class AboutController < ApplicationController
       when "rodriguez"
         @title = "Rosseline Rodríguez"
         @content = "foo"
-        @photo = "rosseline"
+        @photo = "rosseline.png"
       when "tineo"
         @title = "Leonid Tineo"
         @content = "foo"
-        @photo = "darwin"
+        @photo = "darwin.png"
       when "carrasquel"
         @title = "Soraya Carrasquel"
         @content = "foo"
-        @photo = "darwin"
+        @photo = "darwin.png"
       when "coronado"
         @title = "David Coronado"
         @content = "foo"
-        @photo = "darwin"
+        @photo = "darwin.png"
       when "cadenas"
         @title = "José Cadenas"
         @content = "foo"
-        @photo = "darwin"
+        @photo = "darwin.png"
       when "ramirez"
         @title = "Josué Ramírez"
         @content = "foo"
-        @photo = "darwin"
+        @photo = "darwin.png"
       when "monascal"
         @title = "Ricardo Monascal"
         @content = "foo"
-        @photo = "darwin"
+        @photo = "darwin.png"
       when "rocha"
         @title = "Darwin Rocha"
         @content = "foo"
-        @photo = "darwin"
+        @photo = "darwin.png"
       else
     end
-
-    render 'member', locals: {}
 
   end
 end

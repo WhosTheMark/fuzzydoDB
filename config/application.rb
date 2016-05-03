@@ -35,6 +35,6 @@ module FuzzydoDB
 
     # Sets TypeScript to be more forgivable.
     Typescript::Rails::Compiler.default_options = %w(--target ES6)
-
+    config.mongoid.preload_models = false
   end
 end
