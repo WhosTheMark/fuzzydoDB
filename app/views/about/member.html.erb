@@ -1,0 +1,11 @@
+<div class="content-wrapper">
+
+  <%= render :partial => "about_us_sidebar",
+        locals: { active_item: @active_item} %>
+
+  <div class="content-right about-us-sections">
+    <%= render :partial => "shared/plain_content_picture",
+        locals: { title_token: @title, content_token: @content, photo: @photo} %>
+  </div>
+</div>
+
