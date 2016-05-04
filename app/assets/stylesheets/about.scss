@@ -80,12 +80,12 @@
     background-color: $widget-green;
     text-decoration: none;
 }
- 
+
 .crunchify-top {
     display: none;
     position: fixed;
-    bottom: 1rem;
-    right: 1rem;
+    bottom: 70px;
+    right: 10px;
     width: 3.4rem;
     height: 3.4rem;
     line-height: 3.95rem;
@@ -96,4 +96,10 @@
     border-radius: 3.2rem;
     text-align: center;
     cursor: pointer;
+    transition: background-color .3s;
+}
+
+.crunchify-top:focus {
+  outline: none;
+  color: White;
 }

@@ -17,26 +17,31 @@
 //= require angular
 //= require_tree .
 
+/// <reference path="typings/jquery.d.ts" />
+
 // Changes the position of the fixed header when scrolling horizontally.
 $(window).scroll(function() {
     $('.header-x-scroll').css('left', -$(this).scrollLeft() + "px");
     $('.content-left').css('left', -$(this).scrollLeft() + "px");
 });
 
-jQuery(document).ready(function() {
+var readyFunc = function() {
     var offset = 220;
     var duration = 500;
-    jQuery(window).scroll(function() {
-        if (jQuery(this).scrollTop() > offset) {
-            jQuery('.crunchify-top').fadeIn(duration);
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > offset) {
+            $('.crunchify-top').fadeIn(duration);
         } else {
-            jQuery('.crunchify-top').fadeOut(duration);
+            $('.crunchify-top').fadeOut(duration);
         }
     });
 
-    jQuery('.crunchify-top').click(function(event) {
+    $('.crunchify-top').click(function(event) {
         event.preventDefault();
-        jQuery('html, body').animate({scrollTop: 0}, duration);
+        $('html, body').animate({scrollTop: 0}, duration);
         return false;
-    })
-});
+    });
+};
+
+$(document).ready(readyFunc);
+$(document).on('page:load', readyFunc);
