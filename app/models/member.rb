@@ -4,6 +4,5 @@ class Member
   field :member_id, type: String
   field :name, type: String
   field :photo, type: String
-  field :bio, type: String,  localize: true
 
 end
