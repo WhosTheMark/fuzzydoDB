@@ -21,6 +21,6 @@ class AboutController < ApplicationController
   end
 
   def member
-    @member = Member.where(memberId: params[:id])[0]
+    @member = Member.where(member_id: params[:id])[0]
   end
 end
