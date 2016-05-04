@@ -5,7 +5,7 @@ I18n.locale = :es
 Member.create!(memberId: "rodriguez",
                name: "Rosseline Rodríguez",
                photo: "rosseline.png",
-               bio: "")
+               bio: "erygdfgdfgdfgdfg")
 
 Member.create!(memberId: "tineo",
                name: "Leonid Tineo",

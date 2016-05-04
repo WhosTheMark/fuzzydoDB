@@ -3,13 +3,65 @@
   <%= render :partial => "about_us_sidebar",
         locals: { active_item: ""} %>
 
-  <div class="content-right about-us-sections">
-    <h1>
-    <%= @member.name %>
-    </h1>
-    <div class="container-fluid">
-      <%= image_tag("team/" + @member.photo, width: "120px", height: "120px", :class =>"member-img-card") %>
-      <%= t(@content_token) %>
+  <div class="content-right">
+    <div class="container-fluid member-container member-bio-header">
+      <div class="col-xs-4">
+        <%= image_tag("team/" + @member.photo, width: "200px", height: "200px", :class =>"member-bio-img") %>
+      </div>
+      <div class="col-xs-8 member-bio-name">
+        <%= @member.name %>
+      </div>
+    </div>
+    <div class="text-content">
+      <p>Magister  en  Ciencias  de  la  Computación,  Universidad  Simón  Bolívar
+(USB), Caracas, Venezuela, 1995. Ingeniero en Computación, USB, 1991. Miembro del personal
+académico de la USB (desde 1991). Actualmente es Profesor Asociado (desde 2013).</p>
+
+<p>Acreditación  del  Programa  de  Promoción  al  Investigador  de  Venezuela  como  Investigador  Nivel
+Candidato  (1996).  Ha  recibido  las  distinciones:  Profesor  Meritorio  Nivel  II  CONABA  (1998),
+Destacada Labor Docente USB (2011­2012). Actualmente acreditado en el Programa de Estímulo
+a la Investigación e Innovación PEII como Investigador Nivel A (desde 2011). </p>
+
+<p>Fue Coordinador del Coloquio del Departamento de Computación y Tecnología de la Información,
+USB  (2010).  Actualmente  es  Jefe  de  la  Sección  Docente  de  Algoritmos  y  Lenguajes  de
+Programación y miembro del Consejo Asesor de Departamento de Computación y Tecnología de
+la Información de la USB (desde enero 2013).</p>
+
+<p>En los últimos cinco años, tiene once contribuciones en Memorias de Congresos Arbitrados, diez
+notas  breves  publicadas,  trece  artículos  en  Revistas  Indexadas,  y  más  de  doce  tutorías  de
+trabajos conducentes a títulos académicos.</p>
+
+<p>Participó  en  el  Proyecto  FONACIT  G­2005000279  “Creación  y  Aplicación  de  Manejadores  de
+Bases de Datos Difusas” (2006­2009) como Asistente de Investigación. Actualmente, participa en
+el  proyecto  “Desafíos  del  Modelo  Relacional  Difuso”  de  la  Universidad  Nacional  Experimental
+Politécnica  Antonio  José  de  Sucre,  Vicerrectorado  de  Barquisimeto,  como  investigador  asociado
+(desde 2013).</p>
+
+<p>Es  miembro  del  Centro  de  Análisis,  Modelado  y  Tratamiento  de  Datos,  CAMYTD,  de  la
+Universidad  de  Carabobo  (desde  2010),  donde  participa  en  el  proyecto  “Sistema  de  apoyo  para
+prevención,  diagnóstico  y  tratamiento  de  dolencias  en  lumbalgia  crónica  que  contribuya  al
+mejoramiento de la calidad de vida de los pacientes”, como investigador asociado (desde 2012).</p>
+
+<p>Sus  áreas  de  interés  en  investigación  son  Bases  de  Datos  Difusas,  Especificación  Formal  y
+Metodologías de Desarrollo de Software.</p>
+
+<p>En docencia ha dictado cursos en las áreas de Programación, Algoritmia, Matemáticas Discretas y
+Bases de Datos, desde 1991. Además, ha sido supervisor de Talleres de Desarrollo de Software,
+materia electiva de 8 créditos donde los estudiantes deben producir un sistema automatizado para
+un problema dado, con alcances bien delimitados, de aplicabilidad práctica y dentro de una línea
+de investigación (desde 2011).</p>
+
+<p>Es coordinador del proyecto “AT­1105: Apoyo Tecnológico al Laboratorio de Marcha del Hospital
+Ortopédico  Infantil”  cuyo  propósito  es  ofrecer  pasantías  sociales  a  estudiantes  de  las  carreras:
+Ingeniería en Computación, Ingeniería Electrónica y Tecnología Electrónica, desde 2011.
+Fue  miembro  del  Comité  Organizador  de  la  XXXIX  Conferencia  Latinoamericana  en  Informática
+(CLEI 2013), desde septiembre 2011 hasta Enero 2014, en los roles de Secretario, Coordinador
+de la Comisión de Cultura y colaborador en la Comisión de Logística y Realización. Fue miembro
+del  Comité  Organizador  de  la  Segunda  Conferencia  Nacional  de  Computación,  Informática  y
+Sistemas  (CONCISA  2014).Actualmente  es  Presidente  del  Comité  Organizador  de  la  Tercera
+Conferencia Nacional de Computación, Informática y Sistemas (CONCISA 2015).</p>
+
+<p>Es miembro fundador de la Sociedad Venezolana de Computación (SVC) desde septiembre 2012.</p>
     </div>
   </div>
 </div>
