@@ -1,6 +1,15 @@
 
 I18n.locale = :es
 
+Developer.create!(member_id: "campos",
+                  name: "Marcos Campos",
+                  email: "10-10108@usb.ve",
+                  photo: "default.png")
+
+Developer.create!(member_id: "delgado",
+                  name: "John Delgado",
+                  email: "10-10196@usb.ve",
+                  photo: "default.png")
 
 Member.create!(member_id: "rodriguez",
                name: "Rosseline Rodríguez",
@@ -41,3 +50,5 @@ Member.create!(member_id: "rocha",
                name: "Darwin Rocha",
                email: "darwinrocha@usb.ve",
                photo: "darwin.png")
+
+
