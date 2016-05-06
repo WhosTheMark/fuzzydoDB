@@ -17,13 +17,12 @@ class AboutController < ApplicationController
   end
 
   def members
-    @members = Member.where(_type: "Member")
+    @members = Member.get_non_developers()
     @developers = Developer.all
   end
 
   def member
-    @member = Member.where(member_id: params[:id])[0]
-    @developer = Developer.where(developer_id: params[:id])[0]
+    @member = Member.get_by_id(params[:id])
   end
 
 end

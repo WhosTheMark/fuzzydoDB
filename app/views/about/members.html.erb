@@ -4,37 +4,6 @@
         locals: { active_item: "members"} %>
 
   <div class="content-right">
-    <h1>
-       <%=t("about-us-members.title")-%>
-    </h1>
-    <div class="container-fluid">
-      <% @members.each do |member| %>
-         <div class="col-xs-6 col-lg-4 member-container" >
-           <div class="member-card">
-             <a href="<%= url_for(controller: controller_name, action: "member", id: member.member_id) %>">
-               <%= image_tag("team/" + member.photo, width: "120px", height: "120px", class: "member-img-card") %>
-               <h4><%= member.name %></h4>
-               <h6><span class="glyphicon glyphicon-envelope mail-icon"></span><%= member.email %></h6>
-             </a>
-           </div>
-         </div>
-      <% end -%>
-    </div>
-    <h1>
-       <%=t("about-us-developers.title")%>
-    </h1>
-    <div class="container-fluid">
-      <% @developers.each do |developer| %>
-        <div class="col-xs-6 col-lg-4 member-container" >
-          <div class="member-card">
-            <a href="<%= url_for(controller: controller_name, action: "member", id: developer.member_id) %>">
-              <%= image_tag("team/" + developer.photo, width: "120px", height: "120px", class: "member-img-card") %>
-              <h4><%= developer.name %></h4>
-              <h6><span class="glyphicon glyphicon-envelope mail-icon"></span><%= developer.email %></h6>
-            </a>
-          </div>
-        </div>
-      <% end -%>
-    </div>
-  </div>
+    <%= render :partial => "member_cards", locals: { members: @members, title: "about-us-members.title"} %>
+    <%= render :partial => "member_cards", locals: { members: @developers, title: "about-us-developers.title"} %>
 </div>
