@@ -20,6 +20,19 @@
     <div class="text-content">
       <%= render :partial => "/about/members/#{@member.member_id}_bio" %>
     </div>
+    <div>
+      <% if !@member.articles.empty? %>
+        <h2>Publicaciones</h2>
+        <ol>
+        <% @member.articles.each do |article| %>
+          <li>
+          <strong> <%= article.authors %> </strong>
+          <%= article.description %>
+          </li>
+        <% end -%>
+        </ol>
+      <% end %>
+    </div>
   </div>
 </div>
 

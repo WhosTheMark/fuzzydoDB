@@ -1,6 +1,6 @@
 <div class="content-left">
   <ul class="left-navigation">
-  <% sidebar_bar_items.each_with_index do |item,i| -%>
+  <% sidebar_bar_items.each_with_index do |item,i| %>
     <li>
       <a href="<%= links[i] %>" class="<% if (sidebar_bar_items[i] == active_item) %> active-item <% end -%>">
        <%=t(token_sidebar_namespace + item)%>
