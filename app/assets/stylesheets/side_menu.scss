@@ -16,7 +16,7 @@ $side-bar-item-color: #e7e7e7;
   top: 100px;
   left: 0;
   height: 100%;
-  background-color: $widget-green;
+  background-image: linear-gradient(to right, $widget-green, $widget-green 90%, White);
 }
 
 .content-right {
@@ -32,12 +32,11 @@ $side-bar-item-color: #e7e7e7;
   padding: 0;
 
   li {
-    background-color: $widget-green;
     transition: background-color .3s;
   }
 
   li:hover {
-    background-color: $btn-active;
+    background-image: linear-gradient(to right, $btn-active, $btn-active 90%, White);
   }
 
   a {
@@ -56,7 +55,7 @@ $side-bar-item-color: #e7e7e7;
   }
 
   .active-item {
-    background-color: $btn-hover;
+    background-image: linear-gradient(to right, $btn-hover, $btn-hover 90%, White);
     color: White;
   }
 }
