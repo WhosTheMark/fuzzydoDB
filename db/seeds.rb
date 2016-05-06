@@ -41,3 +41,13 @@ Member.create!(member_id: "rocha",
                name: "Darwin Rocha",
                email: "darwinrocha@usb.ve",
                photo: "darwin.png")
+
+Developer.create!(member_id: "campos",
+                  name: "Marcos Campos",
+                  email: "10-10108@usb.ve",
+                  photo: "default.png")
+
+Developer.create!(member_id: "delgado",
+                  name: "John Delgado",
+                  email: "10-10196@usb.ve",
+                  photo: "delgado.png")

@@ -18,9 +18,12 @@ class AboutController < ApplicationController
 
   def members
     @members = Member.all
+    @developers = Developer.all
   end
 
   def member
     @member = Member.where(member_id: params[:id])[0]
+    @developer = Developer.where(developer_id: params[:id])[0]
   end
+
 end
