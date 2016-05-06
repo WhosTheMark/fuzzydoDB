@@ -6,6 +6,7 @@
 
 .member-container {
 
+  text-align: center;
   padding-top: 30px;
 
   .member-card:hover {
@@ -21,7 +22,6 @@
 
   h4 {
     padding-top: 15px;
-    text-align: center;
     color: $widget-green;
     font-size: 1.3em;
   }

@@ -14,6 +14,7 @@
             <a href="<%= url_for(controller: controller_name, action: "member", id: member.member_id) %>">
               <%= image_tag("team/" + member.photo, width: "120px", height: "120px", class: "member-img-card") %>
               <h4><%= member.name %></h4>
+              <h6><%= member.email %></h6>
             </a>
           </div>
         </div>
