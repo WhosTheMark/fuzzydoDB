@@ -18,6 +18,10 @@
     img{
       box-shadow: 0px 0px 0px 11px rgba(0, 0, 0, 0.15);
     }
+
+    h6 {
+      color: #333333;
+    }
   }
 
   h4 {
@@ -68,6 +72,10 @@
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+
+  > div {
+    display: inline-block;
+  }
 }
 
 .member-bio-header {
@@ -102,4 +110,17 @@
 .crunchify-top:focus {
   outline: none;
   color: White;
+}
+
+.mail-icon {
+  padding-right: 5px;
+  color: #777777;
+  font-size: 0.8em;
+}
+
+.mail-info {
+  font-size: 21px;
+  color: #666666;
+  font-weight: 500;
+  text-align: right;
 }

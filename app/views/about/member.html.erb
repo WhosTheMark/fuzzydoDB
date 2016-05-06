@@ -9,8 +9,12 @@
         <%= image_tag("team/" + @member.photo, width: "200px", height: "200px", :class =>"member-bio-img") %>
       </div>
       <div class="col-xs-8 member-bio-name">
-        <%= @member.name %>
-        <h6><%= @member.email %></h6>
+        <div>
+          <%= @member.name %>
+          <div class="mail-info">
+            <span class="glyphicon glyphicon-envelope mail-icon"></span><%= @member.email %>
+          </div>
+        </div>
       </div>
     </div>
     <div class="text-content">
