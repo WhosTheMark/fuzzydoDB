@@ -21,13 +21,15 @@
 @import 'variables';
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,300);
 
+$gray:  #808080;
+
 html {
   min-width: 1100px;
 }
 
 body {
-    font-family: 'Lato';
-    font-size: 15px;
+  font-family: 'Lato';
+  font-size: 15px;
 }
 
 // Make buttons and input forms smaller
@@ -67,7 +69,7 @@ body {
 h1 {
   color: $widget-green;
   font-family: 'Lato';
-  border-bottom: 2px solid gray;
+  border-bottom: 2px solid $gray;
   font-weight: 700;
   padding-bottom: 6px;
   margin-bottom: 12px;
@@ -89,4 +91,33 @@ h2 {
   p {
     margin-bottom: 1.5em;
   }
+}
+
+.crunchify-top:hover {
+  color: White;
+  background-color: $widget-green;
+  text-decoration: none;
+}
+
+.crunchify-top {
+  display: none;
+  position: fixed;
+  bottom: 70px;
+  right: 10px;
+  width: 3.4rem;
+  height: 3.4rem;
+  line-height: 3.95rem;
+  font-size: 3.2rem;
+  color: White;
+  background-color: rgba(0, 0, 0, .3);
+  text-decoration: none;
+  border-radius: 3.2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color .3s;
+}
+
+.crunchify-top:focus {
+  outline: none;
+  color: White;
 }

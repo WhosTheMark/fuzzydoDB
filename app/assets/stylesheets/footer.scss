@@ -7,11 +7,12 @@ $footer-height: 83px;
   min-height: 100%;
 }
 
-.page-wrap:after {
+.page-wrap::after {
   display: block;
 }
 
-.site-footer, .page-wrap:after {
+.site-footer,
+.page-wrap::after {
   height: $footer-height;
 }
 

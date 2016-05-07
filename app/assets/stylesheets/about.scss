@@ -1,5 +1,9 @@
 @import 'variables';
 
+$gray-text: #333;
+$mail-icon-color: #777;
+$mail-text-color: #666;
+
 .section-inactive {
   display: none;
 }
@@ -15,12 +19,12 @@
       text-decoration: none;
     }
 
-    img{
-      box-shadow: 0px 0px 0px 11px rgba(0, 0, 0, 0.15);
+    img {
+      box-shadow: 0 0 0 11px rgba(0, 0, 0, .15);
     }
 
     h6 {
-      color: #333333;
+      color: $gray-text;
     }
   }
 
@@ -36,11 +40,12 @@
   margin: 0 35px;
   margin-bottom: 30px;
   border-radius: 6px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.01),0 6px 20px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .01), 0 6px 20px 0 rgba(0, 0, 0, .19);
 }
 
 
-.member-img {
+.member-img,
+%member-img {
   border-radius: 50%;
   display: block;
   margin-left: auto;
@@ -48,15 +53,15 @@
 }
 
 .member-img-card {
-  @extend .member-img;
-  box-shadow: 0px 0px 0px 5px rgba(0, 0, 0, 0.09);
-  transition: box-shadow 0.3s ease;
+  @extend %member-img;
+  box-shadow: 0 0 0 5px rgba(0, 0, 0, .09);
+  transition: box-shadow .3s ease;
 }
 
 .member-bio-img {
-  @extend .member-img;
+  @extend %member-img;
   border: 4px solid White;
-  box-shadow: 0 6px 20px 0 rgba(0,0,0,.19),0 8px 17px 0 rgba(0,0,0,.2);
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, .19), 0 8px 17px 0 rgba(0, 0, 0, .2);
 }
 
 .member-bio-container {
@@ -83,44 +88,15 @@
   margin-bottom: 60px;
 }
 
-.crunchify-top:hover {
-    color: #fff;
-    background-color: $widget-green;
-    text-decoration: none;
-}
-
-.crunchify-top {
-    display: none;
-    position: fixed;
-    bottom: 70px;
-    right: 10px;
-    width: 3.4rem;
-    height: 3.4rem;
-    line-height: 3.95rem;
-    font-size: 3.2rem;
-    color: #fff;
-    background-color: rgba(0,0,0,0.3);
-    text-decoration: none;
-    border-radius: 3.2rem;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color .3s;
-}
-
-.crunchify-top:focus {
-  outline: none;
-  color: White;
-}
-
 .mail-icon {
   padding-right: 5px;
-  color: #777777;
-  font-size: 0.8em;
+  color: $mail-icon-color;
+  font-size: .8em;
 }
 
 .mail-info {
   font-size: 21px;
-  color: #666666;
+  color: $mail-text-color;
   font-weight: 500;
   text-align: right;
 }
