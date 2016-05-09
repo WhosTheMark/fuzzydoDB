@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     get 'about/history' => 'about#history'
     get 'about/members' => 'about#members'
     get 'about/member/:id' => 'about#member'
+
+    resources :users
   end
 
   #get '/:locale' => 'dashboard#index'
