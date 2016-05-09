@@ -6,11 +6,15 @@ Rails.application.routes.draw do
     get 'home' => 'home#index'
 
     get 'about' => 'about#index'
-    get 'about/history' => 'about#history'
-    get 'about/members' => 'about#members'
-    get 'about/member/:id' => 'about#member'
+    scope 'about' do
+      get 'history' => 'about#history'
+      get 'members' => 'about#members'
+      get 'member/:id' => 'about#member'
+    end
 
-    resources :users
+    scope "admin" do
+      resources :users
+    end
   end
 
   #get '/:locale' => 'dashboard#index'

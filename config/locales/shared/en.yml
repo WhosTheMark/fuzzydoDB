@@ -41,3 +41,13 @@ en:
 
   footer:
     info: "Legal information - Contact information"
+
+  user:
+    username: "Username"
+    name: "Name"
+    email: "e-mail"
+
+  labels:
+    delete: "Delete"
+    edit: "Edit"
+    show: "Show"
