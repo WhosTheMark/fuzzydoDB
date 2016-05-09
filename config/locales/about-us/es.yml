@@ -1,15 +1,16 @@
 es:
-  about-us-menu:
-    introduction: "INTRODUCCIÓN"
-    history: "HISTORIA"
-    members: "MIEMBROS"
-  about-us-introduction:
-    title: "INTRODUCCIÓN"
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a convallis nisl, at aliquam dolor. Morbi in iaculis nunc. Nulla eu mi at velit imperdiet sollicitudin sed vel risus. Quisque eleifend lorem ipsum, et tempus nulla convallis nec. Duis molestie diam at molestie sodales. In convallis, dui in iaculis adipiscing, tortor neque elementum lectus, quis dapibus sapien metus vestibulum nibh. Curabitur fermentum molestie ipsum, a sagittis mi. Suspendisse tempus consequat odio, quis tempus augue vulputate at."
-  about-us-history:
-    title: "HISTORIA"
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a convallis nisl, at aliquam dolor. Morbi in iaculis nunc. Nulla eu mi at velit imperdiet sollicitudin sed vel risus. Quisque eleifend lorem ipsum, et tempus nulla convallis nec. Duis molestie diam at molestie sodales. In convallis, dui in iaculis adipiscing, tortor neque elementum lectus, quis dapibus sapien metus vestibulum nibh. Curabitur fermentum molestie ipsum, a sagittis mi. Suspendisse tempus consequat odio, quis tempus augue vulputate at."
-  about-us-members:
-    title: "MIEMBROS"
-  about-us-developers:
-    title: "DESARROLLADORES"
+  about-us:
+    menu:
+        introduction: "INTRODUCCIÓN"
+        history: "HISTORIA"
+        members: "MIEMBROS"
+    introduction:
+        title: "INTRODUCCIÓN"
+        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a convallis nisl, at aliquam dolor. Morbi in iaculis nunc. Nulla eu mi at velit imperdiet sollicitudin sed vel risus. Quisque eleifend lorem ipsum, et tempus nulla convallis nec. Duis molestie diam at molestie sodales. In convallis, dui in iaculis adipiscing, tortor neque elementum lectus, quis dapibus sapien metus vestibulum nibh. Curabitur fermentum molestie ipsum, a sagittis mi. Suspendisse tempus consequat odio, quis tempus augue vulputate at."
+    history:
+        title: "HISTORIA"
+        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a convallis nisl, at aliquam dolor. Morbi in iaculis nunc. Nulla eu mi at velit imperdiet sollicitudin sed vel risus. Quisque eleifend lorem ipsum, et tempus nulla convallis nec. Duis molestie diam at molestie sodales. In convallis, dui in iaculis adipiscing, tortor neque elementum lectus, quis dapibus sapien metus vestibulum nibh. Curabitur fermentum molestie ipsum, a sagittis mi. Suspendisse tempus consequat odio, quis tempus augue vulputate at."
+    members:
+        title: "MIEMBROS"
+        developers: "DESARROLLADORES"
+        articles: "Publicaciones"

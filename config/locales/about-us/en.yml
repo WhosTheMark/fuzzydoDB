@@ -20,15 +20,16 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  about-us-menu:
-    introduction: "INTRODUCTION"
-    history: "HISTORY"
-    members: "MEMBERS"
-  about-us-introduction:
-    title: "INTRODUCTION"
-  about-us-history:
-    title: "HISTORY"
-  about-us-members:
-    title: "MEMBERS"
-  about-us-developers:
-    title: "DEVELOPERS"
+  about-us:
+    menu:
+        introduction: "INTRODUCTION"
+        history: "HISTORY"
+        members: "MEMBERS"
+    introduction:
+        title: "INTRODUCTION"
+    history:
+        title: "HISTORY"
+    members:
+        title: "MEMBERS"
+        developers: "DEVELOPERS"
+        articles: "Articles"

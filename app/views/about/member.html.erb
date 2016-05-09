@@ -22,7 +22,7 @@
     </div>
     <div>
       <% if !@member.articles.empty? %>
-        <h2>Publicaciones</h2>
+        <h2><%= t("about-us.members.articles") %></h2>
         <ol>
         <% @member.articles.each do |article| %>
           <li>
