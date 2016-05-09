@@ -17,7 +17,9 @@
 //= require angular
 //= require_tree .
 
-/// <reference path="typings/jquery.d.ts" />
+//= require datatables
+
+/// <reference path="../typings/jquery.d.ts" />
 
 // Changes the position of the fixed header when scrolling horizontally.
 $(window).scroll(function() {

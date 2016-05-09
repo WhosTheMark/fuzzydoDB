@@ -9,19 +9,20 @@
     <h1><%= t("admin.user-list") %></h1>
 
     <div class="table-responsive">
-      <table class="table table-striped table-hover">
+      <table id="userTable" class="table table-striped w3-hoverable">
         <thead>
           <tr>
             <th><%= t("user.username") %></th>
             <th><%= t("user.name") %></th>
             <th><%= t("user.email") %></th>
-            <th colspan="2"></th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
 
         <tbody>
           <% @users.each do |user| %>
-            <tr>
+            <tr class="w3-hover-teal">
               <td><%= user.username %></td>
               <td><%= user.name %></td>
               <td><%= user.email %></td>
