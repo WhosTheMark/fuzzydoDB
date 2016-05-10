@@ -5,6 +5,8 @@ es:
 
   header:
     login: "Iniciar Sesión"
+    logout: "Terminar Sesión"
+    register: "Registrarse"
     search: "Buscar"
 
     menu:

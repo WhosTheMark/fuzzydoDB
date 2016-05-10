@@ -4,11 +4,17 @@
 
       <div class="row">
         <div class="col-xs-2 logo">
-          <%= link_to image_tag("fuzzydodb.png", width: "190px", height: "50px"), controller: "home" %>
+          <%= link_to image_tag("fuzzydodb.png", width: "190px", height: "50px"), controller: "/home" %>
         </div>
         <div class="col-xs-10 header-right-container">
           <div class="top-options-container">
-            <button type="button" class="btn btn-default"> <%=t 'header.login' %> </button>
+            <% if current_user.nil? %>
+              <%= button_to t('header.login'), new_user_registration_path, :class =>"btn btn-default", :method => :get%>
+              <%= button_to t('header.register'), new_user_session_path, :class =>"btn btn-default", :method => :get%>
+            <% else %>
+                <strong> <%= current_user.email %> </strong>
+                <%= button_to t('header.logout'), destroy_user_session_path, :class =>"btn btn-default", :method => :delete%>
+            <% end %>
             <div class="input-group">
               <input type="text" name="search" class="form-control" placeholder="<%=t 'header.search' %>">
               <span class="input-group-btn">
@@ -37,7 +43,7 @@
 
       <% menu_tags.each_with_index do |tag, i| -%>
         <li class="w3-hover-teal" >
-          <%= link_to(tag, controller: menu_controllers[i]) %>
+          <%= link_to(tag, controller: "/"+menu_controllers[i]) %>
         </li>
       <% end -%>
 
