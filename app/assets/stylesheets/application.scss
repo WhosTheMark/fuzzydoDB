@@ -122,3 +122,26 @@ h2 {
   outline: none;
   color: White;
 }
+
+// Override bootstrap pagination color
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus,
+.pagination > .active > span,
+.pagination > .active > span:hover,
+.pagination > .active > span:focus {
+  background-color: $widget-green;
+  border-color: $widget-green;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+  color: $widget-green;
+}
+
+.pagination > .disabled > span,
+.pagination > .disabled > span:hover,
+.pagination > .disabled > span:focus,
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > a:focus {
+  cursor: inherit;
+}
