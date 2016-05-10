@@ -12,9 +12,9 @@
 //
 //= require jquery2
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap-sprockets
 //= require angular
+//= require i18n/translations
 //= require_tree .
 
 //= require datatables
@@ -46,4 +46,3 @@ var readyFunc = function() {
 };
 
 $(document).ready(readyFunc);
-$(document).on('page:load', readyFunc);

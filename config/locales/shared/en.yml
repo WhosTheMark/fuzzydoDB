@@ -51,3 +51,6 @@ en:
     delete: "Delete"
     edit: "Edit"
     show: "Show"
+
+  tables:
+    language: ""

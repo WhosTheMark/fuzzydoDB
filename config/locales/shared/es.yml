@@ -30,3 +30,6 @@ es:
     delete: "Eliminar"
     edit: "Editar"
     show: "Mostrar"
+
+  tables:
+    language: '//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json'

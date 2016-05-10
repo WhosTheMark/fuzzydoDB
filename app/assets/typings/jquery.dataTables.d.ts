@@ -1630,6 +1630,7 @@ declare namespace DataTables {
         processing?: string;
         search?: string;
         zeroRecords?: string;
+        url?: string;
         paginate?: LanguagePaginateSettings;
         aria?: LanguageAriaSettings;
     }
