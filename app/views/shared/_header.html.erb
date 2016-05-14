@@ -10,10 +10,11 @@
           <div class="top-options-container">
             <% if current_user.nil? %>
               <%= button_to t('header.register'), new_user_registration_path, :class =>"btn btn-default", :method => :get%>
-              <%= button_to t('header.login'), new_user_session_path, :class =>"btn btn-default", :method => :get%>
+              <%= link_to raw("<span class=\"glyphicon glyphicon-log-in\"></span> #{t('header.login')}"), new_user_session_path, class: "btn btn-default" %>
             <% else %>
-                <strong> <%= current_user.email %> </strong>
-                <%= button_to t('header.logout'), destroy_user_session_path, :class =>"btn btn-default", :method => :delete%>
+              <span class="glyphicon glyphicon-user"></span>
+              <strong> <%= current_user.email %> </strong>
+              <%= link_to raw("<span class=\"glyphicon glyphicon-log-out\"></span> #{t('header.logout')}"), destroy_user_session_path, class: "btn btn-default", :method => :delete %>
             <% end %>
             <div class="input-group">
               <input type="text" name="search" class="form-control" placeholder="<%=t 'header.search' %>">
