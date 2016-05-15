@@ -53,6 +53,7 @@ en:
     delete: "Delete"
     edit: "Edit"
     show: "Show"
+    close: "Close"
 
   tables:
     language: ""

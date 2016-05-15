@@ -1,3 +1,4 @@
 es:
   admin:
     user-list: "LISTA DE USUARIOS"
+    delete-user-confirmation: "¿Estás seguro que quieres eliminar a ${username}?"

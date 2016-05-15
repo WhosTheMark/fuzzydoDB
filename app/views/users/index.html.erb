@@ -29,7 +29,11 @@
               <td><%= user.name %></td>
               <td><%= user.email %></td>
               <td><%= link_to t("labels.show"), user %></td>
-              <td><%= link_to t("labels.delete"), user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td>
+                <a data-toggle="modal" data-target="#deleteConfirmationModal" data-username="<%= user.username %>" data-delete-url="<%= url_for user%>">
+                  <%= t("labels.delete")%>
+                </a>
+              </td>
             </tr>
           <% end %>
         </tbody>
@@ -39,5 +43,19 @@
     <br>
 
     <%= link_to 'New User', new_user_path %>
+  </div>
+</div>
+
+
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-default" data-dismiss="modal"><%= t("labels.close") %></a>
+        <a id="deleteBtn" class="btn btn-danger" data-method="delete"><%= t("labels.delete") %></a>
+      </div>
+    </div>
   </div>
 </div>

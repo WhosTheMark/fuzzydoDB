@@ -1,3 +1,16 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.table .w3-hover-teal:hover a:focus {
+  color: White;
+}
+
+.table .w3-hover-teal a:focus {
+  color: Black;
+}
+
+.modal-body {
+  text-align: center;
+  margin-top: 10px;
+}

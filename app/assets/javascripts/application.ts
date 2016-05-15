@@ -23,26 +23,26 @@
 
 // Changes the position of the fixed header when scrolling horizontally.
 $(window).scroll(function() {
-    $('.header-x-scroll').css('left', -$(this).scrollLeft() + "px");
-    $('.content-left').css('left', -$(this).scrollLeft() + "px");
+  $('.header-x-scroll').css('left', -$(this).scrollLeft() + "px");
+  $('.content-left').css('left', -$(this).scrollLeft() + "px");
 });
 
 var readyFunc = function() {
-    var offset = 220;
-    var duration = 500;
-    $(window).scroll(function() {
-        if ($(this).scrollTop() > offset) {
-            $('.crunchify-top').fadeIn(duration);
-        } else {
-            $('.crunchify-top').fadeOut(duration);
-        }
-    });
+  var offset = 220;
+  var duration = 500;
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > offset) {
+        $('.crunchify-top').fadeIn(duration);
+    } else {
+        $('.crunchify-top').fadeOut(duration);
+    }
+  });
 
-    $('.crunchify-top').click(function(event) {
-        event.preventDefault();
-        $('html, body').animate({scrollTop: 0}, duration);
-        return false;
-    });
+  $('.crunchify-top').click(function(event) {
+    event.preventDefault();
+    $('html, body').animate({scrollTop: 0}, duration);
+    return false;
+  });
 };
 
 $(document).ready(readyFunc);
