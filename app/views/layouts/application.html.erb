@@ -11,9 +11,6 @@
   <%= render :partial => "shared/header" %>
 
   <div class="content page-wrap">
-    <% @modalSessionId = ['login', 'register', 'password'] if current_user.nil? %>
-    <%= render :partial => "shared/modal_session", :locals => { :modalSessionId => @modalSessionId } %>
-
     <%= yield %>
   </div>
 

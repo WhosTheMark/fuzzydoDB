@@ -1,17 +1,16 @@
-<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalRegister, #modalLogin">
-  <%- if devise_mapping.registerable? && @modalAction == 'login' %>
-    <%=t('header.register') %>
-  <% end -%>
-  <%- if @modalAction == 'register' %>
-    <%=t('header.login') %>
-  <% end -%>
-</button>
+<div class="text-center">
+  <a  data-toggle="modal" data-target="#modalRegister,#modalLogin">
+    <%- if devise_mapping.registerable? && @modalAction == 'login' %>
+      <%=t('header.register') %>
+    <% end -%>
+  </a>
 
-<%- if devise_mapping.recoverable? && controller_name != 'passwords' && @modalAction != 'register'%>
-  <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalLogin, #modalPassword">
-    <%=t('header.forgot.password')%>
-  </button>
-<% end -%>
+  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && @modalAction != 'register'%>
+    | <a data-toggle="modal" data-target="#modalLogin, #modalLost_password">
+      <%=t('header.forgot.password')%>
+    </a>
+  <% end -%>
+</div>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
 <%= link_to t('.didn_t_receive_confirmation_instructions', :default => "Didn't receive confirmation instructions?"), new_confirmation_path(resource_name) %><br />

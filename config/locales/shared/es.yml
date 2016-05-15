@@ -40,3 +40,20 @@ es:
 
   tables:
     language: '//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json'
+
+  mongoid:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "El correo no puede ser vacío"
+            password_confirmation:
+              confirmation: "Las contraseñas no son iguales"
+            password:
+              blank: "La contraseña no puede ser vacía"
+              too_short: "La contraseña es muy corta (minimo 6 caracteres)"
+      attributes:
+        user:
+          email: "Correo electrónico"
+          password: "Contraseña"

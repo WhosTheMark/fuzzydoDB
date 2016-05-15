@@ -63,3 +63,8 @@
       </ul>
     <div>
 </header>
+
+<% if current_user.nil? %>
+  <% @modalWindowIds = ['login', 'register', 'lost_password']  %>
+  <%= render :partial => "shared/modal_session", :locals => { :modalWindowIds => @modalWindowIds } %>
+<% end %>
