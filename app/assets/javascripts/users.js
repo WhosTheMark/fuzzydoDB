@@ -21,6 +21,25 @@ function initializeUserTable() {
   });
 }
 
-$(document).ready(initializeUserTable);
+// adds information to the user deletion modal
+function setDeleteModal() {
+  $('#deleteConfirmationModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget);
+    var username = button.data('username');
+    var template = I18n.t("admin.delete-user-confirmation");
+
+    template = template.replace("${username}", username);
+
+    var modal = $(this);
+    modal.find('.modal-body').text(template);
+
+    modal.find('#deleteBtn').attr('href', button.data('delete-url'));
+  })
+}
+
+$(document).ready(function() {
+  initializeUserTable();
+  setDeleteModal();
+});
 
 
