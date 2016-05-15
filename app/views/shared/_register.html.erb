@@ -2,12 +2,12 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label t("activerecord.attributes.user.email") %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label t("activerecord.attributes.user.password") %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -15,7 +15,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label t("activerecord.attributes.user.password_confirmation") %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
@@ -23,8 +23,8 @@
   <%= render 'devise/shared/links', :locals => { :modalAction => @modalAction } %>
 
   <div class="modal-footer" data-dismiss="modal">
-    <div class="btn btn-default actions" data-dismiss="modal"> CANCEL </div>
-    <%= f.submit "Sign up", :class => "btn btn-default actions" %>
+    <div class="btn btn-default actions" data-dismiss="modal"> <%= t("labels.cancel") %> </div>
+    <%= f.submit t('devise.registrations.new.sign_up'), :class => "btn btn-default actions" %>
   </div>
 
 <% end %>

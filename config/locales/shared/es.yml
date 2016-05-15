@@ -10,7 +10,7 @@ es:
     search: "Buscar"
 
     forgot:
-      password: "Olvidó su contraseña?"
+      password: "¿Olvidó su contraseña?"
 
     menu:
       home: "INICIO"
@@ -36,6 +36,7 @@ es:
     edit: "Editar"
     show: "Mostrar"
     close: "Cerrar"
+    cancel: "Cancelar"
 
   tables:
     language: '//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json'

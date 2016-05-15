@@ -57,6 +57,7 @@ en:
     edit: "Edit"
     show: "Show"
     close: "Close"
+    cancel: "Cancel"
 
   tables:
     language: ""

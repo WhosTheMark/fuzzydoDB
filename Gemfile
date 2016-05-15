@@ -29,6 +29,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Authentication gem
 gem 'devise'
+gem 'devise-i18n'
 
 gem 'scss_lint', require: false
 # Use ActiveModel has_secure_password
