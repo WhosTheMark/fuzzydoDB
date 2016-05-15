@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="fuzzydodb">
 <head>
   <title>FuzzydoDB - <%= yield(:title) %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -11,7 +11,7 @@
   <%= render :partial => "shared/header" %>
 
   <div class="content page-wrap">
-    <% @modalSessionId = ['login', 'register'] if current_user.nil? %>
+    <% @modalSessionId = ['login', 'register', 'password'] if current_user.nil? %>
     <%= render :partial => "shared/modal_session", :locals => { :modalSessionId => @modalSessionId } %>
 
     <%= yield %>

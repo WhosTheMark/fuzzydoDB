@@ -9,6 +9,9 @@ es:
     register: "Registrarse"
     search: "Buscar"
 
+    forgot:
+      password: "Olvidó su contraseña?"
+
     menu:
       home: "INICIO"
       team: "EQUIPO"

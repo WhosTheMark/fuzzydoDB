@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalRegister, #modalLogin">
+<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalRegister, #modalLogin">
   <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
     <%=t('header.register') if @modalAction == 'login' %>
   <% end -%>
@@ -7,8 +7,10 @@
   <% end -%>
 </button>
 
-<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+<%- if devise_mapping.recoverable? && controller_name != 'passwords' && @modalAction != 'register'%>
+  <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalLogin, #modalPassword">
+    <%=t('header.forgot.password')%>
+  </button>
 <% end -%>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>

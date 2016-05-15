@@ -30,6 +30,9 @@ en:
     register: "Register"
     search: "Search"
 
+    forgot:
+      password: "Forgot your password?"
+
     menu:
       home: "HOME"
       team: "TEAM"
