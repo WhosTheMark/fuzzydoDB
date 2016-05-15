@@ -1,13 +1,13 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => "w3-container"}) do |f| %>
   <div class="modal-body">
     <p>
-      <%= f.label t("activerecord.attributes.user.email") %>
-      <%= f.email_field :email, autofocus: true, :class => "w3-input" %>
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true, :class => "w3-input"%>
     </p>
 
     <p>
-      <%= f.label t("activerecord.attributes.user.password") %>
-      <%= f.password_field :password, autocomplete: "off", :class => "w3-input" %>
+      <%= f.label :password %>
+      <%= f.password_field :password, autocomplete: "off", :class => "w3-input"%>
     </p>
 
     <% if devise_mapping.rememberable? -%>

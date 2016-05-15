@@ -2,15 +2,23 @@
   <%= devise_error_messages! %>
   <div class="modal-body">
     <p>
-      <%= f.label t("activerecord.attributes.user.email") %>
-      <%= f.email_field :email, autofocus: true, class: "w3-input" %>
+      <%= f.label :name %>
+      <%= f.text_field :name, autofocus: true, class: "w3-input" %>
+    </p>
+    <p>
+      <%= f.label :username %>
+      <%= f.text_field :username, autofocus: true, class: "w3-input" %>
+    </p>
+    <p>
+      <%= f.label :email %>
+      <%= f.email_field :email, class: "w3-input" %>
     </p>
 
     <p>
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %>
-      <%= f.label t("activerecord.attributes.user.password") %>
+      <%= f.label :password %>
       <%= f.password_field :password, autocomplete: "off", class: "w3-input" %>
     </p>
 

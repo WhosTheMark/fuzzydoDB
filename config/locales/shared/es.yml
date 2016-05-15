@@ -53,7 +53,14 @@ es:
             password:
               blank: "La contraseña no puede ser vacía"
               too_short: "La contraseña es muy corta (minimo 6 caracteres)"
-      attributes:
-        user:
-          email: "Correo electrónico"
-          password: "Contraseña"
+            name:
+              blank: "El nombre no puede ser vacío"
+            username:
+              blank: "El nombre de usuario no puede ser vacío"
+              taken: "El nombre de usuario está siendo utilizado por otro usuario"
+    attributes:
+      user:
+        email: "Correo electrónico"
+        password: "Contraseña"
+        name: "Nombre"
+        username: "Nombre de usuario"

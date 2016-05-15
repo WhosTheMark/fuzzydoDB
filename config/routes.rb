@@ -2,11 +2,13 @@
 Rails.application.routes.draw do
 
   scope "(:locale)", locale: /es|en/ do
-  devise_for :users
+
+    devise_for :users, :controllers => { registrations: 'registrations' }
     root 'home#index'
     get 'home' => 'home#index'
 
     get 'about' => 'about#index'
+
     scope 'about' do
       get 'history' => 'about#history'
       get 'members' => 'about#members'
