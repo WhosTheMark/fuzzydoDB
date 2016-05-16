@@ -1,14 +1,42 @@
-<%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => "w3-container"}) do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name),
+    :html => {:class => "w3-container", :novalidate => true, "name" => "loginForm"}) do |f| %>
   <div class="modal-body">
-    <p>
-      <%= f.label :email %>
-      <%= f.email_field :email, autofocus: true, :class => "w3-input"%>
-    </p>
 
-    <p>
-      <%= f.label :password %>
-      <%= f.password_field :password, autocomplete: "off", :class => "w3-input"%>
-    </p>
+    <div class="field">
+
+      <div class="error-messages error" ng-messages="loginForm.email.$error" ng-if="loginForm.email.$touched">
+        <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.email.blank")%> </div>
+        <div ng-message="email"> <%= t("errors.invalidEmail") %> </div>
+      </div>
+
+      <p>
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, :class => "w3-input",
+          "ng-model" => "loginUser.email", "ng-model-options" => "{ updateOn: 'blur' }",
+          "name" => "email", :required => true %>
+      </p>
+
+      <span class="icon error glyphicon glyphicon-remove"
+        ng-if="loginForm.email.$invalid && loginForm.email.$touched"></span>
+
+    </div>
+
+    <div class="field">
+      <div class="error-messages error" ng-messages="loginForm.password.$error" ng-if="loginForm.password.$touched">
+        <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.password.blank")%> </div>
+      </div>
+
+      <p>
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "off",
+          :class => "w3-input", "ng-model" => "loginUser.password", "ng-model-options" => "{ updateOn: 'blur' }",
+          "name" => "password", :required => true %>
+      </p>
+
+      <span class="icon error glyphicon glyphicon-remove"
+        ng-if="loginForm.password.$invalid && loginForm.password.$touched"></span>
+
+    </div>
 
     <% if devise_mapping.rememberable? -%>
       <p>
@@ -16,7 +44,6 @@
         <%= f.label t("activerecord.attributes.user.remember_me") %>
       </p>
     <% end -%>
-
     <% @modalAction = "login" %>
     <%= render 'devise/shared/links', :locals => { :modalAction => @modalAction } %>
   </div>

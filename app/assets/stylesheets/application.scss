@@ -190,3 +190,26 @@ label {
   padding: 4px 8px 6px 8px !important;
   margin-bottom: 20px;
 }
+
+.field {
+  position: relative;
+
+  .icon {
+    position: absolute;
+    right: 10px;
+    top: 30px;
+  }
+
+  .error-messages {
+    position: absolute;
+    right: 10px;
+  }
+
+  .error {
+    color: #a94442;
+  }
+
+  .icon.sucess {
+    color: #3c763d;
+  }
+}

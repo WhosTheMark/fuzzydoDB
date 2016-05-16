@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require angular
+//= require angular-messages
 //= require i18n/translations
 //= require_tree .
 

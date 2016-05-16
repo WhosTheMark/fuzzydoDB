@@ -1,21 +1,24 @@
-<% modalWindowIds.each do |id| %>
-<div class="modal fade" id="modal<%= id.capitalize %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-md" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title" id="myModalLabel">
-          <% if id.eql? "password" %>
-            <%= t('header.forgot.password')%>
-          <% else %>
-            <%= t("header.#{id}")%>
-          <% end %>
-        </h4>
+
+<div ng-controller="UserController">
+  <% modalWindowIds.each do |id| %>
+  <div class="modal fade" id="modal<%= id.capitalize %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">
+            <% if id.eql? "password" %>
+              <%= t('header.forgot.password')%>
+            <% else %>
+              <%= t("header.#{id}")%>
+            <% end %>
+          </h4>
+        </div>
+        <%= render :partial => "shared/modals/#{id}" %>
       </div>
-      <%= render :partial => "shared/modals/#{id}" %>
     </div>
   </div>
+  <% end %>
 </div>
-<% end %>

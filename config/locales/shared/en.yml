@@ -62,3 +62,24 @@ en:
   tables:
     language: ""
 
+  errors:
+    invalidEmail: "invalid e-mail"
+
+  mongoid:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "can't be blank"
+              taken: "is already taken"
+            password_confirmation:
+              confirmation: "doesn't match Password"
+            password:
+              blank: "can't be blank"
+              too_short: "is too short (minimum 6 characters)"
+            name:
+              blank: "can't be blank"
+            username:
+              blank: "can't be blank"
+              taken: "is already taken"
