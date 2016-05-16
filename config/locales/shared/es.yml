@@ -41,6 +41,9 @@ es:
   tables:
     language: '//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json'
 
+  errors:
+    invalidEmail: "correo inválido"
+
   mongoid:
     errors:
       models:

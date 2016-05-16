@@ -1,3 +1,7 @@
+
+<%# Rails sets default input names for each field (like user[name]),
+  we adapt angular input name as follow: registrationForm['user[name]']%>
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name),
   :html => {:class => "w3-container", :novalidate => true, "name" => "registrationForm"}) do |f| %>
 
@@ -6,20 +10,20 @@
     <!-- name field -->
 
     <div class="field">
-      <div class="error-messages error" ng-messages="registrationForm.name.$error"
-        ng-if="registrationForm.name.$touched || registrationForm.$submitted">
+      <div class="error-messages error" ng-messages="registrationForm['user[name]'].$error"
+        ng-if="registrationForm['user[name]'].$touched || registrationForm.$submitted">
         <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.name.blank")%> </div>
       </div>
       <p>
         <%= f.label :name %>
         <%= f.text_field :name, autofocus: true, class: "w3-input",
             "ng-model" => "registerUser.name", "ng-model-options" => "{ updateOn: 'blur' }",
-            "name" => "name", :required => true %>
+            :required => true %>
       </p>
       <span class="icon glyphicon"
-        ng-class="{'error glyphicon-remove' : registrationForm.name.$invalid &&
-          (registrationForm.name.$touched || registrationForm.$submitted),
-          'sucess glyphicon-ok' : registrationForm.name.$valid}">
+        ng-class="{'error glyphicon-remove' : registrationForm['user[name]'].$invalid &&
+          (registrationForm['user[name]'].$touched || registrationForm.$submitted),
+          'sucess glyphicon-ok' : registrationForm['user[name]'].$valid}">
       </span>
 
     </div>
@@ -27,19 +31,19 @@
     <!-- username field -->
 
     <div class="field">
-      <div class="error-messages error" ng-messages="registrationForm.username.$error"
-        ng-if="registrationForm.username.$touched || registrationForm.$submitted">
+      <div class="error-messages error" ng-messages="registrationForm['user[username]'].$error"
+        ng-if="registrationForm['user[username]'].$touched || registrationForm.$submitted">
         <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.username.blank")%> </div>
       </div>
       <p>
         <%= f.label :username %>
         <%= f.text_field :username, class: "w3-input", "ng-model" => "registerUser.username",
-        "ng-model-options" => "{ updateOn: 'blur' }", "name" => "username", :required => true %>
+        "ng-model-options" => "{ updateOn: 'blur' }", :required => true %>
       </p>
       <span class="icon glyphicon"
-        ng-class="{'error glyphicon-remove' : registrationForm.username.$invalid &&
-          (registrationForm.username.$touched || registrationForm.$submitted),
-          'sucess glyphicon-ok' : registrationForm.username.$valid}">
+        ng-class="{'error glyphicon-remove' : registrationForm['user[username]'].$invalid &&
+          (registrationForm['user[username]'].$touched || registrationForm.$submitted),
+          'sucess glyphicon-ok' : registrationForm['user[username]'].$valid}">
       </span>
 
     </div>
@@ -47,8 +51,8 @@
     <!-- email field -->
 
     <div class="field">
-      <div class="error-messages error" ng-messages="registrationForm.email.$error"
-        ng-if="registrationForm.email.$touched || registrationForm.$submitted">
+      <div class="error-messages error" ng-messages="registrationForm['user[email]'].$error"
+        ng-if="registrationForm['user[email]'].$touched || registrationForm.$submitted">
         <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.email.blank")%> </div>
         <div ng-message="email"> <%= t("errors.invalidEmail") %> </div>
       </div>
@@ -56,12 +60,12 @@
         <%= f.label :email %>
         <%= f.email_field :email, class: "w3-input",
           "ng-model" => "registerUser.email", "ng-model-options" => "{ updateOn: 'blur' }",
-          "name" => "email", :required => true %>
+          :required => true %>
       </p>
       <span class="icon glyphicon"
-        ng-class="{'error glyphicon-remove' : registrationForm.email.$invalid &&
-          (registrationForm.email.$touched || registrationForm.$submitted),
-          'sucess glyphicon-ok' : registrationForm.email.$valid}">
+        ng-class="{'error glyphicon-remove' : registrationForm['user[email]'].$invalid &&
+          (registrationForm['user[email]'].$touched || registrationForm.$submitted),
+          'sucess glyphicon-ok' : registrationForm['user[email]'].$valid}">
       </span>
 
     </div>
@@ -69,8 +73,8 @@
     <!-- password field -->
 
     <div class="field">
-      <div class="error-messages error" ng-messages="registrationForm.password.$error"
-        ng-if="registrationForm.password.$touched || registrationForm.$submitted">
+      <div class="error-messages error" ng-messages="registrationForm['user[password]'].$error"
+        ng-if="registrationForm['user[password]'].$touched || registrationForm.$submitted">
         <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.password.blank")%> </div>
         <div ng-message="minlength"> <%= t("mongoid.errors.models.user.attributes.password.too_short")%> </div>
       </div>
@@ -78,13 +82,13 @@
         <%= f.label :password %>
         <%= f.password_field :password, autocomplete: "off", class: "w3-input",
           "ng-model" => "registerUser.password", "ng-model-options" => "{ updateOn: 'blur' }",
-          "ng-minlength" => 6, "name" => "password", :required => true %>
+          "ng-minlength" => 6, :required => true %>
       </p>
 
       <span class="icon glyphicon"
-        ng-class="{'error glyphicon-remove' : registrationForm.password.$invalid &&
-          (registrationForm.password.$touched || registrationForm.$submitted),
-          'sucess glyphicon-ok' : registrationForm.password.$valid}">
+        ng-class="{'error glyphicon-remove' : registrationForm['user[password]'].$invalid &&
+          (registrationForm['user[password]'].$touched || registrationForm.$submitted),
+          'sucess glyphicon-ok' : registrationForm['user[password]'].$valid}">
       </span>
 
     </div>
@@ -93,8 +97,8 @@
 
     <div class="field">
 
-      <div class="error-messages error" ng-messages="registrationForm.passwordConfirmation.$error"
-        ng-if="registrationForm.passwordConfirmation.$touched || registrationForm.$submitted">
+      <div class="error-messages error" ng-messages="registrationForm['user[password_confirmation]'].$error"
+        ng-if="registrationForm['user[password_confirmation]'].$touched || registrationForm.$submitted">
         <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.password.blank")%> </div>
         <div ng-message="equalPasswords">
           <%= t("mongoid.errors.models.user.attributes.password_confirmation.confirmation")%>
@@ -105,13 +109,13 @@
         <%= f.label t("activerecord.attributes.user.password_confirmation") %>
         <%= f.password_field :password_confirmation, autocomplete: "off", class: "w3-input",
           "ng-model" => "registerUser.passwordConfirmation", "ng-model-options" => "{ updateOn: 'blur' }",
-          "name" => "passwordConfirmation", "equal-passwords" => "registerUser.password", :required => true %>
+          "equal-passwords" => "registerUser.password", :required => true %>
       </p>
 
       <span class="icon glyphicon"
-        ng-class="{'error glyphicon-remove' : registrationForm.passwordConfirmation.$invalid &&
-          (registrationForm.passwordConfirmation.$touched || registrationForm.$submitted),
-          'sucess glyphicon-ok' : registrationForm.passwordConfirmation.$valid}">
+        ng-class="{'error glyphicon-remove' : registrationForm['user[password_confirmation]'].$invalid &&
+          (registrationForm['user[password_confirmation]'].$touched || registrationForm.$submitted),
+          'sucess glyphicon-ok' : registrationForm['user[password_confirmation]'].$valid}">
       </span>
 
     </div>
