@@ -23,5 +23,24 @@ angular.module("fuzzydodb.user", [])
         $event.preventDefault();
       };
     };
+  }])
 
-  }]);
+  // Custom validator
+  // As seen at: http://odetocode.com/blogs/scott/archive/2014/10/13/confirm-password-validation-in-angularjs.aspx
+  .directive("equalPasswords", function() {
+    return {
+      require: "ngModel",
+      scope: {
+        otherModelValue: "=equalPasswords"
+      },
+      link: function(scope, elem, attrs, ctrl: angular.INgModelController) {
+        ctrl.$validators.equalPasswords = function(modelValue, viewValue) {
+          return modelValue == scope.otherModelValue;
+        };
+
+        scope.$watch("otherModelValue", function() {
+          ctrl.$validate();
+        });
+      }
+    };
+  });

@@ -50,7 +50,7 @@ es:
               blank: "no puede ser vacío"
               taken: "está siendo utilizado por otro usuario"
             password_confirmation:
-              confirmation: "no son iguales"
+              confirmation: "no es igual a la contraseña"
             password:
               blank: "no puede ser vacía"
               too_short: "es muy corta (minimo 6 caracteres)"

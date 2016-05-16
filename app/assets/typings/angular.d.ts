@@ -457,6 +457,7 @@ declare namespace angular {
          * viewValue is any because it can be an object that is called in the view like $viewValue.name:$viewValue.subName
          */
         [index: string]: (modelValue: any, viewValue: any) => boolean;
+        equalPasswords: any;
     }
 
     interface IAsyncModelValidators {
@@ -1845,7 +1846,7 @@ declare namespace angular {
         controller(name: string): any;
         injector(): any;
         scope(): IScope;
-        
+
         /**
         *   Overload for custom scope interfaces
         */
