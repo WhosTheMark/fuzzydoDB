@@ -2,9 +2,11 @@
     :html => {:class => "w3-container", :novalidate => true, "name" => "loginForm"}) do |f| %>
   <div class="modal-body">
 
-    <div class="field">
+    <!-- email field -->
 
-      <div class="error-messages error" ng-messages="loginForm.email.$error" ng-if="loginForm.email.$touched">
+    <div class="field">
+      <div class="error-messages error" ng-messages="loginForm.email.$error"
+        ng-if="loginForm.email.$touched || loginForm.$submitted">
         <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.email.blank")%> </div>
         <div ng-message="email"> <%= t("errors.invalidEmail") %> </div>
       </div>
@@ -17,12 +19,15 @@
       </p>
 
       <span class="icon error glyphicon glyphicon-remove"
-        ng-if="loginForm.email.$invalid && loginForm.email.$touched"></span>
+        ng-if="loginForm.email.$invalid && (loginForm.email.$touched || loginForm.$submitted)"></span>
 
     </div>
 
+    <!-- password field -->
+
     <div class="field">
-      <div class="error-messages error" ng-messages="loginForm.password.$error" ng-if="loginForm.password.$touched">
+      <div class="error-messages error" ng-messages="loginForm.password.$error"
+        ng-if="loginForm.password.$touched || loginForm.$submitted">
         <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.password.blank")%> </div>
       </div>
 
@@ -34,9 +39,11 @@
       </p>
 
       <span class="icon error glyphicon glyphicon-remove"
-        ng-if="loginForm.password.$invalid && loginForm.password.$touched"></span>
+        ng-if="loginForm.password.$invalid && (loginForm.password.$touched || loginForm.$submitted)"></span>
 
     </div>
+
+    <!-- remember me checkbox -->
 
     <% if devise_mapping.rememberable? -%>
       <p>
@@ -49,6 +56,6 @@
   </div>
   <div class="modal-footer">
     <a class="btn btn-non-primary" data-dismiss="modal"> <%= t("labels.cancel") %> </a>
-    <%= f.submit t("header.login"), :class => "btn btn-default" %>
+    <%= f.submit t("header.login"), :class => "btn btn-default", "ng-click" => "submitLogin($event)" %>
   </div>
 <% end %>

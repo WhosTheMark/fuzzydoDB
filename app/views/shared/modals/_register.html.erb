@@ -1,35 +1,112 @@
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:class => "w3-container"}) do |f| %>
-  <%= devise_error_messages! %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name),
+  :html => {:class => "w3-container", :novalidate => true, "name" => "registrationForm"}) do |f| %>
+
   <div class="modal-body">
-    <p>
-      <%= f.label :name %>
-      <%= f.text_field :name, autofocus: true, class: "w3-input" %>
-    </p>
-    <p>
-      <%= f.label :username %>
-      <%= f.text_field :username, autofocus: true, class: "w3-input" %>
-    </p>
-    <p>
-      <%= f.label :email %>
-      <%= f.email_field :email, class: "w3-input" %>
-    </p>
 
-    <p>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %>
-      <%= f.label :password %>
-      <%= f.password_field :password, autocomplete: "off", class: "w3-input" %>
-    </p>
+    <!-- name field -->
 
-    <p>
-      <%= f.label t("activerecord.attributes.user.password_confirmation") %>
-      <%= f.password_field :password_confirmation, autocomplete: "off", class: "w3-input" %>
-    </p>
+    <div class="field">
+      <div class="error-messages error" ng-messages="registrationForm.name.$error"
+        ng-if="registrationForm.name.$touched || registrationForm.$submitted">
+        <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.name.blank")%> </div>
+      </div>
+      <p>
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true, class: "w3-input",
+            "ng-model" => "registerUser.name", "ng-model-options" => "{ updateOn: 'blur' }",
+            "name" => "name", :required => true %>
+      </p>
+      <span class="icon error glyphicon glyphicon-remove"
+        ng-if="registrationForm.name.$invalid && (registrationForm.name.$touched || registrationForm.$submitted)">
+      </span>
+
+    </div>
+
+    <!-- username field -->
+
+    <div class="field">
+      <div class="error-messages error" ng-messages="registrationForm.username.$error"
+        ng-if="registrationForm.username.$touched || registrationForm.$submitted">
+        <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.username.blank")%> </div>
+      </div>
+      <p>
+        <%= f.label :username %>
+        <%= f.text_field :username, class: "w3-input", "ng-model" => "registerUser.username",
+        "ng-model-options" => "{ updateOn: 'blur' }", "name" => "username", :required => true %>
+      </p>
+      <span class="icon error glyphicon glyphicon-remove"
+        ng-if="registrationForm.username.$invalid && (registrationForm.username.$touched || registrationForm.$submitted)">
+      </span>
+
+    </div>
+
+    <!-- email field -->
+
+    <div class="field">
+      <div class="error-messages error" ng-messages="registrationForm.email.$error"
+        ng-if="registrationForm.email.$touched || registrationForm.$submitted">
+        <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.email.blank")%> </div>
+        <div ng-message="email"> <%= t("errors.invalidEmail") %> </div>
+      </div>
+      <p>
+        <%= f.label :email %>
+        <%= f.email_field :email, class: "w3-input",
+          "ng-model" => "registerUser.email", "ng-model-options" => "{ updateOn: 'blur' }",
+          "name" => "email", :required => true %>
+      </p>
+      <span class="icon error glyphicon glyphicon-remove"
+        ng-if="registrationForm.email.$invalid && (registrationForm.email.$touched || registrationForm.$submitted)">
+      </span>
+
+    </div>
+
+    <!-- password field -->
+
+    <div class="field">
+      <div class="error-messages error" ng-messages="registrationForm.password.$error"
+        ng-if="registrationForm.password.$touched || registrationForm.$submitted">
+        <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.password.blank")%> </div>
+        <div ng-message="minlength"> <%= t("mongoid.errors.models.user.attributes.password.too_short")%> </div>
+      </div>
+      <p>
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "off", class: "w3-input", "ng-model" => "registerUser.password",
+         "ng-model-options" => "{ updateOn: 'blur' }", "ng-minlength" => 6, "name" => "password", :required => true %>
+      </p>
+
+      <span class="icon error glyphicon glyphicon-remove"
+        ng-if="registrationForm.password.$invalid && (registrationForm.password.$touched || registrationForm.$submitted)">
+      </span>
+
+    </div>
+
+    <!-- password confirmation field -->
+
+    <div class="field">
+
+      <div class="error-messages error" ng-messages="registrationForm.passwordConfirmation.$error"
+        ng-if="registrationForm.passwordConfirmation.$touched || registrationForm.$submitted">
+        <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.password.blank")%> </div>
+      </div>
+
+      <p>
+        <%= f.label t("activerecord.attributes.user.password_confirmation") %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "w3-input",
+          "ng-model" => "registerUser.passwordConfirmation", "ng-model-options" => "{ updateOn: 'blur' }",
+          "name" => "passwordConfirmation", :required => true %>
+      </p>
+
+      <span class="icon error glyphicon glyphicon-remove"
+        ng-if="registrationForm.passwordConfirmation.$invalid && (registrationForm.passwordConfirmation.$touched || registrationForm.$submitted)">
+      </span>
+
+    </div>
+
   </div>
   <div class="modal-footer">
     <div class="btn btn-non-primary" data-dismiss="modal"> <%= t("labels.cancel") %> </div>
-    <%= f.submit t('devise.registrations.new.sign_up'), :class => "btn btn-default" %>
+    <%= f.submit t('devise.registrations.new.sign_up'), :class => "btn btn-default",
+      "ng-click" => "submitRegistration($event)" %>
   </div>
 
 <% end %>
