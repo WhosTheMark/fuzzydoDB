@@ -18,7 +18,7 @@
         <%= f.label :name %>
         <%= f.text_field :name, autofocus: true, class: "w3-input",
             "ng-model" => "registerUser.name", "ng-model-options" => "{ updateOn: 'blur' }",
-            :required => true %>
+            "data-update-model-on-enter-key-pressed" => "", :required => true %>
       </p>
       <span class="icon glyphicon"
         ng-class="{'error glyphicon-remove' : registrationForm['user[name]'].$invalid &&
@@ -38,7 +38,7 @@
       <p>
         <%= f.label :username %>
         <%= f.text_field :username, class: "w3-input", "ng-model" => "registerUser.username",
-        "ng-model-options" => "{ updateOn: 'blur' }", :required => true %>
+        "ng-model-options" => "{ updateOn: 'blur' }", "data-update-model-on-enter-key-pressed" => "", :required => true %>
       </p>
       <span class="icon glyphicon"
         ng-class="{'error glyphicon-remove' : registrationForm['user[username]'].$invalid &&
@@ -60,7 +60,7 @@
         <%= f.label :email %>
         <%= f.email_field :email, class: "w3-input",
           "ng-model" => "registerUser.email", "ng-model-options" => "{ updateOn: 'blur' }",
-          :required => true %>
+          "data-update-model-on-enter-key-pressed" => "", :required => true %>
       </p>
       <span class="icon glyphicon"
         ng-class="{'error glyphicon-remove' : registrationForm['user[email]'].$invalid &&
@@ -82,7 +82,7 @@
         <%= f.label :password %>
         <%= f.password_field :password, autocomplete: "off", class: "w3-input",
           "ng-model" => "registerUser.password", "ng-model-options" => "{ updateOn: 'blur' }",
-          "ng-minlength" => 6, :required => true %>
+          "ng-minlength" => 6, "data-update-model-on-enter-key-pressed" => "", :required => true %>
       </p>
 
       <span class="icon glyphicon"
@@ -109,7 +109,7 @@
         <%= f.label t("activerecord.attributes.user.password_confirmation") %>
         <%= f.password_field :password_confirmation, autocomplete: "off", class: "w3-input",
           "ng-model" => "registerUser.passwordConfirmation", "ng-model-options" => "{ updateOn: 'blur' }",
-          "equal-passwords" => "registerUser.password", :required => true %>
+          "equal-passwords" => "registerUser.password", "data-update-model-on-enter-key-pressed" => "", :required => true %>
       </p>
 
       <span class="icon glyphicon"

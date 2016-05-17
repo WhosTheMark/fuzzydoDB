@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :isHome?
 
+  after_filter :store_location
+
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end
@@ -28,4 +30,13 @@ class ApplicationController < ActionController::Base
   def default_url_options(options={})
     { :locale => I18n.locale }
   end
+
+  def store_location
+    session[:previous_url] = request.fullpath 
+  end
+
+  def after_sign_in_path_for(resource)
+    request.referer
+  end
+
 end
