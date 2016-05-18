@@ -13,9 +13,9 @@
 
       <p>
         <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, :class => "w3-input",
+        <%= f.email_field :email, :class => "w3-input",
           "ng-model" => "loginUser.email", "ng-model-options" => "{ updateOn: 'blur' }",
-          "data-update-model-on-enter-key-pressed" => "", :required => true %>
+          :required => true %>
       </p>
 
       <span class="icon error glyphicon glyphicon-remove"
@@ -36,7 +36,7 @@
         <%= f.label :password %>
         <%= f.password_field :password, autocomplete: "off",
           :class => "w3-input", "ng-model" => "loginUser.password", "ng-model-options" => "{ updateOn: 'blur' }",
-          "data-update-model-on-enter-key-pressed" => "", :required => true %>
+          :required => true %>
       </p>
 
       <span class="icon error glyphicon glyphicon-remove"

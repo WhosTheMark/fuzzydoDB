@@ -1,4 +1,5 @@
 /// <reference path="../../typings/angular.d.ts" />
+/// <reference path="../../typings/jquery.d.ts" />
 
 angular.module("fuzzydodb.user", [])
   .controller("UserController", ["$scope", function($scope) {
@@ -8,6 +9,8 @@ angular.module("fuzzydodb.user", [])
 
     $scope.submitLogin = function($event) {
 
+      // Forces form validation using abgular onBlur
+      $(':focus').blur();
       $scope.loginForm.$submitted = true;
 
       if ($scope.loginForm.$invalid) {
@@ -17,6 +20,8 @@ angular.module("fuzzydodb.user", [])
 
     $scope.submitRegistration = function($event) {
 
+      // Forces form validation using abgular onBlur
+      $(':focus').blur();
       $scope.registrationForm.$submitted = true;
 
       if ($scope.registrationForm.$invalid) {
