@@ -44,7 +44,8 @@
       <span class="icon glyphicon"
         ng-class="{'error glyphicon-remove' : registrationForm['user[username]'].$invalid &&
           (registrationForm['user[username]'].$touched || registrationForm.$submitted),
-          'sucess glyphicon-ok' : registrationForm['user[username]'].$valid}">
+          'sucess glyphicon-ok' : registrationForm['user[username]'].$valid,
+          'icon-spin glyphicon-refresh' :  registrationForm['user[username]'].$pending}">
       </span>
 
     </div>

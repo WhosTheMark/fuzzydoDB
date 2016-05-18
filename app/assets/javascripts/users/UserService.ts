@@ -7,7 +7,7 @@ angular.module("fuzzydodb.user")
       validateUser: function(viewValue) {
 
         var deferred = $q.defer();
-        //return the promise directly.
+
         $http.post('/users/validateUsername/', { username: viewValue })
           .then(function(response) {
             //resolve the promise as the data

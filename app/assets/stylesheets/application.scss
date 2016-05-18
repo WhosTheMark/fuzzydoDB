@@ -73,9 +73,13 @@ body {
 }
 
 .btn-non-primary {
-    color: #333;
-    background-color: #fff;
-    border-color: #ccc;
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+.btn-default[disabled]:hover {
+  background-color: $btn-hover;
 }
 
 .content {
@@ -212,5 +216,20 @@ label {
 
   .icon.sucess {
     color: #3c763d;
+  }
+}
+
+.icon-spin {
+
+  display: inline-block;
+  animation: spin 2s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
   }
 }

@@ -66,16 +66,12 @@ angular.module("fuzzydodb.user", [])
           var valid = userService.validateUser(viewValue)
             .then(function(response){
 
-              var validPromise: ng.IPromise<void>;
-
               // if username is valid, resolve
               if (response) {
                 deferred.resolve();
               } else {
                 deferred.reject();
               }
-
-              return validPromise;
 
             }, function(reason){
               alert("An error ocurred validating the user " + reason);
