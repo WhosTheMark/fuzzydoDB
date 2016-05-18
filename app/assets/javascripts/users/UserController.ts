@@ -9,7 +9,7 @@ angular.module("fuzzydodb.user", [])
 
     $scope.submitLogin = function($event) {
 
-      // Forces form validation using abgular onBlur
+      // Forces form validation using angular onBlur
       $(':focus').blur();
       $scope.loginForm.$submitted = true;
 
@@ -20,7 +20,7 @@ angular.module("fuzzydodb.user", [])
 
     $scope.submitRegistration = function($event) {
 
-      // Forces form validation using abgular onBlur
+      // Forces form validation using angular onBlur
       $(':focus').blur();
       $scope.registrationForm.$submitted = true;
 

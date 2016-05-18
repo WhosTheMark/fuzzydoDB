@@ -28,7 +28,10 @@ $(window).scroll(function() {
   $('.content-left').css('left', -$(this).scrollLeft() + "px");
 });
 
-var readyFunc = function() {
+
+$(document).ready(function() {
+
+  // Back to top widget
   var offset = 220;
   var duration = 500;
   $(window).scroll(function() {
@@ -44,6 +47,14 @@ var readyFunc = function() {
     $('html, body').animate({scrollTop: 0}, duration);
     return false;
   });
-};
 
-$(document).ready(readyFunc);
+
+  // Autofocus on all modals
+  $('.modal').each(function() {
+    $(this).on('shown.bs.modal', function() {
+      var input = $(this).find('input:not([type=hidden]):first');
+      input.focus();
+    });
+  });
+
+});
