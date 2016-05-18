@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   scope "(:locale)", locale: /es|en/ do
 
-    devise_for :users, :controllers => { registrations: 'registrations' }
     root 'home#index'
     get 'home' => 'home#index'
 
@@ -14,6 +13,10 @@ Rails.application.routes.draw do
       get 'members' => 'about#members'
       get 'member/:id' => 'about#member'
     end
+
+    devise_for :users, :controllers => { registrations: 'registrations' }
+
+    post 'users/validateUsername/' => 'users#validate_username', :defaults => { :format => 'json' }
 
     scope "admin" do
       resources :users

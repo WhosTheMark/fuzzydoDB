@@ -34,11 +34,12 @@
       <div class="error-messages error" ng-messages="registrationForm['user[username]'].$error"
         ng-if="registrationForm['user[username]'].$touched || registrationForm.$submitted">
         <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.username.blank")%> </div>
+        <div ng-message="username"> <%= t("mongoid.errors.models.user.attributes.username.taken")%> </div>
       </div>
       <p>
         <%= f.label :username %>
         <%= f.text_field :username, class: "w3-input", "ng-model" => "registerUser.username",
-        "ng-model-options" => "{ updateOn: 'blur' }", :required => true %>
+        "ng-model-options" => "{ updateOn: 'blur' }", "username-validator" => true, :required => true %>
       </p>
       <span class="icon glyphicon"
         ng-class="{'error glyphicon-remove' : registrationForm['user[username]'].$invalid &&
@@ -124,7 +125,7 @@
   <div class="modal-footer">
     <div class="btn btn-non-primary" data-dismiss="modal"> <%= t("labels.cancel") %> </div>
     <%= f.submit t('devise.registrations.new.sign_up'), :class => "btn btn-default",
-      "ng-click" => "submitRegistration($event)" %>
+      "ng-click" => "submitRegistration($event)", "ng-disabled" => "registrationForm.$pending" %>
   </div>
 
 <% end %>

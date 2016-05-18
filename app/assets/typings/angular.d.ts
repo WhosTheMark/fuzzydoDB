@@ -462,6 +462,7 @@ declare namespace angular {
 
     interface IAsyncModelValidators {
         [index: string]: (modelValue: any, viewValue: any) => IPromise<any>;
+        username: any;
     }
 
     interface IModelParser {

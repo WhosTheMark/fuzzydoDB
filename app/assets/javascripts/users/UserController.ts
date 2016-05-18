@@ -48,4 +48,26 @@ angular.module("fuzzydodb.user", [])
         });
       }
     };
-  });
+  })
+
+  // Custom async validator
+  // Checks if the username is taken
+  .directive("usernameValidator", ["$http", "$q", function($http, $q){
+    return {
+      require: "ngModel",
+      link: function(scope, element, attrs, ngModel: angular.INgModelController) {
+        ngModel.$asyncValidators.username = function(modelValue, viewValue) {
+          return $http.post('/users/validateUsername/', { username: viewValue }).then(
+            function(response) {
+
+              //if not valid reject
+              if (!response.data) {
+                return $q.reject(response.data.errorMessage);
+              }
+              return true;
+            }
+          );
+        };
+      }
+    }
+  }])

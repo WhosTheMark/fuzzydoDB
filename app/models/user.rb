@@ -39,4 +39,8 @@ class User
 
   validates :username, presence: true, uniqueness: true
   validates :name, presence: true
+
+  def self.exists_username?(username)
+    self.where(username: username).exists?
+  end
 end
