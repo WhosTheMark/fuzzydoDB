@@ -1,20 +1,22 @@
 /// <reference path="../../typings/angular.d.ts" />
 
 angular.module("fuzzydodb.user")
-  .factory("UserService", ["$http", "$q", function($http, $q){
+  .factory("UserService", ["$http", "$q", function($http, $q: angular.IQService){
+
     return {
       validateUser: function(viewValue) {
+
+        var deferred = $q.defer();
         //return the promise directly.
-        return $http.post('/users/validateUsername/', { username: viewValue })
-          .then(function(result) {
+        $http.post('/users/validateUsername/', { username: viewValue })
+          .then(function(response) {
             //resolve the promise as the data
-
-            if(!result.data) {
-              return $q.reject(result.data.errorMessage);
-            }
-
-            return true;
+            deferred.resolve(response.data);
+          }, function(reason){
+            deferred.reject(reason);
           });
+
+        return deferred.promise;
       }
     }
   }])

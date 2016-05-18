@@ -52,13 +52,37 @@ angular.module("fuzzydodb.user", [])
 
   // Custom async validator
   // Checks if the username is taken
-  .directive("usernameValidator", ["UserService", function(userService){
+  .directive("usernameValidator", ["UserService", "$q", function(userService, $q: angular.IQService){
     return {
       require: "ngModel",
       link: function(scope, element, attrs, ngModel: angular.INgModelController) {
+
+        // functions added to asyncValidators must return a promise
+        // rejected when its invalid, resolved valid
         ngModel.$asyncValidators.username = function(modelValue, viewValue) {
-          var data = userService.validateUser(viewValue);
-          return  data;
+
+          var deferred = $q.defer();
+
+          var valid = userService.validateUser(viewValue)
+            .then(function(response){
+
+              var validPromise: ng.IPromise<void>;
+
+              // if username is valid, resolve
+              if (response) {
+                deferred.resolve();
+              } else {
+                deferred.reject();
+              }
+
+              return validPromise;
+
+            }, function(reason){
+              alert("An error ocurred validating the user " + reason);
+              return $q.reject();
+            });
+
+          return deferred.promise;
         }
       }
     }
