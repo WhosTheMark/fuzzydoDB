@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     devise_for :users, :controllers => { registrations: 'registrations' }
 
     post 'users/validateUsername/' => 'users#validate_username', :defaults => { :format => 'json' }
+    post 'users/validateEmail/' => 'users#validate_email', :defaults => { :format => 'json' }
 
     scope "admin" do
       resources :users

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  protect_from_forgery except: :validate_username
+  protect_from_forgery except: [:validate_username, :validate_email]
 
   # GET /users
   # GET /users.json
@@ -66,6 +66,14 @@ class UsersController < ApplicationController
   def validate_username
     username = params[:username]
     user_exists = !User.exists_username?(username)
+    respond_to do |format|
+      format.json { render json: user_exists }
+    end
+  end
+
+  def validate_email
+    email = params[:email]
+    user_exists = !User.exists_email?(email)
     respond_to do |format|
       format.json { render json: user_exists }
     end

@@ -34,12 +34,12 @@
       <div class="error-messages error" ng-messages="registrationForm['user[username]'].$error"
         ng-if="registrationForm['user[username]'].$touched || registrationForm.$submitted">
         <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.username.blank")%> </div>
-        <div ng-message="username"> <%= t("mongoid.errors.models.user.attributes.username.taken")%> </div>
+        <div ng-message="usernameTaken"> <%= t("mongoid.errors.models.user.attributes.username.taken")%> </div>
       </div>
       <p>
         <%= f.label :username %>
         <%= f.text_field :username, class: "w3-input", "ng-model" => "registerUser.username",
-        "ng-model-options" => "{ updateOn: 'blur' }", "username-validator" => true, :required => true %>
+        "ng-model-options" => "{ updateOn: 'blur' }", "username-taken-validator" => true, :required => true %>
       </p>
       <span class="icon glyphicon"
         ng-class="{'error glyphicon-remove' : registrationForm['user[username]'].$invalid &&
@@ -57,17 +57,19 @@
         ng-if="registrationForm['user[email]'].$touched || registrationForm.$submitted">
         <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.email.blank")%> </div>
         <div ng-message="email"> <%= t("errors.invalidEmail") %> </div>
+        <div ng-message="emailTaken"> <%= t("mongoid.errors.models.user.attributes.email.taken")%> </div>
       </div>
       <p>
         <%= f.label :email %>
         <%= f.email_field :email, class: "w3-input",
           "ng-model" => "registerUser.email", "ng-model-options" => "{ updateOn: 'blur' }",
-          :required => true %>
+          "email-taken-validator" => true, :required => true %>
       </p>
       <span class="icon glyphicon"
         ng-class="{'error glyphicon-remove' : registrationForm['user[email]'].$invalid &&
           (registrationForm['user[email]'].$touched || registrationForm.$submitted),
-          'sucess glyphicon-ok' : registrationForm['user[email]'].$valid}">
+          'sucess glyphicon-ok' : registrationForm['user[email]'].$valid,
+          'icon-spin glyphicon-refresh' :  registrationForm['user[email]'].$pending}">
       </span>
 
     </div>

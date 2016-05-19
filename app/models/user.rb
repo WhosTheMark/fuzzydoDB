@@ -43,4 +43,8 @@ class User
   def self.exists_username?(username)
     self.where(username: username).exists?
   end
+
+  def self.exists_email?(email)
+    self.where(email: email).exists?
+  end
 end
