@@ -32,10 +32,18 @@ class ApplicationController < ActionController::Base
   end
 
   def store_location
-    session[:previous_url] = request.fullpath 
+    session[:previous_url] = request.fullpath
   end
 
+  # Overwriting devise's sign_in redirect path method
+  # Lets the user stay in the same page after logging in
   def after_sign_in_path_for(resource)
+    request.referer
+  end
+
+  # Overwriting devise's sign_out redirect path method
+  # Lets the user stay in the same page after logging out
+  def after_sign_out_path_for(resource_or_scope)
     request.referer
   end
 
