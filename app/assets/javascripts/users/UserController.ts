@@ -2,32 +2,58 @@
 /// <reference path="../../typings/jquery.d.ts" />
 
 angular.module("fuzzydodb.user", [])
-  .controller("UserController", ["$scope", function($scope) {
+  .controller("UserController", ["$scope", "$http", "UserService",
+    function($scope, $http, userService) {
 
-    $scope.loginUser = {};
-    $scope.registerUser = {};
+      $scope.loginUser = {};
+      $scope.registerUser = {};
+      $scope.loginError = false;
 
-    $scope.submitLogin = function($event) {
+      $scope.submitLogin = function($event) {
 
-      // Forces form validation using angular onBlur
-      $(':focus').blur();
-      $scope.loginForm.$submitted = true;
+        // Forces form validation using angular onBlur
+        $(':focus').blur();
+        $scope.loginForm.$submitted = true;
 
-      if ($scope.loginForm.$invalid) {
-        $event.preventDefault();
+        // if it is invalid, don't send the form
+        if ($scope.loginForm.$invalid) {
+          $event.preventDefault();
+        } else {
+          $event.preventDefault();
+          $scope.loginForm.$pending = true;
+
+          // TODO: remember me check box
+          // creates user using form
+          let user = {
+            user: {
+              email: $scope.loginUser.email,
+              password: $scope.loginUser.password
+            }
+          }
+
+          // refresh page on success
+          userService.logIn(user)
+            .then(function(response){
+              location.reload();
+            }, function(reason){
+              $scope.loginError = true;
+            })
+            .finally(function(){
+              $scope.loginForm.$pending = false;
+            });
+        };
       };
-    };
 
-    $scope.submitRegistration = function($event) {
+      $scope.submitRegistration = function($event) {
 
-      // Forces form validation using angular onBlur
-      $(':focus').blur();
-      $scope.registrationForm.$submitted = true;
+        // Forces form validation using angular onBlur
+        $(':focus').blur();
+        $scope.registrationForm.$submitted = true;
 
-      if ($scope.registrationForm.$invalid) {
-        $event.preventDefault();
+        if ($scope.registrationForm.$invalid) {
+          $event.preventDefault();
+        };
       };
-    };
   }])
 
   // Custom validator
@@ -84,7 +110,7 @@ angular.module("fuzzydodb.user", [])
 
   // functions added to asyncValidators must return a promise
   // rejected when its invalid, resolved valid
-  .factory("fieldAsyncValidatorFactory", ["$q", function($q){
+  .factory("fieldAsyncValidatorFactory", ["$q", function($q : angular.IQService){
     return {
       validator: function(viewValue, serviceFunc, errorMsg) {
         var deferred = $q.defer();

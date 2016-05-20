@@ -57,7 +57,14 @@
     <%= render 'devise/shared/links', :locals => { :modalAction => @modalAction } %>
   </div>
   <div class="modal-footer">
+
+    <span ng-if="loginError" class="error login-error-message">
+      <span class="glyphicon glyphicon-remove"></span>
+      <%= t("devise.failure.not_found_in_database")%>
+    </span>
+
     <a class="btn btn-non-primary" data-dismiss="modal"> <%= t("labels.cancel") %> </a>
-    <%= f.submit t("header.login"), :class => "btn btn-default", "ng-click" => "submitLogin($event)" %>
+    <%= f.submit t("header.login"), :class => "btn btn-default",
+      "ng-click" => "submitLogin($event)", "ng-disabled" => "loginForm.$pending" %>
   </div>
 <% end %>
