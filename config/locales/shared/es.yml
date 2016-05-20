@@ -62,6 +62,7 @@ es:
             username:
               blank: "no puede ser vacío"
               taken: "está siendo utilizado por otro usuario"
+              pattern: "no puede tener espacios"
     attributes:
       user:
         email: "Correo electrónico"

@@ -35,11 +35,13 @@
         ng-if="registrationForm['user[username]'].$touched || registrationForm.$submitted">
         <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.username.blank")%> </div>
         <div ng-message="usernameTaken"> <%= t("mongoid.errors.models.user.attributes.username.taken")%> </div>
+        <div ng-message="pattern"><%= t("mongoid.errors.models.user.attributes.username.pattern")%></div>
       </div>
       <p>
         <%= f.label :username %>
         <%= f.text_field :username, class: "w3-input", "ng-model" => "registerUser.username",
-        "ng-model-options" => "{ updateOn: 'blur' }", "username-taken-validator" => true, :required => true %>
+        "ng-model-options" => "{ updateOn: 'blur' }", "username-taken-validator" => true,
+        "ng-pattern" => "/^[a-zA-Z0-9_]*$/", :required => true %>
       </p>
       <span class="icon glyphicon"
         ng-class="{'error glyphicon-remove' : registrationForm['user[username]'].$invalid &&

@@ -83,3 +83,4 @@ en:
             username:
               blank: "can't be blank"
               taken: "is already taken"
+              pattern: "can't have spaces"
