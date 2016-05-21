@@ -37,7 +37,7 @@ class User
   field :name, type: String
   field :email, type: String
 
-  validates :username, presence: true, uniqueness: true, format: /\A\w\z/
+  validates :username, presence: true, uniqueness: true, format: /\A\w*\z/
   validates :name, presence: true
   before_validation :drop_the_case
 
