@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  username: MyString
-  name: MyString
-  email: MyString
+delgado:
+  username: delgado
+  name: John Delgado
+  email: pexison@gmail.com
 
-two:
-  username: MyString
-  name: MyString
-  email: MyString
+campos:
+  username: campos
+  name: Marcos Campos
+  email: whosthemark@gmail.com
