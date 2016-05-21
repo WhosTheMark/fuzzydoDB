@@ -29,4 +29,8 @@ class UserTest < ActiveSupport::TestCase
    test "get user poogle" do
      assert !Member.find_by(member_id: "poogle")
    end
+
+   test "delete user poogle" do
+     assert 0.0 == Member.where(member_id: "poogle").delete
+   end
 end
