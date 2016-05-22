@@ -182,6 +182,10 @@ h2 {
   width: 470px;
 }
 
+.modal-footer {
+  padding-right: 0;
+}
+
 .text-center {
   text-align: center;
 }
@@ -210,13 +214,17 @@ label {
     right: 10px;
   }
 
-  .error {
-    color: #a94442;
-  }
-
   .icon.sucess {
     color: #3c763d;
   }
+}
+
+.error {
+  color: #a94442;
+}
+
+.login-error-message {
+  padding-right: 15px;
 }
 
 .icon-spin {

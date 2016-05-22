@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       get 'member/:id' => 'about#member'
     end
 
-    devise_for :users, :controllers => { registrations: 'registrations' }
+    devise_for :users, :controllers => { registrations: 'registrations', sessions: 'sessions' }
 
     post 'users/validateUsername/' => 'users#validate_username', :defaults => { :format => 'json' }
     post 'users/validateEmail/' => 'users#validate_email', :defaults => { :format => 'json' }

@@ -26,6 +26,21 @@ angular.module("fuzzydodb.user")
 
       validateEmail: function(viewValue) {
         return validateField('/users/validateEmail/', { email: viewValue });
+      },
+
+      logIn: function(user){
+
+        var deferred = $q.defer();
+
+        $http.post("/en/users/sign_in.json", user)
+          .then(function(response) {
+            //resolve the promise as the data
+            deferred.resolve(response.data);
+          }, function(reason) {
+            deferred.reject(reason);
+        });
+
+        return deferred.promise;
       }
     }
   }])

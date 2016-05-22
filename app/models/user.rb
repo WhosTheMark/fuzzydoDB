@@ -37,14 +37,23 @@ class User
   field :name, type: String
   field :email, type: String
 
-  validates :username, presence: true, uniqueness: true
+  validates :username, presence: true, uniqueness: true, format: /\A\w*\z/
   validates :name, presence: true
+  before_validation :drop_the_case
 
   def self.exists_username?(username)
-    self.where(username: username).exists?
+    self.where(username: username.downcase).exists?
   end
 
   def self.exists_email?(email)
-    self.where(email: email).exists?
+    self.where(email: email.downcase).exists?
   end
+
+  private
+
+  def drop_the_case
+    self.username = self.username.downcase
+    self.email = self.email.downcase
+  end
+
 end
