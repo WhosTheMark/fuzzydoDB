@@ -2,6 +2,7 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'capybara/rails'
+require 'devise'
 
 class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
@@ -21,4 +22,8 @@ class ActionDispatch::IntegrationTest
     Capybara.reset_sessions!
     Capybara.use_default_driver
   end
+end
+
+class ActionController::TestCase
+  include Devise::TestHelpers
 end
