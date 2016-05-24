@@ -1,61 +1,75 @@
 require 'test_helper'
 
 I18n.locale = :en
-Mongoid.raise_not_found_error = false
 
 class MemberTest < ActiveSupport::TestCase
+
+  def setup
+    Member.delete_all
+    @member1 = new_member("raid", "Raid", "raid@usb.ve", "")
+    @developer1 = new_developer("delgadoD1", "John Delgado", "1010196@usb.ve", "")
+  end
+
+  def new_member(member_id, name, email, photo)
+    Member.new(member_id: member_id, name: name, email: email, photo: photo)
+  end
+
+  def new_developer(member_id, name, email, photo)
+    Developer.new(member_id: member_id, name: name, email: email, photo: photo)
+  end
+
+  ### Validations ###
+
   test "create member without member_id" do
-    member = Member.create(member_id: "", name: "Raid", email: "raid@usb.ve", photo: "default.png")
-    assert !(member.save)
+    assert_raises Mongoid::Errors::Validations do
+      new_member("", "Raid", "raid@usb.ve", "default.png").save!
+    end
   end
 
   test "create member without name" do
-    member = Member.create(member_id: "raid", name: "", email: "raid@usb.ve", photo: "default.png")
-    assert !(member.save)
+    assert_raises Mongoid::Errors::Validations do
+      new_member("raid", "", "raid@usb.ve", "default.png").save!
+    end
   end
 
   test "create member without email" do
-    member = Member.create(member_id: "raid", name: "Raid", email: "", photo: "default.png")
-    assert !(member.save)
+    assert_raises Mongoid::Errors::Validations do
+      new_member("raid", "Raid", "", "default.png").save!
+    end
   end
 
-  test "create member without photo" do
-    created = Member.create(member_id: "raid123456", name: "Raid", email: "raid123456@usb.ve", photo: "").save
-    Member.where(member_id: "raid123456").delete
-    assert created
+  test "create duplicate member" do
+    @member1.save!
+    assert_raises Mongoid::Errors::Validations do
+      new_member(@member1.member_id, @member1.name, @member1.email, @member1.photo).save!
+    end
   end
 
-  test "create duplicate user" do
-    Member.create(member_id: "raid", name: "Raid", email: "raid@usb.ve", photo: "").save
-    saved = Member.create(member_id: "raid", name: "Raid", email: "raid@usb.ve", photo: "").save
-    User.where(member_id: "raid").delete
-    assert !(saved)
-  end
+  ### Member functions ###
 
   test "get user that exists" do
-    Member.create(member_id: "delgado", name: "John Delgado", email: "10-10196@usb.ve").save
-    member = Member.get_by_id "delgado"
-    Member.where(member_id: "delgado").delete
-    assert member
+    @member1.save!
+    stored_memeber = Member.get_by_id @member1.member_id
+    assert_equal stored_memeber.member_id, @member1.member_id,
+      "The ids are not the same"
   end
 
-  test "get user that doesnt exist" do
-    assert !Member.get_by_id("delgado")
+  test "get user that doesn't exist" do
+    assert_nil Member.get_by_id("delgado"), "get_by_id is returning a member"
   end
 
   test "get non developers 1 devop 1 member" do
-    Developer.create(member_id: "delgadoD1", name: "John Delgado", email: "10-10196@usb.ve").save
-    Member.create(member_id: "delgado1", name: "John Delgado", email: "1010196@usb.ve").save
+    @developer1.save!
+    @member1.save!
     members = Member.get_non_developers
-    added = members.first[:member_id].eql? "delgado1"
-    Member.where(member_id: "delgado1").delete
-    Developer.where(member_id: "delgadoD1").delete
-    assert added
+    assert_equal members.first[:member_id], @member1.member_id,
+      "get_non_developers is not returning properly"
   end
 
   test "get non developers 1 devop 0 member" do
-    Developer.create(member_id: "delgadoD", name: "John Delgado", email: "10-10196@usb.ve").save
-    Developer.where(member_id: "delgadoD").delete
-    assert Member.get_non_developers.first.nil?
+    @developer1.save
+    assert_nil Member.get_non_developers.first,
+      "get_non_developers is returning a developer"
   end
+
 end

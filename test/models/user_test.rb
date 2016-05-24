@@ -1,63 +1,68 @@
 require 'test_helper'
 
 I18n.locale = :en
-Mongoid.raise_not_found_error = false
 
 class UserTest < ActiveSupport::TestCase
+
+  def setup
+    @user1 = new_user("johndelgado", "John Delgado", "1010196@usb.ve", "12313223sasdfawsdaw")
+    User.delete_all
+  end
+
+  def new_user(username, name, email, password)
+    User.new(username: username, name: name, email: email, password: password)
+  end
+
+  ### Validations ###
+
   test "create user without username" do
-    user = User.create(username: "", name: "Raid", email: "raid@usb.ve", password: "12313223sasdfawsdaw")
-    assert !(user.save)
+    assert_raises Mongoid::Errors::Validations do
+      new_user("", "Raid", "raid@usb.ve", "12313223sasdfawsdaw").save!
+    end
   end
 
   test "create user without name" do
-    user = User.create(username: "raid", name: "", email: "raid@usb.ve", password: "12313223sasdfawsdaw")
-    assert !(user.save)
+    assert_raises Mongoid::Errors::Validations do
+      new_user("raid", "", "raid@usb.ve", "12313223sasdfawsdaw").save!
+    end
   end
 
   test "create user without email" do
-    user = User.create(username: "raid", name: "Raid", email: "", password: "12313223sasdfawsdaw")
-    assert !(user.save)
-  end
-
-  test "email exists" do
-    User.create(username: "johndelgado", name: "John Delgado", email: "1010196@usb.ve", password: "12313223sasdfawsdaw").save
-    exists = User.exists_email? "1010196@usb.ve"
-    User.where(username: "johndelgado").delete
-    assert exists
-  end
-
-  test "email does not exists" do
-    exists = User.exists_username? "10-10196@usb.ve"
-    assert !(exists)
-  end
-
-  test "username exists" do
-    User.create(username: "johndelgado", name: "John Delgado", email: "1010196@usb.ve", password: "12313223sasdfawsdaw").save
-    exists = User.exists_username? "johndelgado"
-    User.where(username: "johndelgado").delete
-    assert exists
-  end
-
-  test "username does not exists" do
-    exists = User.exists_email? "1010196"
-    assert !(exists)
+    assert_raises Mongoid::Errors::Validations do
+      new_user("raid", "Raid", "", "12313223sasdfawsdaw").save!
+    end
   end
 
   test "create duplicate user" do
-    User.create(username: "delgado", name: "John Delgado", email: "10-10196@usb.ve", password: "12313223sasdfawsdaw").save
-    saved = User.create(username: "delgado", name: "John Delgado", email: "10-10196@usb.ve", password: "12313223sasdfawsdaw").save
-    User.where(username: "delgado").delete
-    assert !(saved)
+    @user1.save!
+    duplicate_user = new_user(@user1.username, @user1.name, @user1.email, @user1.password)
+    assert_raises Mongoid::Errors::Validations do
+      duplicate_user.save!
+    end
   end
 
-  test "get user that exists" do
-    User.create(username: "delgado", name: "John Delgado", email: "10-10196@usb.ve").save
-    found = User.where(name: "John Delgado")
-    User.where(username: "delgado").delete
-    assert found
+  ### Member functions ###
+
+  test "email exists" do
+    @user1.save!
+    assert((User.exists_email? @user1.email),
+      "Function says email does not exist")
   end
 
-  test "get user that doesnt exist" do
-    assert !User.find_by(username: "whosthemark")
+  test "email does not exists" do
+    assert_not((User.exists_email? "1010196"),
+      "Function says email exists")
   end
+
+  test "username exists" do
+    @user1.save!
+    assert((User.exists_username? @user1.username),
+      "Function says username does not exist")
+  end
+
+  test "username does not exists" do
+    assert_not((User.exists_username? "10-10196@usb.ve"),
+      "Function says username exists")
+  end
+
 end
