@@ -1,7 +1,9 @@
 module ApplicationHelper
 
+  # Capitalize first letter of each word, downcase the other letters
+  # including non-English letters
   def title(page_title)
-    content_for :title, page_title.to_s.capitalize
+    content_for :title, page_title.to_s.mb_chars.split.map(&:capitalize).join(' ')
   end
 
   def resource_name
