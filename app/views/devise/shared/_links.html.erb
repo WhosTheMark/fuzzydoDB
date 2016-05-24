@@ -1,5 +1,5 @@
 <div class="text-center">
-  <a  data-toggle="modal" data-target="#modalRegister,#modalLogin">
+  <a  id="login-open-registration" data-toggle="modal" data-target="#modalRegister,#modalLogin">
     <%- if devise_mapping.registerable? && @modalAction == 'login' %>
       <%=t('header.register') %>
     <% end -%>

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UserManagementTest < ActionDispatch::IntegrationTest
+class UserRegistrationTest < ActionDispatch::IntegrationTest
 
   setup do
     Capybara.current_driver = :selenium
@@ -48,15 +48,11 @@ class UserManagementTest < ActionDispatch::IntegrationTest
     click_on('send-registration-btn')
   end
 
-  def click_on_log_out
-    click_on('logout-btn')
-  end
-
   def find_username_text
     find(:css, '.header-user-info strong').text
   end
 
-  def register_user(user)
+  def fill_registration(user)
     fill_in('user_name', :with => user.name)
     fill_in('user_username', :with => user.username)
     fill_in('user_email', :with => user.email)
@@ -70,10 +66,10 @@ class UserManagementTest < ActionDispatch::IntegrationTest
 
     # Fill the form to regiser the user
     click_on_registration
-    register_user(@user1)
+    fill_registration(@user1)
     click_on_send_registration
 
-    # Check that the username match the registration
+    # Check that the username shown matches the one that just registred
     assert_equal(@user1.name, find_username_text, 'Wrong username displayed')
 
     # Check that the buttons to register and login do not appear
@@ -88,7 +84,7 @@ class UserManagementTest < ActionDispatch::IntegrationTest
 
     # Fill the form to regiser the user
     click_on_registration
-    register_user(@user1)
+    fill_registration(@user1)
     click_on_send_registration
 
     assert_equal(@user1.name, find_username_text, 'Wrong username displayed')
@@ -135,6 +131,7 @@ class UserManagementTest < ActionDispatch::IntegrationTest
     click_on_registration
     click_on_send_registration
 
+    # All errors should be displayed when sending an empty form
     assert has_name_error?, "Empty name error was not shown"
     assert has_username_error?, "Empty username error was not shown"
     assert has_email_error?, "Empty email error was not shown"
@@ -206,7 +203,7 @@ class UserManagementTest < ActionDispatch::IntegrationTest
     visit('/')
 
     click_on_registration
-    register_user(@user1)
+    fill_registration(@user1)
 
     assert has_username_error?, "Invalid username error was not shown"
     assert has_email_error?, "Invalid email error was not shown"
