@@ -10,7 +10,7 @@
     <!-- name field -->
 
     <div class="field">
-      <div class="error-messages error" ng-messages="registrationForm['user[name]'].$error"
+      <div id="regNameError" class="error-messages error" ng-messages="registrationForm['user[name]'].$error"
         ng-if="registrationForm['user[name]'].$touched || registrationForm.$submitted">
         <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.name.blank")%> </div>
       </div>
@@ -31,7 +31,7 @@
     <!-- username field -->
 
     <div class="field">
-      <div class="error-messages error" ng-messages="registrationForm['user[username]'].$error"
+      <div id="regUsernameError" class="error-messages error" ng-messages="registrationForm['user[username]'].$error"
         ng-if="registrationForm['user[username]'].$touched || registrationForm.$submitted">
         <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.username.blank")%> </div>
         <div ng-message="usernameTaken"> <%= t("mongoid.errors.models.user.attributes.username.taken")%> </div>
@@ -55,7 +55,7 @@
     <!-- email field -->
 
     <div class="field">
-      <div class="error-messages error" ng-messages="registrationForm['user[email]'].$error"
+      <div id="regEmailError" class="error-messages error" ng-messages="registrationForm['user[email]'].$error"
         ng-if="registrationForm['user[email]'].$touched || registrationForm.$submitted">
         <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.email.blank")%> </div>
         <div ng-message="email"> <%= t("errors.invalidEmail") %> </div>
@@ -79,7 +79,7 @@
     <!-- password field -->
 
     <div class="field">
-      <div class="error-messages error" ng-messages="registrationForm['user[password]'].$error"
+      <div id="regPassWordError" class="error-messages error" ng-messages="registrationForm['user[password]'].$error"
         ng-if="registrationForm['user[password]'].$touched || registrationForm.$submitted">
         <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.password.blank")%> </div>
         <div ng-message="minlength"> <%= t("mongoid.errors.models.user.attributes.password.too_short")%> </div>
@@ -103,7 +103,8 @@
 
     <div class="field">
 
-      <div class="error-messages error" ng-messages="registrationForm['user[password_confirmation]'].$error"
+      <div id="regPassWordConfirmationError" class="error-messages error"
+        ng-messages="registrationForm['user[password_confirmation]'].$error"
         ng-if="registrationForm['user[password_confirmation]'].$touched || registrationForm.$submitted">
         <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.password.blank")%> </div>
         <div ng-message="equalPasswords">
@@ -129,8 +130,9 @@
   </div>
   <div class="modal-footer">
     <div class="btn btn-non-primary" data-dismiss="modal"> <%= t("labels.cancel") %> </div>
-    <%= f.submit t('devise.registrations.new.sign_up'), :class => "btn btn-default",
-      "ng-click" => "submitRegistration($event)", "ng-disabled" => "registrationForm.$pending" %>
+    <%= f.submit t('devise.registrations.new.sign_up'), :id => "send-registration-btn",
+      :class => "btn btn-default", "ng-click" => "submitRegistration($event)",
+      "ng-disabled" => "registrationForm.$pending" %>
   </div>
 
 <% end %>

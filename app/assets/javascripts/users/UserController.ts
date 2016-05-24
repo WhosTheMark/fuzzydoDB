@@ -21,6 +21,7 @@ angular.module("fuzzydodb.user", [])
         } else {
           $event.preventDefault();
           $scope.loginForm.$pending = true;
+          $scope.loginError = false;
 
           // TODO: remember me check box
           // creates user using form

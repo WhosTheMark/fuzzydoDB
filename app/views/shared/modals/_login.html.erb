@@ -5,7 +5,7 @@
     <!-- email field -->
 
     <div class="field">
-      <div class="error-messages error" ng-messages="loginForm['user[email]'].$error"
+      <div id="loginEmailError" class="error-messages error" ng-messages="loginForm['user[email]'].$error"
         ng-if="loginForm['user[email]'].$touched || loginForm.$submitted">
         <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.email.blank")%> </div>
         <div ng-message="email"> <%= t("errors.invalidEmail") %> </div>
@@ -27,7 +27,7 @@
     <!-- password field -->
 
     <div class="field">
-      <div class="error-messages error" ng-messages="loginForm['user[password]'].$error"
+      <div id="loginPassError" class="error-messages error" ng-messages="loginForm['user[password]'].$error"
         ng-if="loginForm['user[password]'].$touched || loginForm.$submitted">
         <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.password.blank")%> </div>
       </div>
@@ -58,13 +58,13 @@
   </div>
   <div class="modal-footer">
 
-    <span ng-if="loginError" class="error login-error-message">
+    <span id="loginError" ng-if="loginError" class="error login-error-message">
       <span class="glyphicon glyphicon-remove"></span>
       <%= t("devise.failure.not_found_in_database")%>
     </span>
 
     <a class="btn btn-non-primary" data-dismiss="modal"> <%= t("labels.cancel") %> </a>
-    <%= f.submit t("header.login"), :class => "btn btn-default",
+    <%= f.submit t("header.login"), :id => 'send-login-btn',  :class => "btn btn-default",
       "ng-click" => "submitLogin($event)", "ng-disabled" => "loginForm.$pending" %>
   </div>
 <% end %>
