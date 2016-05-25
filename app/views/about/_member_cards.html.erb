@@ -6,9 +6,10 @@
      <div class="col-xs-6 col-lg-4 member-container" >
        <div class="member-card">
          <a href="<%= url_for(controller: controller_name, action: "member", id: member.member_id) %>">
-           <%= image_tag("team/" + member.photo, width: "120px", height: "120px", class: "member-img-card") %>
-           <h4><%= member.name %></h4>
-           <h6><span class="glyphicon glyphicon-envelope mail-icon"></span><%= member.email %></h6>
+            <% member.photo = "default.png" if member.photo.blank? %>
+            <%= image_tag("team/" + member.photo, width: "120px", height: "120px", class: "member-img-card") %>
+            <h4><%= member.name %></h4>
+            <h6><span class="glyphicon glyphicon-envelope mail-icon"></span><%= member.email %></h6>
          </a>
        </div>
      </div>

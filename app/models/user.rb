@@ -52,8 +52,8 @@ class User
   private
 
   def drop_the_case
-    self.username = self.username.downcase
-    self.email = self.email.downcase
+    self.username = self.username.downcase unless self.username.nil?
+    self.email = self.email.downcase unless self.email.nil?
   end
 
 end
