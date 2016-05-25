@@ -20,21 +20,93 @@ class MemberTest < ActiveSupport::TestCase
 
   ### Validations ###
 
-  test "create member without member_id" do
+  test "create member with nil member_id" do
+    assert_raises Mongoid::Errors::Validations do
+      new_member(nil, "Raid", "raid@usb.ve", "default.png").save!
+    end
+  end
+
+  test "create member with nil name" do
+    assert_raises Mongoid::Errors::Validations do
+      new_member("raid", nil, "raid@usb.ve", "default.png").save!
+    end
+  end
+
+  test "create member with nil email" do
+    assert_raises Mongoid::Errors::Validations do
+      new_member("raid", "Raid", nil, "default.png").save!
+    end
+  end
+
+  test "create member with empty member_id" do
     assert_raises Mongoid::Errors::Validations do
       new_member("", "Raid", "raid@usb.ve", "default.png").save!
     end
   end
 
-  test "create member without name" do
+  test "create member with empty name" do
     assert_raises Mongoid::Errors::Validations do
       new_member("raid", "", "raid@usb.ve", "default.png").save!
     end
   end
 
-  test "create member without email" do
+  test "create member with empty email" do
     assert_raises Mongoid::Errors::Validations do
       new_member("raid", "Raid", "", "default.png").save!
+    end
+  end
+
+  test "create member with bad formed email" do
+    assert_raises Mongoid::Errors::Validations do
+      new_member("raid", "Raid", "malformed", "default.png").save!
+    end
+  end
+
+  test "create duplicate member with spaces before the member_id field" do
+    @member1.save!
+    duplicate_member = new_member(" " + @member1.member_id, "Raid", "raid2@raid.com", "12313223sasdfawsdaw")
+    assert_raises Mongoid::Errors::Validations do
+      duplicate_member.save!
+    end
+  end
+
+  test "create duplicate member with spaces after the member_id field" do
+    @member1.save!
+    duplicate_member = new_member(@member1.member_id + " ", "Raid", "raid2@raid.com", "12313223sasdfawsdaw")
+    assert_raises Mongoid::Errors::Validations do
+      duplicate_member.save!
+    end
+  end
+
+  test "create duplicate member with spaces before the email field" do
+    @member1.save!
+    duplicate_member = new_member("raidsr", "Raid", " " + @member1.email, "12313223sasdfawsdaw")
+    assert_raises Mongoid::Errors::Validations do
+      duplicate_member.save!
+    end
+  end
+
+  test "create duplicate member with spaces after the email field" do
+    @member1.save!
+    duplicate_member = new_member("raidsr", "Raid", @member1.email + " ", "12313223sasdfawsdaw")
+    assert_raises Mongoid::Errors::Validations do
+      duplicate_member.save!
+    end
+  end
+
+  test "create duplicate member id" do
+    @member1.save!
+    duplicate_member = new_member(@member1.member_id, "Raid", "raid2@raid.com", "12313223sasdfawsdaw")
+    assert_raises Mongoid::Errors::Validations do
+      duplicate_member.save!
+    end
+  end
+
+  test "create duplicate user email" do
+    @member1.save!
+    duplicate_member = new_member("raidosr", "Raid", @member1.email, "12313223sasdfawsdaw")
+    assert_raises Mongoid::Errors::Validations do
+      duplicate_member.save!
     end
   end
 
@@ -43,6 +115,16 @@ class MemberTest < ActiveSupport::TestCase
     assert_raises Mongoid::Errors::Validations do
       new_member(@member1.member_id, @member1.name, @member1.email, @member1.photo).save!
     end
+  end
+
+  test "well inserted member" do
+    @member1.save!
+    assert_not_nil Member.find_by(:email => @member1.email )
+  end
+
+  test "well inserted developer" do
+    @developer1.save!
+    assert_not_nil Developer.find_by(:email => @developer1.email )
   end
 
   ### Member functions ###
@@ -58,16 +140,24 @@ class MemberTest < ActiveSupport::TestCase
     assert_nil Member.get_by_id("delgado"), "get_by_id is returning a member"
   end
 
-  test "get non developers 1 devop 1 member" do
+  test "get non developers 0 devop 0 member" do
+    assert_equal Member.get_non_developers, [], "get_non_developers is not returning properly: 0 devop 0 member"
+  end
 
+  test "get non developers 0 devop 1 member" do
+    @member1.save!
+    members = Member.get_non_developers
+    assert_equal members.first, @member1, "get_non_developers is not returning properly: 0 devop 1 member"
+  end
+
+  test "get non developers 1 devop 1 member" do
     @developer1.save!
     @member1.save!
     members = Member.get_non_developers
-    assert_equal members.first, @member1, "get_non_developers is not returning properly"
+    assert_equal members.first, @member1, "get_non_developers is not returning properly: 1 devop 1 member"
   end
 
   test "get non developers 1 devop 0 member" do
-
     @developer1.save!
     assert_equal Member.get_non_developers, [],
       "get_non_developers is returning a developer"

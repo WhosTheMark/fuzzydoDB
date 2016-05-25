@@ -52,8 +52,17 @@ class User
   private
 
   def drop_the_case
-    self.username = self.username.downcase
-    self.email = self.email.downcase
+    begin
+      self.username = self.username.downcase
+      self.email = self.email.downcase
+      raise
+    rescue
+      puts "username is nil in drop_the_case" if self.username.nil?
+      puts "email is nil in drop_the_case" if self.email.nil?
+    ensure
+      self.destroy
+      puts "user can not be created"
+    end
   end
 
 end

@@ -14,22 +14,105 @@ class UserTest < ActiveSupport::TestCase
   end
 
   ### Validations ###
+  test "create user with nil username" do
+    assert_raises Mongoid::Errors::Validations do
+      new_user(nil, "Raid", "raid@usb.ve", "12313223sasdfawsdaw").save!
+    end
+  end
 
-  test "create user without username" do
+  test "create user with nil name" do
+    assert_raises Mongoid::Errors::Validations do
+      new_user("raid", nil, "raid@usb.ve", "12313223sasdfawsdaw").save!
+    end
+  end
+
+  test "create user with nil email" do
+    assert_raises Mongoid::Errors::Validations do
+      new_user("raid", "Raid", nil, "12313223sasdfawsdaw").save!
+    end
+  end
+
+  test "create user with nil password" do
+    assert_raises Mongoid::Errors::Validations do
+      new_user("raid", "Raid", "raid@usb.ve", nil).save!
+    end
+  end
+
+  test "create user with empty username" do
     assert_raises Mongoid::Errors::Validations do
       new_user("", "Raid", "raid@usb.ve", "12313223sasdfawsdaw").save!
     end
   end
 
-  test "create user without name" do
+  test "create user with empty name" do
     assert_raises Mongoid::Errors::Validations do
       new_user("raid", "", "raid@usb.ve", "12313223sasdfawsdaw").save!
     end
   end
 
-  test "create user without email" do
+  test "create user with empty email" do
     assert_raises Mongoid::Errors::Validations do
       new_user("raid", "Raid", "", "12313223sasdfawsdaw").save!
+    end
+  end
+
+  test "create user with empty password" do
+    assert_raises Mongoid::Errors::Validations do
+      new_user("raid", "Raid", "raid@usb.ve", "").save!
+    end
+  end
+
+  test "create user with bad formed email" do
+    assert_raises Mongoid::Errors::Validations do
+      new_user("raid", "Raid", "malformed", "12313223sasdfawsdaw").save!
+    end
+  end
+
+  test "create duplicate user with spaces before the username field" do
+    @user1.save!
+    duplicate_user = new_user(" " + @user1.username, @user1.name, @user1.email, @user1.password)
+    assert_raises Mongoid::Errors::Validations do
+      duplicate_user.save!
+    end
+  end
+
+  test "create duplicate user with spaces after the username field" do
+    @user1.save!
+    duplicate_user = new_user(@user1.username + " ", @user1.name, @user1.email, @user1.password)
+    assert_raises Mongoid::Errors::Validations do
+      duplicate_user.save!
+    end
+  end
+
+  test "create duplicate user with spaces before the email field" do
+    @user1.save!
+    duplicate_user = new_user(@user1.username, @user1.name, " " + @user1.email, @user1.password)
+    assert_raises Mongoid::Errors::Validations do
+      duplicate_user.save!
+    end
+  end
+
+  test "create duplicate user with spaces after the email field" do
+    @user1.save!
+    duplicate_user = new_user(@user1.username, @user1.name, @user1.email + " ", @user1.password)
+    assert_raises Mongoid::Errors::Validations do
+      duplicate_user.save!
+    end
+  end
+
+  test "create duplicate user username" do
+    @user1.save!
+    duplicate_user = new_user(@user1.username, "Raid", "raid@raid.com", "12313223sasdfawsdaw")
+    assert_raises Mongoid::Errors::Validations do
+      duplicate_user.save!
+    end
+  end
+
+  test "create duplicate user email" do
+    @user1.save!
+    duplicate_user = new_user("raid", "Raid", @user1.email, "12313223sasdfawsdaw")
+    assert_raises Mongoid::Errors::Validations do
+      duplicate_user.save!
     end
   end
 
@@ -41,6 +124,12 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  test "well inserted user" do
+    @user1.save!
+    assert_raises Mongoid::Errors::DocumentNotFound do
+      Member.find_by(:email => "1010196@usb.ve")
+    end
+  end
   ### Member functions ###
 
   test "email exists" do
