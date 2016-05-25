@@ -6,8 +6,8 @@ class MemberTest < ActiveSupport::TestCase
 
   def setup
     Member.delete_all
-    @member1 = new_member("raid", "Raid", "raid@usb.ve", "")
-    @developer1 = new_developer("delgadoD1", "John Delgado", "1010196@usb.ve", "")
+    @member1 = new_member("raid", "Raid", "raid@usb.ve", "photo.png")
+    @developer1 = new_developer("delgadoD1", "John Delgado", "1010196@usb.ve", "photo2.png")
   end
 
   def new_member(member_id, name, email, photo)
