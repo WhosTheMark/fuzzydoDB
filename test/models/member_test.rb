@@ -59,16 +59,17 @@ class MemberTest < ActiveSupport::TestCase
   end
 
   test "get non developers 1 devop 1 member" do
+
     @developer1.save!
     @member1.save!
     members = Member.get_non_developers
-    assert_equal members.first[:member_id], @member1.member_id,
-      "get_non_developers is not returning properly"
+    assert_equal members.first, @member1, "get_non_developers is not returning properly"
   end
 
   test "get non developers 1 devop 0 member" do
-    @developer1.save
-    assert_nil Member.get_non_developers.first,
+
+    @developer1.save!
+    assert_equal Member.get_non_developers, [],
       "get_non_developers is returning a developer"
   end
 

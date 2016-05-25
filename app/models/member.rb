@@ -12,7 +12,7 @@ class Member
   end
 
   def self.get_non_developers()
-    self.where(_type: "Member")
+    Member.all - Developer.all
   end
 
   validates :member_id, presence: true, uniqueness: true
