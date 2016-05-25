@@ -117,6 +117,20 @@ class MemberTest < ActiveSupport::TestCase
     end
   end
 
+  test "create member and duplicate member_id for developer" do
+    @member1.save!
+    assert_raises Mongoid::Errors::Validations do
+      new_developer(@member1.member_id, "Raid", "raid@raid.com", "default.png").save!
+    end
+  end
+
+  test "create member and duplicate email for developer" do
+    @member1.save!
+    assert_raises Mongoid::Errors::Validations do
+      new_developer("raid", "Raid", @member1.email, "default.png").save!
+    end
+  end
+
   test "well inserted member" do
     @member1.save!
     assert_not_nil Member.find_by(:email => @member1.email )
