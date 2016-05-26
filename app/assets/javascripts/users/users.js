@@ -16,6 +16,7 @@ function initializeUserTable() {
       null,
       null,
       { "orderable": false, "searchable": false },
+      { "orderable": false, "searchable": false },
       { "orderable": false, "searchable": false }
     ]
   });

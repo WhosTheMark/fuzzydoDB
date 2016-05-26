@@ -30,6 +30,11 @@ es:
     username: "Nombre de usuario"
     name: "Nombre"
     email: "Correo electrónico"
+    role:
+      member: "Miembro"
+      super_member: "Supermiembro"
+      admin: "Administrador"
+      user: "Usuario"
 
   labels:
     delete: "Eliminar"
