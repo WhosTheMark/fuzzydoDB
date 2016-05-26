@@ -19,6 +19,7 @@
             <th><%= t("user.email") %></th>
             <th></th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
 
@@ -33,6 +34,19 @@
                 <a data-toggle="modal" data-target="#deleteConfirmationModal" data-username="<%= user.username %>" data-delete-url="<%= url_for user%>">
                   <%= t("labels.delete")%>
                 </a>
+              </td>
+              <td>
+                <div class="dropdown">
+                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= t("user.role." + user.role.to_s) %>
+                  <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                    <% User.roles.each do |role| -%>
+                      <% unless role.first.to_s.eql? user.role.to_s-%>
+                        <li><a href=#><%= t("user.role." + role.first.to_s) %></a></li>
+                      <% end -%>
+                    <% end -%>
+                  </ul>
+                </div>
               </td>
             </tr>
           <% end %>

@@ -51,6 +51,11 @@ en:
     username: "Username"
     name: "Name"
     email: "e-mail"
+    role:
+      member: "Member"
+      super_member: "Super member"
+      admin: "Admin"
+      user: "User"
 
   labels:
     delete: "Delete"
