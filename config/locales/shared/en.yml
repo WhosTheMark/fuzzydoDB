@@ -29,6 +29,7 @@ en:
     logout: "Log out"
     register: "Register"
     search: "Search"
+    users-management: "Users Management"
 
     forgot:
       password: "Forgot your password?"

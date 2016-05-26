@@ -8,6 +8,7 @@ es:
     logout: "Cerrar Sesión"
     register: "Registrarse"
     search: "Buscar"
+    users-management: "Manejo de usuarios"
 
     forgot:
       password: "¿Olvidó su contraseña?"
