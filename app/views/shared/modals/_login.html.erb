@@ -49,7 +49,7 @@
 
     <% if devise_mapping.rememberable? -%>
       <p>
-        <%= f.check_box :remember_me %>
+        <%= f.check_box :remember_me, "ng-model" => "loginUser.rememberMe" %>
         <%= f.label t("activerecord.attributes.user.remember_me") %>
       </p>
     <% end -%>

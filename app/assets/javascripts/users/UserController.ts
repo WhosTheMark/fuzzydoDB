@@ -23,12 +23,12 @@ angular.module("fuzzydodb.user", [])
           $scope.loginForm.$pending = true;
           $scope.loginError = false;
 
-          // TODO: remember me check box
           // creates user using form
           let user = {
             user: {
               email: $scope.loginUser.email,
-              password: $scope.loginUser.password
+              password: $scope.loginUser.password,
+              remember_me: $scope.loginUser.rememberMe
             }
           }
 
