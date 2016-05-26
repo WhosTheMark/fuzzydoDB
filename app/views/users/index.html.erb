@@ -37,7 +37,7 @@
               </td>
               <td>
                 <div class="dropdown">
-                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= t("user.role." + user.role.to_s) %>
+                  <button class="btn btn-non-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= t("user.role." + user.role.to_s) %>
                   <span class="caret"></span></button>
                   <ul class="dropdown-menu">
                     <% User.roles.each do |role| -%>
