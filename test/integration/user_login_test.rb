@@ -142,7 +142,6 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     click_on_log_in
     fill_login(@user1.email + " ", @user1.password)
     click_on_send_login
-
     # Check that the buttons to register and login do not appear
     assert_not page.has_selector?('#register-btn'), 'Register button is active during session'
     assert_not page.has_selector?('#login-btn'), 'Login button is active during session'

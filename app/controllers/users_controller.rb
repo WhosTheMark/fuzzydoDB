@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   protect_from_forgery except: [:validate_username, :validate_email]
+  before_filter :admin_only!, only: [:index]
 
   # GET /users
   # GET /users.json

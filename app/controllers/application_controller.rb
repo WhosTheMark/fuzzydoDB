@@ -1,7 +1,10 @@
+require 'exceptions'
+
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  rescue_from Exceptions::UnauthorizedAccessError, with: :unauthorized
 
   before_action :set_locale
   before_action :isHome?
@@ -45,6 +48,16 @@ class ApplicationController < ActionController::Base
   # Lets the user stay in the same page after logging out
   def after_sign_out_path_for(resource_or_scope)
     request.referer
+  end
+
+  def unauthorized
+    render(:file => File.join(Rails.root, 'public/403.html'), :status => 403, :layout => false)
+  end
+
+  def admin_only!
+    if current_user.nil? || !current_user.admin?
+      raise Exceptions::UnauthorizedAccessError.new
+    end
   end
 
 end
