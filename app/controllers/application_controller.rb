@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
   end
 
   def unauthorized
-    render(:file => File.join(Rails.root, 'public/403.html'), :status => 403, :layout => false)
+    render(:file => File.join(Rails.root, 'app/views/shared/errors/403.html'), :status => 403, :layout => false)
   end
 
   def admin_only!

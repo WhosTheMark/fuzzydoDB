@@ -70,6 +70,7 @@ en:
 
   errors:
     invalidEmail: "invalid e-mail"
+    unauthorized: "We are sorry, you are not authorized to see this page"
 
   mongoid:
     errors:
