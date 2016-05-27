@@ -128,7 +128,7 @@ class UserTest < ActiveSupport::TestCase
     @user1.save!
     assert_not_nil User.find_by(:email => @user1.email), "User was not inserted"
   end
-  ### Member functions ###
+  ### User functions ###
 
   test "email exists" do
     @user1.save!
