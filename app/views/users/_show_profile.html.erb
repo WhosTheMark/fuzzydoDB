@@ -1,7 +1,14 @@
 <div class="row">
+  <div class="container-fluid member-container member-bio-header">
   <div class="col-xs-4">
     <% @user.photo = "default.png" if @user.photo.blank?  %>
     <%= image_tag("team/" + @user.photo, width: "200px", height: "200px", :class =>"member-bio-img") %>
+  </div>
+  <div class="col-xs-8 member-bio-name">
+    <div>
+      <%= @user.name %>
+    </div>
+  </div>
   </div>
   <% field = ["name", "username", "email", "institution", "occupation", "country"] %>
   <% field.each do |tag| %>

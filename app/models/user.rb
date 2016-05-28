@@ -36,9 +36,8 @@ class User
   # field :locked_at,       type: Time
   field :username, type: String
   field :name, type: String
-  field :email, type: String
   as_enum :role, [:admin, :user, :super_member, :member], field: { :default => 1 }
-  field :photo, type: String, default: "default.png"
+  field :photo, type: String
   field :institution, type: String, default: "none-especified"
   field :occupation, type: String, default: "none-especified"
   field :country, type: String, default: "none-especified"
