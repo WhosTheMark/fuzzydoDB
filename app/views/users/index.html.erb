@@ -29,9 +29,11 @@
               <td><%= user.email %></td>
               <td><%= link_to t("labels.show"), user %></td>
               <td>
-                <a data-toggle="modal" data-target="#deleteConfirmationModal" data-username="<%= user.username %>" data-delete-url="<%= url_for user%>">
-                  <%= t("labels.delete")%>
-                </a>
+                <div class="<%= "disabled" if user.admin? || user.super_member? %>">
+                  <a data-toggle="modal" data-target="#deleteConfirmationModal" data-username="<%= user.username %>" data-delete-url="<%= url_for user%>" class="<%= "disabled" if user.admin? || user.super_member? %>">
+                    <%= t("labels.delete")%>
+                  </a>
+                </div>
               </td>
               <td>
                 <select class="selectpicker" <%= "disabled" if current_user.admin? %>>

@@ -268,3 +268,12 @@ label {
 .w3-hover-teal:hover .btn {
   border-color: White !important;
 }
+
+div.disabled {
+  cursor: not-allowed;
+}
+
+a.disabled {
+  pointer-events: none;
+  color: gray;
+}

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   protect_from_forgery except: [:validate_username, :validate_email]
-  before_filter :admin_only!, only: [:index]
+  before_filter :admin_or_super_member_only!, only: [:index, :destroy]
 
   # GET /users
   # GET /users.json
@@ -55,10 +55,15 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   # DELETE /users/1.json
+  # Admins and super_members cannot be destroyed
   def destroy
-    @user.destroy
+
+    if !@user.admin? && !@user.super_user?
+      @user.destroy
+    end
+
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url }
       format.json { head :no_content }
     end
   end
