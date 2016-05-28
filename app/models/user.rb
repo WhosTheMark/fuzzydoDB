@@ -38,6 +38,7 @@ class User
   field :name, type: String
   field :email, type: String
   as_enum :role, [:admin, :user, :super_member, :member], field: { :default => 1 }
+  field :photo, type: String, default: "default.png"
   field :institution, type: String, default: "none-especified"
   field :occupation, type: String, default: "none-especified"
   field :country, type: String, default: "none-especified"

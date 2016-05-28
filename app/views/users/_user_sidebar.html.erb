@@ -1,8 +1,8 @@
-<% @sidebar_bar_items = ["show", "edit"] %>
+<% @sidebar_bar_items = ["show"] %>
+<% @sidebar_bar_items << "edit" if @user == current_user %>
 <% @token_sidebar_namespace = "user-profile.menu." %>
-<% @links = [ url_for(controller: controller_name, action: "show"),
-              url_for(controller: controller_name, action: "edit")
-            ]%>
+<% @links = [ url_for(controller: controller_name, action: "show") ]%>
+<% @links << url_for(controller: controller_name, action: "edit") if @user == current_user %>
 
 <%= render :partial => "shared/sidebar",
     locals: { sidebar_bar_items: @sidebar_bar_items,
