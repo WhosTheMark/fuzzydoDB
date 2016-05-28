@@ -6,8 +6,6 @@
         locals: { active_item: @active_item} %>
 
   <div class="content-right">
-    <p id="notice"><%= notice %></p>
-
     <h1><%= t("admin.user-list") %></h1>
 
     <div class="table-responsive">
@@ -31,7 +29,7 @@
               <td><%= user.email %></td>
               <td><%= link_to t("labels.show"), user %></td>
               <td>
-                <a data-toggle="modal" data-target="#deleteConfirmationModal" data-username="<%= user.username %>" data-delete-url="<%= url_for user%>">
+                <a  class="fixed-modal" data-toggle="modal" data-target="#deleteConfirmationModal" data-username="<%= user.username %>" data-delete-url="<%= url_for user%>">
                   <%= t("labels.delete")%>
                 </a>
               </td>
@@ -57,7 +55,7 @@
 </div>
 
 
-<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog">
+<div class="fixed-modal modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-body modal-delete-user">

@@ -16,7 +16,9 @@
                 <span class="glyphicon glyphicon-user"></span>
                 <strong> <%= current_user.name %> </strong>
               </div>
-              <%= link_to t("header.users-management"), {controller: "/users", action: "index"}, id: "user-management-btn", class: "btn btn-default" %>
+              <% if [:admin, :super_member].include? current_user.role %>
+                <%= link_to t("header.users-management"), {controller: "/users", action: "index"}, id: "user-management-btn", class: "btn btn-default" %>
+              <% end %>
               <%= link_to raw("<span class=\"glyphicon glyphicon-log-out\"></span> #{t('header.logout')}"), destroy_user_session_path, id: "logout-btn",class: "btn btn-default", :method => :delete %>
             <% end %>
             <div class="input-group">
