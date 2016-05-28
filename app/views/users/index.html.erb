@@ -29,13 +29,14 @@
               <td><%= user.email %></td>
               <td><%= link_to t("labels.show"), user %></td>
               <td>
-                <a  class="fixed-modal" data-toggle="modal" data-target="#deleteConfirmationModal" data-username="<%= user.username %>" data-delete-url="<%= url_for user%>">
+                <a data-toggle="modal" data-target="#deleteConfirmationModal" data-username="<%= user.username %>" data-delete-url="<%= url_for user%>">
                   <%= t("labels.delete")%>
                 </a>
               </td>
               <td>
                 <div class="dropdown">
-                  <button class="btn btn-non-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= t("user.role." + user.role.to_s) %>
+                  <button class="btn btn-non-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                    <%= t("user.role." + user.role.to_s) %>
                   <span class="caret"></span></button>
                   <ul class="dropdown-menu">
                     <% User.roles.each do |role| -%>
@@ -55,9 +56,9 @@
 </div>
 
 
-<div class="fixed-modal modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog">
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-sm" role="document">
-    <div class="modal-content">
+    <div class="modal-content w3-container">
       <div class="modal-body modal-delete-user">
       </div>
       <div class="modal-footer">
