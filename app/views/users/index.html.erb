@@ -34,11 +34,13 @@
                 </a>
               </td>
               <td>
-              <select class="selectpicker">
-                <% User.roles.each do |role| -%>
-                  <option value="<%= role[1] %>" <%= "selected" if user.role.to_s == role.first.to_s %>>  <%= t("user.role." + role.first) %></option>
-                <% end -%>
-              </select>
+                <select class="selectpicker" <%= "disabled" if current_user.admin? %>>
+                  <% User.roles.each do |role| -%>
+                    <option value="<%= role[1] %>" <%= "selected" if user.role.to_s == role.first.to_s %>>
+                      <%= t("user.role." + role.first) %>
+                    </option>
+                  <% end -%>
+                </select>
               </td>
             </tr>
           <% end %>

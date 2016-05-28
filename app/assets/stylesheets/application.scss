@@ -44,6 +44,16 @@ body {
   transition: background-color .3s, box-shadow .3s, border-color .3s;
 }
 
+.btn-default.disabled,
+.btn-default.disabled:hover,
+.btn-default.disabled:focus,
+.btn-default.disabled:focus:hover {
+  background-color: $widget-green;
+  color: White;
+  border-color: $widget-green;
+  box-shadow: none;
+}
+
 .btn-default {
   margin-left: 7px;
   background-color: $widget-green;
@@ -253,4 +263,8 @@ label {
 
 .table .w3-hover-teal:hover .bootstrap-select a:focus {
     color: Black;
+}
+
+.w3-hover-teal:hover .btn {
+  border-color: White !important;
 }
