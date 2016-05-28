@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
     scope "admin" do
       resources :users, except: :show
+      get "(:locale)/users/:id" => redirect {|params| "#{params[:locale]}/profile/#{params[:id]}"}
+      get "(:locale)/users/:id/edit" => redirect {|params| "#{params[:locale]}/profile/#{params[:id].to_s}/edit"}
     end
   end
 

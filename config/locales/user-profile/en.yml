@@ -1,0 +1,9 @@
+en:
+  user-profile:
+    menu:
+      show: "Show profile"
+      edit: "Edit profile"
+    show:
+      title: "User profile"
+    edit:
+      title: "Edit profile"
