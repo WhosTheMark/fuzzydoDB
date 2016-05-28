@@ -5,7 +5,7 @@
   <%= render :partial => "admin_sidebar",
         locals: { active_item: @active_item} %>
 
-  <div class="content-right">
+  <div class="content-right" ng-controller="UserController">
     <h1><%= t("admin.user-list") %></h1>
 
     <% unless flash[:delete_notice].nil? %>
@@ -17,7 +17,7 @@
       </div>
     <% end %>
 
-    <div class="table-responsive">
+    <div class="table-responsive" ng-form name="userTable">
       <table id="userTable" class="table table-striped w3-hoverable table-bordered">
         <thead>
           <tr>
@@ -45,22 +45,26 @@
                 </div>
               </td>
               <td>
-                <select class="selectpicker" <%= "disabled" if current_user.admin? %>>
-                  <% User.roles.each do |role| -%>
-                    <option value="<%= role[1] %>" <%= "selected" if user.role.to_s == role.first.to_s %>>
+                <select class="selectpicker" <%= "disabled" if current_user.admin? %> ng-model="users.<%= user.username %>"
+                  ng-init="users.<%= user.username %> = '<%= user.role_cd %>'" name="<%= user.username %>">
+                  <% User.roles.each do |role| %>
+                    <option value="<%= role[1] %>">
                       <%= t("user.role." + role.first) %>
                     </option>
-                  <% end -%>
+                  <% end %>
                 </select>
               </td>
             </tr>
           <% end %>
         </tbody>
       </table>
+
+      <a class="btn btn-primary" ng-click="saveRoles()">Save </a>
+
     </div>
+      {{ saveRoles() | json }}
   </div>
 </div>
-
 
 <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-sm" role="document">
