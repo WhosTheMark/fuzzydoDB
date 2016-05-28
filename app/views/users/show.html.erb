@@ -1,19 +1,12 @@
-<p id="notice"><%= notice %></p>
+<div class="content-wrapper">
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+  <%= render :partial => "user_sidebar",
+        locals: { active_item: @active_item} %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+  <div class="content-right">
+    <h1><%= t("user-profile.show.title") %></h1>
+    <%= render :partial => "users/show_profile",
+        locals: { title_token: @title, content_token: @content} %>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<% @sidebar_bar_items = ["show", "edit"] %>
+<% @token_sidebar_namespace = "user-profile.menu." %>
+<% @links = [ url_for(controller: controller_name, action: "show"),
+              url_for(controller: controller_name, action: "edit"),
+            ]%>
+
+<%= render :partial => "shared/sidebar",
+    locals: { sidebar_bar_items: @sidebar_bar_items,
+              active_item: active_item,
+              token_sidebar_namespace: @token_sidebar_namespace,
+              links: @links } %>
+

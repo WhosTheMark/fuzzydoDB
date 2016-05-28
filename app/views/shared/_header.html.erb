@@ -13,8 +13,7 @@
               <button id="login-btn" type="button" class="btn btn-default" data-toggle="modal" data-target="#modalLogin"><span class="glyphicon glyphicon-log-in"></span> <%= t('header.login') %></button>
             <% else %>
               <div class="header-user-info">
-                <span class="glyphicon glyphicon-user"></span>
-                <strong> <%= current_user.name %> </strong>
+                <%= link_to raw("<span class=\"glyphicon glyphicon-user\"></span> <strong>#{current_user.name}</strong>"), current_user %>
               </div>
               <% if [:admin, :super_member].include? current_user.role %>
                 <%= link_to t("header.users-management"), {controller: "/users", action: "index"}, id: "user-management-btn", class: "btn btn-default" %>

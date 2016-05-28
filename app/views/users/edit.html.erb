@@ -1,6 +1,11 @@
-<h1>Editing User</h1>
+<div class="content-wrapper">
 
-<%= render 'form' %>
+  <%= render :partial => "user_sidebar",
+        locals: { active_item: @active_item} %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+  <div class="content-right">
+    <h1><%= t("user-profile.edit.title") %></h1>
+    <%= render 'form' %>
+
+  </div>
+</div>
