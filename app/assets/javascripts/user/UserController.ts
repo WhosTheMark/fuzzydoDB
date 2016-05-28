@@ -1,7 +1,7 @@
 /// <reference path="../../typings/angular.d.ts" />
 
 angular.module("fuzzydodb.user", [])
-  .controller("UserController", ["$scope", function($scope){
+  .controller("UserController", ["$scope", "$http", function($scope, $http: angular.IHttpService) {
     $scope.users = {};
 
     $scope.saveRoles = function() {
@@ -18,7 +18,12 @@ angular.module("fuzzydodb.user", [])
           dirtyFormControls.push({ username: value.$name, role: value.$modelValue });
       });
 
-      return dirtyFormControls;
+      $http.put("users/changeRoles.json", { users: dirtyFormControls })
+        .then(function(response){
+          location.reload();
+        }, function(reason){
+
+        });
     }
 
   }]);

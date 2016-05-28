@@ -61,13 +61,13 @@ class ApplicationController < ActionController::Base
   end
 
   def super_member_only!
-    if current_user.nil? || !current_user.admin?
+    if current_user.nil? || !current_user.super_member?
       raise Exceptions::UnauthorizedAccessError.new
     end
   end
 
   def admin_or_super_member_only!
-    if current_user.nil? || (!current_user.admin? && !current_user.super_member?)
+    if current_user.nil? || !current_user.admin_or_super_member?
       raise Exceptions::UnauthorizedAccessError.new
     end
   end

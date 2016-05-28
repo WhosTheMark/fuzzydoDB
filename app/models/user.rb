@@ -51,6 +51,10 @@ class User
     self.where(email: email.downcase).exists?
   end
 
+  def admin_or_super_member?
+    self.admin? || self.super_member?
+  end
+
   private
 
   def drop_the_case

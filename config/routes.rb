@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     post 'users/validateEmail/' => 'users#validate_email', :defaults => { :format => 'json' }
 
     scope "admin" do
+      put 'users/changeRoles' => 'users#change_roles'
       resources :users
     end
   end
