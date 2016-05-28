@@ -2,3 +2,4 @@ es:
   admin:
     user-list: "LISTA DE USUARIOS"
     delete-user-confirmation: "¿Estás seguro que quieres eliminar a ${username}?"
+    delete-response-alert: "¡El usuario %{user} ha sido eliminado satisfactoriamente!"

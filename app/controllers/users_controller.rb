@@ -58,8 +58,9 @@ class UsersController < ApplicationController
   # Admins and super_members cannot be destroyed
   def destroy
 
-    if !@user.admin? && !@user.super_user?
+    if !@user.admin? && !@user.super_member?
       @user.destroy
+      flash[:delete_notice] = @user.username
     end
 
     respond_to do |format|

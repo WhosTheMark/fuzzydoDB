@@ -2,3 +2,4 @@ en:
   admin:
     user-list: "USER LIST"
     delete-user-confirmation: "Are you sure you want to delete ${username}?"
+    delete-response-alert: "User %{user} has been successfully deleted!"
