@@ -7,3 +7,9 @@ es:
       title: "Perfil de usuario"
     edit:
       title: "Editar perfil"
+    country: "País de residencia"
+    institution: "Institución"
+    username: "Nombre de usuario"
+    occupation: "Ocupación"
+    email: "Correo electrónico"
+    name: "Nombre completo"

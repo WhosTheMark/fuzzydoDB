@@ -1,17 +1,11 @@
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="row">
+  <% field = ["name", "username", "email", "institution", "occupation", "country"] %>
+  <% field.each do |tag| %>
+  <div class="col-xs-3 show-profile-field">
+    <strong><%= t("user-profile."+tag) %>:</strong>
+  </div>
+  <div class="col-xs-3 show-profile-field">
+    <%= @user.read_attribute tag %>
+  </div>
+  <% end %>
+</div>

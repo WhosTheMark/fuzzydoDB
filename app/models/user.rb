@@ -38,6 +38,9 @@ class User
   field :name, type: String
   field :email, type: String
   as_enum :role, [:admin, :user, :super_member, :member], field: { :default => 1 }
+  field :institution, type: String, default: "none-especified"
+  field :occupation, type: String, default: "none-especified"
+  field :country, type: String, default: "none-especified"
 
   validates :username, presence: true, uniqueness: true, format: /\A\w*\z/
   validates :name, presence: true
@@ -51,11 +54,18 @@ class User
     self.where(email: email.downcase).exists?
   end
 
+  def self.find_by_username username
+    self.where(username: username)[0]
+  end
+
+  def to_param
+    username
+  end
+
   private
 
   def drop_the_case
     self.username = self.username.downcase unless self.username.nil?
     self.email = self.email.downcase unless self.email.nil?
   end
-
 end

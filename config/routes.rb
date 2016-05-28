@@ -8,8 +8,6 @@ Rails.application.routes.draw do
 
     get 'about' => 'about#index'
 
-    get 'profile/:id', to: 'users#show'
-
     scope 'about' do
       get 'history' => 'about#history'
       get 'members' => 'about#members'
@@ -20,6 +18,9 @@ Rails.application.routes.draw do
 
     post 'users/validateUsername/' => 'users#validate_username', :defaults => { :format => 'json' }
     post 'users/validateEmail/' => 'users#validate_email', :defaults => { :format => 'json' }
+
+    get 'profile/:id', to: 'users#show'
+    get 'profile/:id/edit', to: 'users#edit'
 
     scope "admin" do
       resources :users, except: :show

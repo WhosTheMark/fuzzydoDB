@@ -7,3 +7,9 @@ en:
       title: "User profile"
     edit:
       title: "Edit profile"
+    country: "Country of residence"
+    institution: "Institution"
+    username: "Username"
+    occupation: "Occupation"
+    email: "Email address"
+    name: "Name"
