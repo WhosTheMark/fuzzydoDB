@@ -34,18 +34,11 @@
                 </a>
               </td>
               <td>
-                <div class="dropdown">
-                  <button class="btn btn-non-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                    <%= t("user.role." + user.role.to_s) %>
-                  <span class="caret"></span></button>
-                  <ul class="dropdown-menu">
-                    <% User.roles.each do |role| -%>
-                      <% unless role.first.to_s.eql? user.role.to_s-%>
-                        <li><a href=#><%= t("user.role." + role.first.to_s) %></a></li>
-                      <% end -%>
-                    <% end -%>
-                  </ul>
-                </div>
+              <select class="selectpicker">
+                <% User.roles.each do |role| -%>
+                  <option value="<%= role[1] %>" <%= "selected" if user.role.to_s == role.first.to_s %>>  <%= t("user.role." + role.first) %></option>
+                <% end -%>
+              </select>
               </td>
             </tr>
           <% end %>

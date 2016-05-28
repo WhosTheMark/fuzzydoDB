@@ -19,6 +19,7 @@
 //= require_tree .
 
 //= require datatables
+//= require bootstrap-select/bootstrap-select
 
 /// <reference path="../typings/jquery.d.ts" />
 

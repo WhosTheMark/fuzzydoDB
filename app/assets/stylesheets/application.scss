@@ -16,6 +16,7 @@
 
  //= require w3
  //= require datatables
+ //= require bootstrap-select/bootstrap-select
 
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
@@ -40,7 +41,7 @@ body {
   height: 30px;
   padding: 5px 11px;
   font-size: 13px;
-  transition: background-color .3s, box-shadow .3s;
+  transition: background-color .3s, box-shadow .3s, border-color .3s;
 }
 
 .btn-default {
@@ -64,12 +65,14 @@ body {
 .btn-default:focus,
 .btn-default:active,
 .btn-default:active:hover,
-.btn-default:active:focus {
+.btn-default:active:focus,
+.open > .btn-default.dropdown-toggle,
+.open > .btn-default.dropdown-toggle:hover {
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.125) inset;
   color: White;
   background-color: $btn-active;
   border-color: $btn-active;
   outline: none;
-  box-shadow: none;
 }
 
 .btn-non-primary {
@@ -80,6 +83,10 @@ body {
 
 .btn-default[disabled]:hover {
   background-color: $btn-hover;
+}
+
+table .bootstrap-select {
+    width: auto !important;
 }
 
 .content {
@@ -240,4 +247,10 @@ label {
   100% {
     transform: rotate(359deg);
   }
+}
+
+// bootstrap-select
+
+.table .w3-hover-teal:hover .bootstrap-select a:focus {
+    color: Black;
 }
