@@ -5,6 +5,8 @@ angular.module("fuzzydodb.user", [])
     function($scope, $http: angular.IHttpService, userService) {
 
     $scope.users = {};
+    $scope.selectedUser = null;
+    $scope.userTable = {};
 
     $scope.$watch('userTable.$dirty', function(newValue, oldValue) {
       if($scope.userTable.$dirty){
@@ -31,14 +33,27 @@ angular.module("fuzzydodb.user", [])
       });
 
       userService.changeRoles(dirtyFormControls)
-        .then(function(response){
+        .then(function(response) {
           window.onbeforeunload = null;
           location.reload();
-        }, function(reason){
+        }, function(reason) {
           alert("Something bad happened: " + reason);
-        }, function(){
+        }, function() {
           $scope.userTable.$pending = false;
         });
+    }
+
+    $scope.transferRole = function() {
+      userService.transferRole($scope.selectedUser)
+        .then(function(response){
+          window.location.href = "/";
+        }, function(reason) {
+          alert("Something bad happened: " + reason);
+        });
+    }
+
+    $scope.selectUser = function(user){
+      $scope.selectedUser = user;
     }
 
   }]);

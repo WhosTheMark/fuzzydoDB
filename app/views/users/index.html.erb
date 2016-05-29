@@ -3,7 +3,7 @@
 <div class="content-wrapper">
 
   <%= render :partial => "admin_sidebar",
-        locals: { active_item: @active_item} %>
+        locals: { active_item: "user-list"} %>
 
   <div class="content-right" ng-controller="UserController">
     <h1><%= t("admin.user-list") %></h1>
@@ -69,6 +69,7 @@
   </div>
 </div>
 
+<%# content is added using js %>
 <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content w3-container">

@@ -1,0 +1,60 @@
+<div ng-controller="UserController">
+  <div class="content-wrapper">
+
+    <%= render :partial => "admin_sidebar",
+          locals: { active_item: "transfer-role"} %>
+
+    <div class="content-right">
+
+      <h1><%= t("admin.menu.transfer-role") %></h1>
+
+      <div class="table-responsive">
+        <table id="transferTable" class="table table-striped w3-hoverable table-bordered">
+          <thead>
+            <tr>
+              <th><%= t("user.username") %></th>
+              <th><%= t("user.name") %></th>
+              <th><%= t("user.email") %></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @users.each do |user| %>
+              <tr class="w3-hover-teal">
+                <td><%= user.username %></td>
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+                <td><%= link_to t("labels.show"), user %></td>
+                <td>
+                  <div class="btn btn-danger <%= "disabled" if user.admin? || user.super_member? %>">
+                    <div data-toggle="modal" data-target="#transferConfirmationModal" data-username="<%= user.username %>"
+                     class="<%= "disabled" if user.admin? || user.super_member? %>"
+                     ng-click="selectUser('<%= user.id %>')">
+                      <%= t("labels.transfer")%>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <%# Content is filled using js %>
+  <div class="modal fade" id="transferConfirmationModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content w3-container">
+        <div class="modal-body modal-delete-user">
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-non-primary" data-dismiss="modal"><%= t("labels.close") %></a>
+          <a id="transferBtn" class="btn btn-danger" ng-click="transferRole()"><%= t("labels.transfer") %></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

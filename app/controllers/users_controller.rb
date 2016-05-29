@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :transfer_role]
   protect_from_forgery except: [:validate_username, :validate_email]
-  before_filter :admin_or_super_member_only!, only: [:index, :destroy]
+  before_filter :admin_or_super_member_only!, only: [:index, :destroy, :transfer_role, :show_transfer_role]
   before_filter :super_member_only!, only: [:change_roles]
 
   # GET /users
@@ -94,6 +94,40 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to users_url }
+      format.json { head :no_content }
+    end
+  end
+
+  # GET
+  def show_transfer_role
+    if current_user.super_member?
+      @users = User.where(role_cd: User.roles[:member])
+    else
+      @users = User.where(role_cd: User.roles[:user])
+    end
+  end
+
+  #POST
+  # current user transfer his role
+  # super member can only transfer his role to member
+  # admin to users
+  def transfer_role
+
+    if !@user.admin_or_super_member?
+      @user.role = current_user.role
+
+      if current_user.super_member?
+        current_user.member!
+      else
+        current_user.user!
+      end
+
+      @user.save!
+      current_user.save!
+    end
+
+    respond_to do |format|
+      format.html { redirect_to root_path }
       format.json { head :no_content }
     end
   end
