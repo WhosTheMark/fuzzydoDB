@@ -8,6 +8,7 @@ es:
     logout: "Cerrar Sesión"
     register: "Registrarse"
     search: "Buscar"
+    users-management: "Manejo de usuarios"
 
     forgot:
       password: "¿Olvidó su contraseña?"
@@ -30,6 +31,11 @@ es:
     username: "Nombre de usuario"
     name: "Nombre"
     email: "Correo electrónico"
+    role:
+      member: "Miembro"
+      super_member: "Supermiembro"
+      admin: "Administrador"
+      user: "Usuario"
 
   labels:
     delete: "Eliminar"
@@ -37,12 +43,15 @@ es:
     show: "Mostrar"
     close: "Cerrar"
     cancel: "Cancelar"
+    save_changes: "Guardar Cambios"
+    transfer: "Transferir Rol"
 
   tables:
     language: '//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json'
 
   errors:
     invalidEmail: "correo inválido"
+    unauthorized: "Lo sentimos, no estás autorizado para ver esta página"
 
   mongoid:
     errors:

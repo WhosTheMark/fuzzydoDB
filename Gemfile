@@ -6,6 +6,7 @@ gem 'rails', '4.2.6'
 # Use mongoid gem
 gem 'mongoid',  github: 'mongoid/mongoid'
 gem 'bson_ext'
+gem 'simple_enum', '~> 2.3.0' , require: 'simple_enum/mongoid'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 

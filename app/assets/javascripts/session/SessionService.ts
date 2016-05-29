@@ -1,7 +1,7 @@
 /// <reference path="../../typings/angular.d.ts" />
 
-angular.module("fuzzydodb.user")
-  .factory("UserService", ["$http", "$q", function($http, $q: angular.IQService){
+angular.module("fuzzydodb.session")
+  .factory("SessionService", ["$http", "$q", function($http, $q: angular.IQService){
 
     // generic validate field
     var validateField = function(path: string, object){

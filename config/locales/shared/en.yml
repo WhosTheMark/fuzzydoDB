@@ -29,6 +29,7 @@ en:
     logout: "Log out"
     register: "Register"
     search: "Search"
+    users-management: "Users Management"
 
     forgot:
       password: "Forgot your password?"
@@ -51,6 +52,11 @@ en:
     username: "Username"
     name: "Name"
     email: "e-mail"
+    role:
+      member: "Member"
+      super_member: "Super member"
+      admin: "Admin"
+      user: "User"
 
   labels:
     delete: "Delete"
@@ -58,12 +64,15 @@ en:
     show: "Show"
     close: "Close"
     cancel: "Cancel"
+    save_changes: "Save Changes"
+    transfer: "Transfer Role"
 
   tables:
     language: ""
 
   errors:
     invalidEmail: "invalid e-mail"
+    unauthorized: "We are sorry, you are not authorized to see this page"
 
   mongoid:
     errors:

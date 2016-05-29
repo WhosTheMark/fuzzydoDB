@@ -1,9 +1,9 @@
 /// <reference path="../../typings/angular.d.ts" />
 /// <reference path="../../typings/jquery.d.ts" />
 
-angular.module("fuzzydodb.user", [])
-  .controller("UserController", ["$scope", "$http", "UserService",
-    function($scope, $http, userService) {
+angular.module("fuzzydodb.session", [])
+  .controller("SessionController", ["$scope", "$http", "SessionService",
+    function($scope, $http, sessionService) {
 
       $scope.loginUser = {};
       $scope.registerUser = {};
@@ -33,7 +33,7 @@ angular.module("fuzzydodb.user", [])
           }
 
           // refresh page on success
-          userService.logIn(user)
+          sessionService.logIn(user)
             .then(function(response){
               location.reload();
             }, function(reason){
@@ -79,8 +79,8 @@ angular.module("fuzzydodb.user", [])
 
   // Custom async validator
   // Checks if the username is taken
-  .directive("usernameTakenValidator", ["UserService", "fieldAsyncValidatorFactory",
-    function(userService, fieldAsyncValidatorFactory) {
+  .directive("usernameTakenValidator", ["SessionService", "fieldAsyncValidatorFactory",
+    function(sessionService, fieldAsyncValidatorFactory) {
       return {
         require: "ngModel",
         link: function(scope, element, attrs, ngModel: angular.INgModelController) {
@@ -88,14 +88,14 @@ angular.module("fuzzydodb.user", [])
           ngModel.$asyncValidators.usernameTaken = function(modelValue, viewValue){
 
             return fieldAsyncValidatorFactory
-              .validator(viewValue, userService.validateUsername, "An error ocurred validating the username ");
+              .validator(viewValue, sessionService.validateUsername, "An error ocurred validating the username ");
           }
         }
       }
   }])
 
-  .directive("emailTakenValidator", ["UserService", "fieldAsyncValidatorFactory",
-    function(userService, fieldAsyncValidatorFactory) {
+  .directive("emailTakenValidator", ["SessionService", "fieldAsyncValidatorFactory",
+    function(sessionService, fieldAsyncValidatorFactory) {
       return {
         require: "ngModel",
         link: function(scope, element, attrs, ngModel: angular.INgModelController) {
@@ -103,7 +103,7 @@ angular.module("fuzzydodb.user", [])
           ngModel.$asyncValidators.emailTaken = function(modelValue, viewValue) {
 
             return fieldAsyncValidatorFactory
-              .validator(viewValue, userService.validateEmail, "An error ocurred validating the email ");
+              .validator(viewValue, sessionService.validateEmail, "An error ocurred validating the email ");
           }
         }
       }

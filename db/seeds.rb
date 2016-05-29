@@ -50,36 +50,48 @@ User.create!(name: "Marcos Campos",
              username: "whosthemark",
              email: "whosthemark@gmail.com",
              password: "123123",
-             password_confirmation: "123123")
+             password_confirmation: "123123",
+             role: :member)
 
 User.create!(name: "John Delgado",
              username: "pexison",
              email: "pexison@gmail.com",
              password: "123123",
-             password_confirmation: "123123")
+             password_confirmation: "123123",
+             role: :member)
 
 User.create!(name: "Soraya Carrasquel",
              username: "scarrasquel",
              email: "scarrasquel@usb.ve",
              password: "123123",
-             password_confirmation: "123123")
+             password_confirmation: "123123",
+             role: :member)
 
 User.create!(name: "David Coronado",
              username: "dcoronado",
              email: "dcoronado@usb.ve",
              password: "123123",
-             password_confirmation: "123123")
+             password_confirmation: "123123",
+             role: :member)
 
 User.create!(name: "Rosseline Rodríguez",
              username: "rrodriguez",
              email: "rrodriguez@usb.ve",
              password: "123123",
-             password_confirmation: "123123")
+             password_confirmation: "123123",
+             role: :member)
 
 User.create!(name: "Admin",
              username: "Admin",
              email: "admin@fuzzydo.db",
              password: "123123",
-             password_confirmation: "123123")
+             password_confirmation: "123123",
+             role: :admin)
 
+User.create!(name: "Super Miembro",
+             username: "Super",
+             email: "super@fuzzydo.db",
+             password: "123123",
+             password_confirmation: "123123",
+             role: :super_member)
 

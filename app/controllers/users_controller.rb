@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :transfer_role]
   protect_from_forgery except: [:validate_username, :validate_email]
+  before_filter :admin_or_super_member_only!, only: [:index, :destroy, :transfer_role, :show_transfer_role]
+  before_filter :super_member_only!, only: [:change_roles]
 
   # GET /users
   # GET /users.json
@@ -54,10 +56,16 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   # DELETE /users/1.json
+  # Admins and super_members cannot be destroyed
   def destroy
-    @user.destroy
+
+    unless @user.admin_or_super_member?
+      @user.destroy
+      flash[:delete_notice] = @user.username
+    end
+
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url }
       format.json { head :no_content }
     end
   end
@@ -76,6 +84,51 @@ class UsersController < ApplicationController
     user_exists = !User.exists_email?(email)
     respond_to do |format|
       format.json { render json: user_exists }
+    end
+  end
+
+  #PATCH/PUT
+  def change_roles
+    changed_users = params[:users]
+    User.change_roles(changed_users)
+
+    respond_to do |format|
+      format.html { redirect_to users_url }
+      format.json { head :no_content }
+    end
+  end
+
+  # GET
+  def show_transfer_role
+    if current_user.super_member?
+      @users = User.where(role_cd: User.roles[:member])
+    else
+      @users = User.where(role_cd: User.roles[:user])
+    end
+  end
+
+  #POST
+  # current user transfer his role
+  # super member can only transfer his role to member
+  # admin to users
+  def transfer_role
+
+    if !@user.admin_or_super_member?
+      @user.role = current_user.role
+
+      if current_user.super_member?
+        current_user.member!
+      else
+        current_user.user!
+      end
+
+      @user.save!
+      current_user.save!
+    end
+
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.json { head :no_content }
     end
   end
 

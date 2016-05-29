@@ -1,0 +1,16 @@
+@import 'variables';
+
+.error-page {
+
+	background-color: $widget-green;
+	text-align: center;
+
+	h1 {
+		color: white;
+		border-bottom: none;
+	}
+}
+
+.error-content {
+	padding-top: 80px;	
+}
