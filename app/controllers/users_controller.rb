@@ -90,27 +90,7 @@ class UsersController < ApplicationController
   #PATCH/PUT
   def change_roles
     changed_users = params[:users]
-
-    unless changed_users.nil?
-
-      users = User.all
-      roles = User.roles
-      not_available_roles = User.roles.values_at(:admin, :super_member)
-
-      changed_users.each do |changed_user|
-
-        int_changed_role = Integer(changed_user["role"])
-        user = users.entries.find { |u| u.username == changed_user["username"] }
-
-        if !user.admin_or_super_member? && !(not_available_roles.include? int_changed_role) &&
-          !roles.value(int_changed_role).nil?
-
-          user.role_cd = int_changed_role
-          user.save!
-        end
-
-      end
-    end
+    User.change_roles(changed_users)
 
     respond_to do |format|
       format.html { redirect_to users_url }
