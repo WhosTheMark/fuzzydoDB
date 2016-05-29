@@ -37,7 +37,7 @@ class User
   field :username, type: String
   field :name, type: String
   field :email, type: String
-  as_enum :role, [:admin, :user, :super_member, :member], field: { :default => 1 }
+  as_enum :role, [:user, :member, :admin, :super_member], field: { :default => 1 }
 
   validates :username, presence: true, uniqueness: true, format: /\A\w*\z/
   validates :name, presence: true

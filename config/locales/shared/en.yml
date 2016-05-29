@@ -64,6 +64,7 @@ en:
     show: "Show"
     close: "Close"
     cancel: "Cancel"
+    save_changes: "Save Changes"
 
   tables:
     language: ""

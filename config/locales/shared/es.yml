@@ -43,6 +43,7 @@ es:
     show: "Mostrar"
     close: "Cerrar"
     cancel: "Cancelar"
+    save_changes: "Guardar Cambios"
 
   tables:
     language: '//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json'

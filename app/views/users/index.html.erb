@@ -32,7 +32,7 @@
 
         <tbody>
           <% @users.each do |user| %>
-            <tr class="w3-hover-teal">
+            <tr class="w3-hover-teal" ng-class="{ 'font-bold' : userTable.<%= user.username %>.$dirty }">
               <td><%= user.username %></td>
               <td><%= user.name %></td>
               <td><%= user.email %></td>
@@ -45,10 +45,11 @@
                 </div>
               </td>
               <td>
-                <select class="selectpicker" <%= "disabled" if current_user.admin? %> ng-model="users.<%= user.username %>"
-                  ng-init="users.<%= user.username %> = '<%= user.role_cd %>'" name="<%= user.username %>">
+                <select class="selectpicker" <%= "disabled" if current_user.admin? || user.admin_or_super_member? %>
+                  ng-model="users.<%= user.username %>" ng-init="users.<%= user.username %> = '<%= user.role_cd %>'"
+                  name="<%= user.username %>">
                   <% User.roles.each do |role| %>
-                    <option value="<%= role[1] %>">
+                    <option value="<%= role[1] %>" <%= "disabled" if role[0] == "admin" || role[0] == "super_member" %>>
                       <%= t("user.role." + role.first) %>
                     </option>
                   <% end %>
@@ -59,7 +60,10 @@
         </tbody>
       </table>
 
-      <a class="btn btn-primary" ng-click="saveRoles()">Save </a>
+      <a class="btn btn-default" ng-click="saveRoles()" ng-disabled="userTable.$pending">
+        <span class="glyphicon icon-spin glyphicon-refresh" ng-if="userTable.$pending"></span>
+        <%= t("labels.save_changes") %>
+      </a>
 
     </div>
   </div>

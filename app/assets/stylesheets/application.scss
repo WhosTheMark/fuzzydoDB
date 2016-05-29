@@ -47,7 +47,7 @@ body {
 .btn-default.disabled,
 .btn-default.disabled:hover,
 .btn-default.disabled:focus,
-.btn-default.disabled:focus:hover {
+.btn-default.disabled:focus:hover{
   background-color: $widget-green;
   color: White;
   border-color: $widget-green;
@@ -77,7 +77,8 @@ body {
 .btn-default:active:hover,
 .btn-default:active:focus,
 .open > .btn-default.dropdown-toggle,
-.open > .btn-default.dropdown-toggle:hover {
+.open > .btn-default.dropdown-toggle:hover,
+.open > .btn-default.dropdown-toggle:focus {
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.125) inset;
   color: White;
   background-color: $btn-active;
@@ -134,6 +135,10 @@ h2 {
   p {
     margin-bottom: 1.5em;
   }
+}
+
+.font-bold {
+  font-weight: bold;
 }
 
 .crunchify-top:hover {
