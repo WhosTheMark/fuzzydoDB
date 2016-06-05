@@ -5,13 +5,19 @@
 
   <div class="content-right">
     <h1><%= t("user-profile.edit.title") %></h1>
-    <div class="member-card">
-      <%= form_for(@user) do |f| %>
-        <%= devise_error_messages! %>
-        <div><%= f.label :name %><br />
-            <%= f.text_field :name, autofocus: true, value: @user.name %></div>
-        <div class="actions"><%= f.submit "update" %></div>
-      <% end %>
-    </div>
+    <%= form_for(@user) do |f| %>
+      <%= devise_error_messages! %>
+      <div><%= f.label :name %><br/>
+          <%= f.text_field :name, autofocus: true, value: @user.name %></div>
+      <div><%= f.label :email %><br/>
+          <%= f.text_field :email, autofocus: true, value: @user.email %></div>
+      <div><%= f.label :occupation %><br/>
+          <%= f.text_field :occupation, autofocus: true, value: @user.occupation %></div>
+      <div><%= f.label :institution %><br/>
+          <%= f.text_field :institution, autofocus: true, value: @user.institution %></div>
+      <div><%= f.label :country %><br/>
+          <%= f.text_field :country, autofocus: true, value: @user.country %></div>
+      <div class="actions"><%= f.submit "update" %></div>
+    <% end %>
   </div>
 </div>
