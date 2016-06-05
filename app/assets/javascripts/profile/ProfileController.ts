@@ -2,13 +2,13 @@
 /// <reference path="../../typings/jquery.d.ts" />
 
 angular.module("fuzzydodb.profile", [])
-  .controller("profileController", ["$scope", "$http", "profileService",
-    function($scope, $http, userService) {
+  .controller("ProfileController", ["$scope", "$http", "profileService",
+    function($scope, $http, profileService) {
 
-      $scope.user = {name: "John", email: "pexison@gmail.com", country: "Qongo"};
-      $scope.loginUser = {};
-      $scope.registerUser = {};
-      $scope.loginError = false;
+      profileService.getProfile({email: $scope.actorEmail})
+        .then(function(response) {
+          $scope.user = response.data;
+        });
 
   }])
 

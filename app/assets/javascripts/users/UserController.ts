@@ -5,7 +5,6 @@ angular.module("fuzzydodb.user", [])
   .controller("UserController", ["$scope", "$http", "UserService",
     function($scope, $http, userService) {
 
-      $scope.user = {name: "John"};
       $scope.loginUser = {};
       $scope.registerUser = {};
       $scope.loginError = false;

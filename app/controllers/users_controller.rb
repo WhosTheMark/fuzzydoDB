@@ -80,8 +80,13 @@ class UsersController < ApplicationController
   end
 
   def validate_email
-    email = params[:email]
-    user_exists = !User.exists_email?(email)
+    if current_user.email.eql? params[:email]
+      user_exists = true
+    else
+      email = params[:email]
+      user_exists = !User.exists_email?(email)
+    end
+
     respond_to do |format|
       format.json { render json: user_exists }
     end
