@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  include ProfileHelper
+
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   protect_from_forgery except: [:validate_username, :validate_email]
   before_filter :admin_only!, only: [:index]
@@ -45,8 +48,8 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+        format.html { redirect_to profile_path(@user.username), notice: 'User was successfully updated.' }
+        format.json { render :show, status: :ok, location: profile_path(@user.username)}
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -89,6 +92,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :name, :email)
+      params.require(:user).permit(:username, :name, :email, :occupation, :institution, :country)
     end
 end

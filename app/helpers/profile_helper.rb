@@ -1,5 +1,5 @@
 module ProfileHelper
-  def show_profile(username)
+  def profile_path(username)
     "#{root_url}/profile/#{username}"
   end
 end
