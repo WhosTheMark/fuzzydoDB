@@ -13,11 +13,12 @@
   <% field = ["name", "username", "email", "institution", "occupation", "country"] %>
   <% field.each do |tag| %>
   <div class="col-xs-3 show-profile-field">
-    <strong><%= t("user-profile."+tag) %>:</strong>
+    <strong><%= t("user-profile.#{tag}") %>:</strong>
   </div>
   <div class="col-xs-3 show-profile-field">
-    <%= if @user.read_attribute tag
-          @user.read_attribute tag
+    <%= field_value = @user.read_attribute tag
+        if field_value.present? 
+          field_value
         else
           t("user-profile.none-especified")
         end

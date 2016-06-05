@@ -4,7 +4,7 @@ angular.module("fuzzydodb.profile")
 .service('profileService', ['$http', function($http) {
     this.editProfile = function(args) {
         return  $http({
-          url: "/user/profile/update",
+          url: "/profile",
           method: 'PUT',
           params: args
         });
@@ -12,7 +12,7 @@ angular.module("fuzzydodb.profile")
 
     this.getProfile = function(args) {
         return  $http({
-          url: "/user/profile",
+          url: "/profile/" ,
           method: 'GET',
           params: args
         });
