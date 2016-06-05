@@ -1,15 +1,15 @@
 en:
   user-profile:
     menu:
-      show: "Show profile"
-      edit: "Edit profile"
+      show: "SHOW PROFILE"
+      edit: "EDIT PROFILE"
     show:
-      title: "User profile"
+      title: "USER PROFILE"
     edit:
-      title: "Edit profile"
-    country: "Country of residence"
-    institution: "Institution"
-    username: "Username"
-    occupation: "Occupation"
-    email: "Email address"
-    name: "Name"
+      title: "EDIT PROFILE"
+    country: "COUNTRY OF RESIDENCE"
+    institution: "INSTITUTION"
+    username: "USERNAME"
+    occupation: "OCCUPATION"
+    email: "EMAIL ADDRESS"
+    name: "NAME"

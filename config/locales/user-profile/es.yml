@@ -1,15 +1,15 @@
 es:
   user-profile:
     menu:
-      show: "Mostrar perfil"
-      edit: "Modificar perfil"
+      show: "MOSTRAR PERFIL"
+      edit: "EDITAR PERFIL"
     show:
-      title: "Perfil de usuario"
+      title: "PERFIL DE USUARIO"
     edit:
-      title: "Editar perfil"
-    country: "País de residencia"
-    institution: "Institución"
-    username: "Nombre de usuario"
-    occupation: "Ocupación"
-    email: "Correo electrónico"
-    name: "Nombre completo"
+      title: "EDITAR PERFIL"
+    country: "PAÍS DE RESIDENCIA"
+    institution: "INSTITUCIÓN"
+    username: "NOMBRE DE USUARIO"
+    occupation: "OCUPACIÓN"
+    email: "CORREO ELECTRÓNICO"
+    name: "NOMBRE COMPLETO"

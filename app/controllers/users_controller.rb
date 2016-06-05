@@ -21,6 +21,8 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user = User.find_by_username(params[:id])
+    puts @user.inspect
   end
 
   # POST /users

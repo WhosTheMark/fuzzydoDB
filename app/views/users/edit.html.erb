@@ -5,11 +5,13 @@
 
   <div class="content-right">
     <h1><%= t("user-profile.edit.title") %></h1>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
-      <div><%= f.label :name %><br />
-          <%= f.text_field :name, autofocus: true, value: @user.name %></div>
-      <div class="actions"><%= f.submit "update" %></div>
-    <% end %>
+    <div class="member-card">
+      <%= form_for(@user) do |f| %>
+        <%= devise_error_messages! %>
+        <div><%= f.label :name %><br />
+            <%= f.text_field :name, autofocus: true, value: @user.name %></div>
+        <div class="actions"><%= f.submit "update" %></div>
+      <% end %>
+    </div>
   </div>
 </div>
