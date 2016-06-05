@@ -1,7 +1,7 @@
 <div class="content-wrapper" ng-controller="ProfileController">
 
   <%= render :partial => "user_sidebar",
-        locals: { active_item: @active_item} %>
+        locals: { active_item: "edit"} %>
 
   <div class="content-right">
     <h1><%= t("user-profile.edit.title") %></h1>

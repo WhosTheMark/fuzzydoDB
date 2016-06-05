@@ -5,6 +5,7 @@ var app = angular.module("fuzzydodb", [
 
   // Dependencies
   "ngMessages",
+  "ngImgCrop",
 
   // FuzzydoDB modules
   "fuzzydodb.user",

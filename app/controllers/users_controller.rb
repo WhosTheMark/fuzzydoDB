@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   include ProfileHelper
 
   before_action :set_user_by_id, only: [:update, :destroy]
-  before_action :set_user_by_username, only: [:show, :edit]
+  before_action :set_user_by_username, only: [:show, :edit, :edit_profile_photo]
   protect_from_forgery except: [:validate_username, :validate_email]
   before_filter :admin_only!, only: [:index]
 
@@ -27,6 +27,9 @@ class UsersController < ApplicationController
   def edit
     @user = User.find_by_username(params[:username])
     current_user_only! @user
+  end
+
+  def edit_profile_photo
   end
 
   # POST /users

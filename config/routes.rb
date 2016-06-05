@@ -19,9 +19,13 @@ Rails.application.routes.draw do
     post 'users/validateUsername/' => 'users#validate_username', :defaults => { :format => 'json' }
     post 'users/validateEmail/' => 'users#validate_email', :defaults => { :format => 'json' }
 
-    get 'profile/:username', to: 'users#show'
-    put 'profile/:id', to: 'users#update'
-    get 'profile/:username/edit', to: 'users#edit'
+    scope 'profile' do
+      get ':username/editPhoto', to: 'users#edit_profile_photo'
+      get ':username', to: 'users#show'
+      put ':id', to: 'users#update'
+      get ':username/edit', to: 'users#edit'
+    end
+
 
     scope "admin" do
       resources :users, except: :show

@@ -3,10 +3,13 @@ es:
     menu:
       show: "MOSTRAR PERFIL"
       edit: "EDITAR PERFIL"
+      edit_photo: "EDITAR FOTO"
     show:
       title: "PERFIL DE USUARIO"
     edit:
       title: "EDITAR PERFIL"
+    edit-photo:
+      title: "EDIT PHOTO"
     country: "PAÍS DE RESIDENCIA"
     institution: "INSTITUCIÓN"
     username: "NOMBRE DE USUARIO"

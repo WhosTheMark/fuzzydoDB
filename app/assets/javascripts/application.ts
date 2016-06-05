@@ -19,6 +19,7 @@
 //= require_tree .
 
 //= require datatables
+//= require ng-img-crop
 
 /// <reference path="../typings/jquery.d.ts" />
 
