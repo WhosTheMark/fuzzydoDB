@@ -2,7 +2,8 @@ class UsersController < ApplicationController
 
   include ProfileHelper
 
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user_by_id, only: [:update, :destroy]
+  before_action :set_user_by_username, only: [:show, :edit]
   protect_from_forgery except: [:validate_username, :validate_email]
   before_filter :admin_only!, only: [:index]
 
@@ -24,7 +25,8 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find_by_username(params[:id])
+    @user = User.find_by_username(params[:username])
+    current_user_only! @user
   end
 
   # POST /users
@@ -47,6 +49,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
+      current_user_only! @user
       if @user.update(user_params)
         format.html { redirect_to profile_path(@user.username), notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: profile_path(@user.username)}
@@ -86,8 +89,12 @@ class UsersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find_by_username(params[:id])
+    def set_user_by_username
+      @user = User.find_by_username(params[:username])
+    end
+
+    def set_user_by_id
+      @user = User.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

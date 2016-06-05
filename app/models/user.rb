@@ -58,10 +58,6 @@ class User
     self.where(username: username)[0]
   end
 
-  def to_param
-    username
-  end
-
   private
 
   def drop_the_case

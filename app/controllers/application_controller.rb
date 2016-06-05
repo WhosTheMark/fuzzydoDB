@@ -60,4 +60,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def current_user_only! param_user
+    unless current_user.id.eql? param_user.id
+      raise Exceptions::UnauthorizedAccessError.new
+    end
+  end
+
 end
