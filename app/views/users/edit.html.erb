@@ -5,7 +5,7 @@
 
   <div class="content-right">
     <h1><%= t("user-profile.edit.title") %></h1>
-    <%= form_for(@user) do |f| %>
+    <%= form_for(show_profile (@user.username)) do |f| %>
       <%= devise_error_messages! %>
       <div><%= f.label :name %><br/>
           <%= f.text_field :name, autofocus: true, value: @user.name %></div>

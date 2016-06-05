@@ -38,9 +38,9 @@ class User
   field :name, type: String
   as_enum :role, [:admin, :user, :super_member, :member], field: { :default => 1 }
   field :photo, type: String
-  field :institution, type: String, default: "none-especified"
-  field :occupation, type: String, default: "none-especified"
-  field :country, type: String, default: "none-especified"
+  field :institution, type: String
+  field :occupation, type: String
+  field :country, type: String
 
   validates :username, presence: true, uniqueness: true, format: /\A\w*\z/
   validates :name, presence: true

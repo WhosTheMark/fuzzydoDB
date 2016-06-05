@@ -16,7 +16,12 @@
     <strong><%= t("user-profile."+tag) %>:</strong>
   </div>
   <div class="col-xs-3 show-profile-field">
-    <%= @user.read_attribute tag %>
+    <%= if @user.read_attribute tag
+          @user.read_attribute tag
+        else
+          t("user-profile.none-especified")
+        end
+     %>
   </div>
   <% end %>
 </div>
