@@ -1,22 +1,116 @@
-<div class="content-wrapper">
+<div class="content-wrapper" ng-controller="ProfileController">
 
   <%= render :partial => "user_sidebar",
         locals: { active_item: @active_item} %>
 
   <div class="content-right">
     <h1><%= t("user-profile.edit.title") %></h1>
-    <%= form_for(@user, method: :put, :url => profile_path(@user.id)) do |f| %>
+    <%= form_for(@user, method: :put, :url => profile_path(@user.id), :html => {"name" => "editForm"}) do |f| %>
       <%= devise_error_messages! %>
-      <div><%= f.label :name %><br/>
-          <%= f.text_field :name, autofocus: true, value: @user.name %></div>
-      <div><%= f.label :email %><br/>
-          <%= f.text_field :email, value: @user.email %></div>
-      <div><%= f.label :occupation %><br/>
-          <%= f.text_field :occupation, value: @user.occupation %></div>
-      <div><%= f.label :institution %><br/>
-          <%= f.text_field :institution, value: @user.institution %></div>
-      <div><%= f.label :country %><br/>
-          <%= f.text_field :country, value: @user.country %></div>
+
+    <!-- name field -->
+
+    <div class="field">
+      <div id="editNameError" class="error-messages error" ng-messages="editForm['user[name]'].$error"
+        ng-if="editForm['user[name]'].$touched || editForm.$submitted">
+        <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.name.blank")%> </div>
+      </div>
+      <p>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "w3-input",
+            "ng-model" => "user.name", "ng-model-options" => "{ updateOn: 'blur' }",
+            :required => true%>
+      </p>
+      <span class="icon glyphicon"
+        ng-class="{'error glyphicon-remove' : editForm['user[name]'].$invalid &&
+          (editForm['user[name]'].$touched || editForm.$submitted),
+          'sucess glyphicon-ok' : editForm['user[name]'].$valid}">
+      </span>
+    </div>
+
+    <!-- email field -->
+
+    <div class="field">
+      <div id="editEmailError" class="error-messages error" ng-messages="editForm['user[email]'].$error"
+        ng-if="editForm['user[email]'].$touched || editForm.$submitted">
+        <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.email.blank")%> </div>
+        <div ng-message="email"> <%= t("errors.invalidEmail") %> </div>
+        <div ng-message="emailTaken"> <%= t("mongoid.errors.models.user.attributes.email.taken")%> </div>
+      </div>
+      <p>
+        <%= f.label :email %>
+        <%= f.email_field :email, class: "w3-input",
+          "ng-model" => "user.email", "ng-model-options" => "{ updateOn: 'blur' }",
+          "email-taken-validator" => true, :required => true %>
+      </p>
+      <span class="icon glyphicon"
+        ng-class="{'error glyphicon-remove' : editForm['user[email]'].$invalid &&
+          (editForm['user[email]'].$touched || editForm.$submitted),
+          'sucess glyphicon-ok' : editForm['user[email]'].$valid,
+          'icon-spin glyphicon-refresh' :  editForm['user[email]'].$pending}">
+      </span>
+    </div>
+
+    <!-- occupation field -->
+
+    <div class="field">
+      <div id="regNameError" class="error-messages error" ng-messages="editForm['user[occupation]'].$error"
+        ng-if="editForm['user[occupation]'].$touched || editForm.$submitted">
+        <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.occupation.blank")%> </div>
+      </div>
+      <p>
+        <%= f.label :occupation %>
+        <%= f.text_field :occupation, class: "w3-input",
+            "ng-model" => "user.occupation", "ng-model-options" => "{ updateOn: 'blur' }",
+            :required => true%>
+      </p>
+      <span class="icon glyphicon"
+        ng-class="{'error glyphicon-remove' : editForm['user[occupation]'].$invalid &&
+          (editForm['user[occupation]'].$touched || editForm.$submitted),
+          'sucess glyphicon-ok' : editForm['user[occupation]'].$valid}">
+      </span>
+    </div>
+
+    <!-- country field -->
+
+    <div class="field">
+      <div id="regNameError" class="error-messages error" ng-messages="editForm['user[country]'].$error"
+        ng-if="editForm['user[country]'].$touched || editForm.$submitted">
+        <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.country.blank")%> </div>
+      </div>
+      <p>
+        <%= f.label :country %>
+        <%= f.text_field :country, class: "w3-input",
+            "ng-model" => "user.country", "ng-model-options" => "{ updateOn: 'blur' }",
+            :required => true%>
+      </p>
+      <span class="icon glyphicon"
+        ng-class="{'error glyphicon-remove' : editForm['user[country]'].$invalid &&
+          (editForm['user[country]'].$touched || editForm.$submitted),
+          'sucess glyphicon-ok' : editForm['user[country]'].$valid}">
+      </span>
+    </div>
+
+    <!-- institution field -->
+
+    <div class="field">
+      <div id="regNameError" class="error-messages error" ng-messages="editForm['user[institution]'].$error"
+        ng-if="editForm['user[institution]'].$touched || editForm.$submitted">
+        <div ng-message="required"> <%= t("mongoid.errors.models.user.attributes.institution.blank")%> </div>
+      </div>
+      <p>
+        <%= f.label :institution %>
+        <%= f.text_field :institution, class: "w3-input",
+            "ng-model" => "user.institution", "ng-model-options" => "{ updateOn: 'blur' }",
+            :required => true%>
+      </p>
+      <span class="icon glyphicon"
+        ng-class="{'error glyphicon-remove' : editForm['user[institution]'].$invalid &&
+          (editForm['user[institution]'].$touched || editForm.$submitted),
+          'sucess glyphicon-ok' : editForm['user[institution]'].$valid}">
+      </span>
+    </div>
+
       <div class="actions"><%= f.submit "update" %></div>
     <% end %>
   </div>
