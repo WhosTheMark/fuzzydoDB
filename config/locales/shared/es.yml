@@ -45,6 +45,9 @@ es:
     cancel: "Cancelar"
     save_changes: "Guardar Cambios"
     transfer: "Transferir Rol"
+    browse: "Examinar..."
+    select_img: "Seleccione una imagen:"
+    preview: "Vista previa"
 
   tables:
     language: '//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json'

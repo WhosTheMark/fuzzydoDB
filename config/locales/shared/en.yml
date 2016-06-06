@@ -66,6 +66,9 @@ en:
     cancel: "Cancel"
     save_changes: "Save Changes"
     transfer: "Transfer Role"
+    browse: "Browse..."
+    select_img: "Select an image:"
+    preview: "Preview"
 
   tables:
     language: ""

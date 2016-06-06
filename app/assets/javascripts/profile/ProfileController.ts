@@ -18,12 +18,15 @@ angular.module("fuzzydodb.profile", [])
 
       $scope.myImage = '';
       $scope.myCroppedImage = '';
+      $scope.selectedFile = '';
 
       var handleFileSelect = function(evt: Event) {
 
         var currentTarget: any = evt.currentTarget;
-        var file: Blob = currentTarget.files[0];
+        var file: File = currentTarget.files[0];
         var reader = new FileReader();
+
+        $scope.selectedFile = file.name;
 
         reader.onload = function(evt) {
 
