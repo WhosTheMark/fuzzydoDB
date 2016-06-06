@@ -16,9 +16,14 @@ angular.module("fuzzydodb.profile", [])
   .controller("ProfilePhotoController", ["$scope",
     function($scope) {
 
-      $scope.myImage = '';
-      $scope.myCroppedImage = '';
+      var defaultPhoto = "/assets/team/default.png";
+
+      $scope.originalPhoto = $(".preview-photo img").attr('src');
+      $scope.myImage = $scope.originalPhoto;
+      $scope.myCroppedImage = $scope.originalPhoto;
       $scope.selectedFile = '';
+
+      $scope.isDefaultPhoto = $scope.originalPhoto === defaultPhoto;
 
       var handleFileSelect = function(evt: Event) {
 
@@ -34,11 +39,25 @@ angular.module("fuzzydodb.profile", [])
 
             var target: any = evt.target;
             $scope.myImage = target.result;
+            $scope.isDefaultPhoto = false;
           });
         };
-
         reader.readAsDataURL(file);
       };
+
+      // resets changes
+      $scope.resetPhoto = function() {
+        $scope.myImage = $scope.originalPhoto;
+        $scope.selectedFile = '';
+        $scope.isDefaultPhoto = $scope.originalPhoto === defaultPhoto;
+      }
+
+      // deletes photo locally and set the default
+      $scope.deletePhoto = function() {
+        $scope.myImage = defaultPhoto;
+        $scope.selectedFile = '';
+        $scope.isDefaultPhoto = true;
+      }
 
       angular.element(document.querySelector('#fileInput')).on('change', handleFileSelect);
   }]);

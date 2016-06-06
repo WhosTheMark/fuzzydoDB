@@ -48,6 +48,7 @@ es:
     browse: "Examinar..."
     select_img: "Seleccione una imagen:"
     preview: "Vista previa"
+    discard: "Descartar Cambios"
 
   tables:
     language: '//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json'

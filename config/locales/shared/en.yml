@@ -69,6 +69,7 @@ en:
     browse: "Browse..."
     select_img: "Select an image:"
     preview: "Preview"
+    discard: "Discard Changes"
 
   tables:
     language: ""
