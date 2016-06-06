@@ -3,12 +3,21 @@
 <div class="content-wrapper">
 
   <%= render :partial => "admin_sidebar",
-        locals: { active_item: @active_item} %>
+        locals: { active_item: "user-list"} %>
 
-  <div class="content-right">
+  <div class="content-right" ng-controller="UserController">
     <h1><%= t("admin.user-list") %></h1>
 
-    <div class="table-responsive">
+    <% unless flash[:delete_notice].nil? %>
+      <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <%= t("admin.delete-response-alert", user: flash[:delete_notice]) %>
+      </div>
+    <% end %>
+
+    <div class="table-responsive" ng-form name="userTable">
       <table id="userTable" class="table table-striped w3-hoverable table-bordered">
         <thead>
           <tr>
@@ -23,41 +32,49 @@
 
         <tbody>
           <% @users.each do |user| %>
-            <tr class="w3-hover-teal">
+            <tr class="w3-hover-teal" ng-class="{ 'font-bold' : userTable.<%= user.username %>.$dirty }">
               <td><%= user.username %></td>
               <td><%= user.name %></td>
               <td><%= user.email %></td>
               <td><%= link_to t("labels.show"), profile_path(user.username)%></td>
               <td>
-                <a data-toggle="modal" data-target="#deleteConfirmationModal" data-username="<%= user.username %>" data-delete-url="<%= url_for user%>">
-                  <%= t("labels.delete")%>
-                </a>
+                <div class="<%= "disabled" if user.admin? || user.super_member? %>">
+                  <a data-toggle="modal" data-target="#deleteConfirmationModal" data-username="<%= user.username %>" data-delete-url="<%= url_for user%>" class="<%= "disabled" if user.admin? || user.super_member? %>">
+                    <%= t("labels.delete")%>
+                  </a>
+                </div>
               </td>
               <td>
-                <div class="dropdown">
-                  <button class="btn btn-non-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= t("user.role." + user.role.to_s) %>
-                  <span class="caret"></span></button>
-                  <ul class="dropdown-menu">
-                    <% User.roles.each do |role| -%>
-                      <% unless role.first.to_s.eql? user.role.to_s-%>
-                        <li><a href=#><%= t("user.role." + role.first.to_s) %></a></li>
-                      <% end -%>
-                    <% end -%>
-                  </ul>
-                </div>
+                <select class="selectpicker" <%= "disabled" if current_user.admin? || user.admin_or_super_member? %>
+                  ng-model="users.<%= user.username %>" ng-init="users.<%= user.username %> = '<%= user.role_cd %>'"
+                  name="<%= user.username %>">
+                  <% User.roles.each do |role| %>
+                    <option value="<%= role[1] %>" <%= "disabled" if role[0] == "admin" || role[0] == "super_member" %>>
+                      <%= t("user.role." + role.first) %>
+                    </option>
+                  <% end %>
+                </select>
               </td>
             </tr>
           <% end %>
         </tbody>
       </table>
+
+      <% if current_user.super_member? %>
+      <a class="btn btn-default" ng-click="saveRoles()" ng-disabled="userTable.$pending">
+        <span class="glyphicon icon-spin glyphicon-refresh" ng-if="userTable.$pending"></span>
+        <%= t("labels.save_changes") %>
+      </a>
+      <% end %>
+
     </div>
   </div>
 </div>
 
-
+<%# content is added using js %>
 <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-sm" role="document">
-    <div class="modal-content">
+    <div class="modal-content w3-container">
       <div class="modal-body modal-delete-user">
       </div>
       <div class="modal-footer">

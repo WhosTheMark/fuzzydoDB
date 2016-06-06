@@ -43,6 +43,8 @@ es:
     show: "Mostrar"
     close: "Cerrar"
     cancel: "Cancelar"
+    save_changes: "Guardar Cambios"
+    transfer: "Transferir Rol"
 
   tables:
     language: '//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json'

@@ -1,6 +1,7 @@
-<% @sidebar_bar_items = [] %>
-<% @token_sidebar_namespace = "about-us.menu." %>
-<% @links = [] %>
+<% @sidebar_bar_items = ["user-list", "transfer-role"] %>
+<% @token_sidebar_namespace = "admin.menu." %>
+<% @links = [ url_for(controller: controller_name, action: "index"),
+              url_for(controller: controller_name, action: "transfer_role")] %>
 
 <%= render :partial => "shared/sidebar",
     locals: { sidebar_bar_items: @sidebar_bar_items,

@@ -2,3 +2,9 @@ en:
   admin:
     user-list: "USER LIST"
     delete-user-confirmation: "Are you sure you want to delete ${username}?"
+    delete-response-alert: "User %{user} has been successfully deleted!"
+    transfer-role-confirmation: "Are you completely sure you want to transfer your role to ${username}? After this you won't be able to get it back."
+
+    menu:
+      user-list: "USER LIST"
+      transfer-role: "TRANSFER ROLE"

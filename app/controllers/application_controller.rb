@@ -47,7 +47,16 @@ class ApplicationController < ActionController::Base
   # Overwriting devise's sign_out redirect path method
   # Lets the user stay in the same page after logging out
   def after_sign_out_path_for(resource_or_scope)
-    request.referer
+
+    sing_out_path = nil
+
+    if request.referer.include? "/admin"
+      sing_out_path = root_path
+    else
+      sing_out_path = request.referer
+    end
+
+    sing_out_path
   end
 
   def unauthorized
@@ -62,6 +71,18 @@ class ApplicationController < ActionController::Base
 
   def current_user_only! param_user
     unless current_user.id.eql? param_user.id
+      raise Exceptions::UnauthorizedAccessError.new
+    end
+  end
+
+  def super_member_only!
+    if current_user.nil? || !current_user.super_member?
+      raise Exceptions::UnauthorizedAccessError.new
+    end
+  end
+
+  def admin_or_super_member_only!
+    if current_user.nil? || !current_user.admin_or_super_member?
       raise Exceptions::UnauthorizedAccessError.new
     end
   end

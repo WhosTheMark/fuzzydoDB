@@ -88,3 +88,10 @@ User.create!(name: "Admin",
              password_confirmation: "123123",
              role: :admin)
 
+User.create!(name: "Super Miembro",
+             username: "Super",
+             email: "super@fuzzydo.db",
+             password: "123123",
+             password_confirmation: "123123",
+             role: :super_member)
+

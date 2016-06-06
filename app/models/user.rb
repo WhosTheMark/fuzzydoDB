@@ -36,7 +36,7 @@ class User
   # field :locked_at,       type: Time
   field :username, type: String
   field :name, type: String
-  as_enum :role, [:admin, :user, :super_member, :member], field: { :default => 1 }
+  as_enum :role, [:user, :member, :admin, :super_member], field: { :default => 0 }
   field :photo, type: String
   field :institution, type: String
   field :occupation, type: String
@@ -54,11 +54,56 @@ class User
     self.where(email: email.downcase).exists?
   end
 
+
   def self.find_by_username username
     self.where(username: username)[0]
   end
 
+  def admin_or_super_member?
+    self.admin? || self.super_member?
+  end
+
+  # Checks if an int is associated to a role
+  def self.role_exists?(int_role)
+    !self.roles.value(int_role).nil?
+  end
+
+  # Admin and super_member cannot be set to other users
+  def self.setteable_role?(int_role)
+    !(User.roles.values_at(:admin, :super_member).include? int_role)
+  end
+
+  # Changes the roles of several users
+  def self.change_roles(changed_users)
+
+    unless changed_users.nil?
+
+      users = self.all.entries
+
+      changed_users.each do |changed_user|
+        self.change_single_user_role(users, changed_user)
+      end
+
+    end
+  end
+
   private
+
+  # Changes the role of a single user
+  # Admin and super user's roles cannot be changed and
+  # user and member's roles cannot be set to admin or super member
+  def self.change_single_user_role(users, changed_user)
+
+    int_changed_role = Integer(changed_user["role"])
+    user = users.find { |u| u.username == changed_user["username"] }
+
+    if !user.admin_or_super_member? && self.role_exists?(int_changed_role) &&
+      self.setteable_role?(int_changed_role)
+
+      user.role_cd = int_changed_role
+      user.save!
+    end
+  end
 
   def drop_the_case
     self.username = self.username.downcase unless self.username.nil?

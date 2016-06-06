@@ -20,6 +20,19 @@ function initializeUserTable() {
       { "orderable": false, "searchable": false }
     ]
   });
+
+  $('#transferTable').DataTable({
+    language: {
+      url: I18n.t("tables.language")
+    },
+    columns: [
+      null,
+      null,
+      null,
+      { "orderable": false, "searchable": false },
+      { "orderable": false, "searchable": false }
+    ]
+  });
 }
 
 // adds information to the user deletion modal
@@ -38,9 +51,23 @@ function setDeleteModal() {
   })
 }
 
+function setTransferModal() {
+  $('#transferConfirmationModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget);
+    var username = button.data('username');
+    var template = I18n.t("admin.transfer-role-confirmation");
+
+    template = template.replace("${username}", username);
+
+    var modal = $(this);
+    modal.find('.modal-body').text(template);
+  })
+}
+
 $(document).ready(function() {
   initializeUserTable();
   setDeleteModal();
+  setTransferModal();
 });
 
 

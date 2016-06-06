@@ -28,6 +28,9 @@ Rails.application.routes.draw do
 
 
     scope "admin" do
+      get 'transferRole' => 'users#show_transfer_role'
+      post 'transferRole' => 'users#transfer_role'
+      put 'users/changeRoles' => 'users#change_roles'
       resources :users, except: :show
     end
   end
