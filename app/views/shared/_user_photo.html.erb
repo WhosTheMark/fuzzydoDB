@@ -1,0 +1,5 @@
+
+<% photo = "default.png" if photo.blank?  %>
+<% photo = folder + photo if !photo.blank? && !folder.blank? %>
+<% html_att = {} if html_att.blank? %>
+<%= image_tag(photo, width: "200px", height: "200px", :class =>"user-bio-img", :data => html_att) %>

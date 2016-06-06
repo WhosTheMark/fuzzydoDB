@@ -8,8 +8,7 @@
   <div class="content-right">
     <div class="container-fluid member-container member-bio-header">
       <div class="col-xs-4">
-        <% @member.photo = "default.png" if @member.photo.blank?  %>
-        <%= image_tag("team/" + @member.photo, width: "200px", height: "200px", :class =>"member-bio-img") %>
+        <%= render :partial => "shared/user_photo", locals: { photo: @member.photo, folder: "team/"} %>
       </div>
       <div class="col-xs-8 member-bio-name">
         <div>
