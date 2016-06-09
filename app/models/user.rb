@@ -46,6 +46,8 @@ class User
   validates :name, presence: true
   before_validation :drop_the_case
 
+  mount_uploader :avatar, AvatarUploader
+
   def self.exists_username?(username)
     self.where(username: username.downcase).exists?
   end

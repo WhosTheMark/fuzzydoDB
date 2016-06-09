@@ -64,6 +64,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_avatar
+
+    @user = current_user
+    @user.avatar = params[:file]
+
+    @user.save!
+
+    respond_to do |format|
+      format.html { redirect_to profile_path(@current_user.username), notice: 'User was successfully updated.' }
+      format.json { render :show, status: :ok }
+    end
+  end
+
   # DELETE /users/1
   # DELETE /users/1.json
   # Admins and super_members cannot be destroyed
@@ -161,4 +174,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :name, :email, :occupation, :institution, :country)
     end
+
 end

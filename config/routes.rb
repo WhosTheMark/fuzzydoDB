@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     post 'users/validateEmail/' => 'users#validate_email', :defaults => { :format => 'json' }
 
     scope 'profile' do
+      put 'update_avatar', to: 'users#update_avatar'
       get ':username/editPhoto', to: 'users#edit_profile_photo'
       get ':username', to: 'users#show'
       put ':id', to: 'users#update'
