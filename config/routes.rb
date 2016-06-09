@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       get ':username', to: 'users#show'
       put ':id', to: 'users#update'
       get ':username/edit', to: 'users#edit'
+      get ':username/update_password', to: 'users#update_password'
     end
 
 

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   include ProfileHelper
 
   before_action :set_user_by_id, only: [:update, :destroy, :transfer_role]
-  before_action :set_user_by_username, only: [:show, :edit, :edit_profile_photo]
+  before_action :set_user_by_username, only: [:show, :edit, :edit_profile_photo, :update_password]
   protect_from_forgery except: [:validate_username, :validate_email]
   before_filter :admin_or_super_member_only!, only: [:index, :destroy, :transfer_role, :show_transfer_role]
   before_filter :super_member_only!, only: [:change_roles]
@@ -46,6 +46,16 @@ class UsersController < ApplicationController
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def update_password
+    if @user.update(user_params)
+      # Sign in the user by passing validation in case their password changed
+      sign_in @user, :bypass => true
+      redirect_to root_path
+      else
+      render "edit_password"
     end
   end
 
@@ -159,6 +169,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :name, :email, :occupation, :institution, :country)
+      params.require(:user).permit(:username, :name, :email, :occupation, :institution, :country, :password, :password_confirmation)
     end
 end

@@ -6,7 +6,7 @@ var app = angular.module("fuzzydodb", [
   // Dependencies
   "ngMessages",
   "ngImgCrop",
-
+  "countrySelect",
   // FuzzydoDB modules
   "fuzzydodb.user",
   "fuzzydodb.profile",
@@ -15,3 +15,4 @@ var app = angular.module("fuzzydodb", [
   $http.defaults.headers.post['X-CSRF-Token'] = $('meta[name="csrf-token"]').attr('content');
   $http.defaults.headers.put['X-CSRF-Token'] = $('meta[name="csrf-token"]').attr('content');
 });
+

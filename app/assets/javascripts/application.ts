@@ -20,6 +20,7 @@
 
 //= require datatables
 //= require ng-img-crop
+//= require angular.country-select
 //= require bootstrap-select/bootstrap-select
 
 /// <reference path="../typings/jquery.d.ts" />
