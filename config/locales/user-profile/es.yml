@@ -16,3 +16,4 @@ es:
     occupation: "OCUPACIÓN"
     email: "CORREO ELECTRÓNICO"
     name: "NOMBRE COMPLETO"
+    none-especified: "Sin especificar"
