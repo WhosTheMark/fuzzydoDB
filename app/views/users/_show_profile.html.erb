@@ -16,8 +16,12 @@
   </div>
   <div class="col-xs-3 show-profile-field">
     <%= field_value = @user.read_attribute tag
-        if field_value.present? 
-          field_value
+        if field_value.present?
+          if tag.eql? "country"
+            @user.country_name
+          else
+            field_value
+          end
         else
           t("user-profile.none-especified")
         end

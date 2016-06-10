@@ -46,6 +46,11 @@ class User
   validates :name, presence: true
   before_validation :drop_the_case
 
+  def country_name
+    name = ISO3166::Country.new(country)
+    name.translations[I18n.locale.to_s] || country
+  end
+
   def self.exists_username?(username)
     self.where(username: username.downcase).exists?
   end

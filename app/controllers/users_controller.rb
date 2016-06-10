@@ -50,13 +50,13 @@ class UsersController < ApplicationController
   end
 
   def update_password
-    if @user.update(user_params)
-      # Sign in the user by passing validation in case their password changed
-      sign_in @user, :bypass => true
-      redirect_to root_path
-      else
+    #if @user.update(user_params)
+    #  # Sign in the user by passing validation in case their password changed
+    #  sign_in @user, :bypass => true
+    #  redirect_to root_path
+    #  else
       render "edit_password"
-    end
+    #end
   end
 
   # PATCH/PUT /users/1
