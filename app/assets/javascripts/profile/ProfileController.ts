@@ -14,7 +14,7 @@ angular.module("fuzzydodb.profile", [])
 
   // example Fiddle: https://jsfiddle.net/alexk111/rw6q9/
   .controller("ProfilePhotoController", ["$scope", "$http",
-    function($scope, $http) {
+    function($scope, $http: angular.IHttpService) {
 
       var defaultPhoto = "/assets/team/default.png";
 
@@ -76,6 +76,10 @@ angular.module("fuzzydodb.profile", [])
         $scope.myImage = defaultPhoto;
         $scope.selectedFile = '';
         $scope.isDefaultPhoto = true;
+
+        $http.delete("/profile/destroy_avatar.json").then(function() {
+          location.reload();
+        });
       }
 
       $scope.sendPhoto = function() {
@@ -85,6 +89,8 @@ angular.module("fuzzydodb.profile", [])
         $http.put("/profile/update_avatar.json", formData, {
           transformRequest: angular.identity,
           headers: { 'Content-Type': undefined }
+        }).then(function() {
+          location.reload();
         })
       }
 

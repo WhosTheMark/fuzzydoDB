@@ -15,7 +15,7 @@
           </div>
           <div class="col-xs-6 preview-photo">
             <%= render :partial => "shared/user_photo",
-                locals: { photo: @user.photo, folder: "team/", html_att: {"ng-src" => "{{myCroppedImage}}"}} %>
+                locals: { photo: @user.avatar.url, folder: nil, html_att: {"ng-src" => "{{myCroppedImage}}"}} %>
             <div class="preview-text"> <%= t("labels.preview") %> </div>
 
           </div>

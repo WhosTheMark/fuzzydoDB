@@ -93,6 +93,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy_avatar
+    @user = current_user
+    @user.remove_avatar!
+    @user.save!
+    User.where(username: @user.username).update(avatar: nil)
+
+    respond_to do |format|
+      format.html { redirect_to users_url }
+      format.json { head :no_content }
+    end
+  end
+
   # If the user doesn't exists, then it is valid
   def validate_username
     username = params[:username]
