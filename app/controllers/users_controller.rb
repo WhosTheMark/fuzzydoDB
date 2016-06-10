@@ -74,6 +74,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_avatar
+
+    @user = current_user
+    @user.avatar = params[:file]
+
+    @user.save!
+
+    respond_to do |format|
+      format.html { redirect_to profile_path(@current_user.username), notice: 'User was successfully updated.' }
+      format.json { render :show, status: :ok }
+    end
+  end
+
   # DELETE /users/1
   # DELETE /users/1.json
   # Admins and super_members cannot be destroyed
@@ -83,6 +96,18 @@ class UsersController < ApplicationController
       @user.destroy
       flash[:delete_notice] = @user.username
     end
+
+    respond_to do |format|
+      format.html { redirect_to users_url }
+      format.json { head :no_content }
+    end
+  end
+
+  def destroy_avatar
+    @user = current_user
+    @user.remove_avatar!
+    @user.save!
+    User.where(username: @user.username).update(avatar: nil)
 
     respond_to do |format|
       format.html { redirect_to users_url }
@@ -171,4 +196,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :name, :email, :occupation, :institution, :country, :password, :password_confirmation)
     end
+
 end

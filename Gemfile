@@ -56,6 +56,9 @@ gem "i18n-js", ">= 3.0.0.rc11"
 gem 'countries', :require => 'countries/global'
 gem 'i18n_country_select', '~> 1.1', '>= 1.1.5'
 
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
+
 group :development, :test do
     gem 'capybara'
     gem 'selenium-webdriver'

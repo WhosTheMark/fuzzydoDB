@@ -45,6 +45,7 @@ class User
   validates :username, presence: true, uniqueness: true, format: /\A\w*\z/
   validates :name, presence: true
   before_validation :drop_the_case
+  mount_uploader :avatar, AvatarUploader
 
   def country_name
     name = ISO3166::Country.new(country)

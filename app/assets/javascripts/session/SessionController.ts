@@ -2,8 +2,8 @@
 /// <reference path="../../typings/jquery.d.ts" />
 
 angular.module("fuzzydodb.session", [])
-  .controller("SessionController", ["$scope", "$http", "SessionService",
-    function($scope, $http, sessionService) {
+  .controller("SessionController", ["$scope", "SessionService",
+    function($scope, sessionService) {
 
       $scope.loginUser = {};
       $scope.registerUser = {};

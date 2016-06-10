@@ -4,40 +4,49 @@
 <div class="content-right">
     <h1><%= t("user-profile.edit-photo.title") %></h1>
 
-
-    <div ng-controller="ProfilePhotoController" class="fluid-container">
-      <div class="row edit-photo-container">
-        <div class="col-xs-6">
-          <div class="cropArea">
-            <img-crop image="myImage" result-image="myCroppedImage" result-image-size="300"
-              area-min-size="40" ></img-crop>
+    <div ng-controller="ProfilePhotoController">
+      <div class="fluid-container">
+        <div class="row edit-photo-container">
+          <div class="col-xs-6">
+            <div class="cropArea">
+              <img-crop image="myImage" result-image="myCroppedImage" result-image-size="300"
+                area-min-size="40" ></img-crop>
+            </div>
           </div>
-        </div>
-        <div class="col-xs-6 preview-photo">
-          <%= render :partial => "shared/user_photo",
-              locals: { photo: @user.photo, folder: "team/", html_att: {"ng-src" => "{{myCroppedImage}}"}} %>
-          <div class="preview-text"> Preview </div>
+          <div class="col-xs-6 preview-photo">
+            <%= render :partial => "shared/user_photo",
+                locals: { photo: @user.avatar.url, folder: nil, html_att: {"ng-src" => "{{myCroppedImage}}"}} %>
+            <div class="preview-text"> <%= t("labels.preview") %> </div>
 
+          </div>
         </div>
       </div>
-    </div>
 
-    <div>Select an image file:</div>
 
-    <div class="row">
-      <div class="fluid-container">
-        <div class="col-xs-6">
-          <div class="input-group">
-            <label class="input-group-btn">
-              <span class="btn btn-default">
-                Browse&hellip; <input type="file" id="fileInput" style="display: none;">
-              </span>
-            </label>
-            <input type="text" class="form-control disabled" readonly>
+
+
+      <div><%= t("labels.select_img") %></div>
+
+      <%# Style input[type=file]:
+        http://www.abeautifulsite.net/whipping-file-inputs-into-shape-with-bootstrap-3/ %>
+
+      <div class="row">
+        <div class="fluid-container">
+          <div class="col-xs-6">
+            <div class="input-group">
+              <label class="input-group-btn">
+                <span class="btn btn-default">
+                  <%= t("labels.browse") %> <input type="file" id="fileInput" style="display: none;">
+                </span>
+              </label>
+              <input type="text" class="form-control disabled" readonly ng-model="selectedFile">
+            </div>
           </div>
-        </div>
-        <div class="col-xs-6 text-right">
-          <span class="btn btn-default"><%= t("labels.save_changes") %> </span>
+          <div class="col-xs-6 text-right">
+            <span class="btn btn-non-primary" ng-click="deletePhoto()"> <%= t("labels.delete") %> </span>
+            <span class="btn btn-non-primary" ng-click="resetPhoto()"> <%= t("labels.discard") %> </span>
+            <span class="btn btn-default" ng-click="sendPhoto()"><%= t("labels.save_changes") %> </span>
+          </div>
         </div>
       </div>
     </div>

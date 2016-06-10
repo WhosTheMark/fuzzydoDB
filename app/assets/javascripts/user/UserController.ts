@@ -1,8 +1,8 @@
 /// <reference path="../../typings/angular.d.ts" />
 
 angular.module("fuzzydodb.user", [])
-  .controller("UserController", ["$scope", "$http", "UserService",
-    function($scope, $http: angular.IHttpService, userService) {
+  .controller("UserController", ["$scope", "UserService",
+    function($scope, userService) {
 
     $scope.users = {};
     $scope.selectedUser = null;
