@@ -70,7 +70,7 @@ body {
   background-color: $btn-hover;
   color: White;
   border-color: $btn-hover;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 4px rgba(12, 161, 163, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 4px $btn-hover;
 }
 
 .btn-danger:hover {
