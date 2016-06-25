@@ -31,6 +31,8 @@ class UsersController < ApplicationController
   end
 
   def edit_profile_photo
+    @user = User.find_by_username(params[:username])
+    current_user_only! @user
   end
 
   # POST /users
