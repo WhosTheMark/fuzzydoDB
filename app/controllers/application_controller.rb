@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   rescue_from Exceptions::UnauthorizedAccessError, with: :unauthorized
+  rescue_from Mongoid::Errors::DocumentNotFound, with: :document_not_found
 
   before_action :set_locale
   before_action :isHome?
@@ -60,7 +61,13 @@ class ApplicationController < ActionController::Base
   end
 
   def unauthorized
-    render(:file => File.join(Rails.root, 'app/views/shared/errors/403.html'), :status => 403, :layout => false)
+    @error = "errors.unauthorized"
+    render(:file => File.join(Rails.root, 'app/views/shared/error.html'), :status => 403, :layout => false)
+  end
+
+  def document_not_found
+    @error = "errors.not_found"
+    render(:file => File.join(Rails.root, 'app/views/shared/error.html'), :status => 404, :layout => false)
   end
 
   def admin_only!

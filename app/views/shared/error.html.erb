@@ -3,13 +3,12 @@
 <head>
   <title>The page you were looking for doesn't exist (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
 </head>
 
 <body class="error-page">
-  <!-- This file lives in /403.html -->
   <div class="error-content">
-      <h1><%= t("errors.unauthorized") %> :(</h1>
+      <h1><%= t(@error) %> :(</h1>
       <%= image_tag("confused_pet.png")%>
   </div>
 </body>

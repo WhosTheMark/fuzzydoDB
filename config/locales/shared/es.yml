@@ -56,6 +56,7 @@ es:
   errors:
     invalidEmail: "correo inválido"
     unauthorized: "Lo sentimos, no estás autorizado para ver esta página"
+    not_found: "Lo sentimos, no pudimos encontrar la página que estabas buscando"
 
   mongoid:
     errors:

@@ -26,12 +26,10 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find_by_username(params[:username])
     current_user_only! @user
   end
 
   def edit_profile_photo
-    @user = User.find_by_username(params[:username])
     current_user_only! @user
   end
 
@@ -188,6 +186,9 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user_by_username
       @user = User.find_by_username(params[:username])
+      if @user.nil?
+        raise Mongoid::Errors::DocumentNotFound.new(User, :username => params[:username])
+      end
     end
 
     def set_user_by_id

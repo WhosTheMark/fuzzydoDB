@@ -77,6 +77,7 @@ en:
   errors:
     invalidEmail: "invalid e-mail"
     unauthorized: "We are sorry, you are not authorized to see this page"
+    not_found: "We are sorry we could not find the page you are looking for"
 
   mongoid:
     errors:

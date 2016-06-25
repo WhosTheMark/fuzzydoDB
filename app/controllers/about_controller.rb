@@ -23,6 +23,9 @@ class AboutController < ApplicationController
 
   def member
     @member = Member.get_by_id(params[:id])
+    if @member.nil?
+      raise raise Mongoid::Errors::DocumentNotFound.new(Member, :id => params[:id])
+    end
   end
 
 end
