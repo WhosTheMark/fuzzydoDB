@@ -18,6 +18,13 @@
 
   <%= render :partial => "shared/footer", locals: { home: @isHome }%>
   <a href="#" class="crunchify-top"><span class="glyphicon glyphicon-upload"></a>
+
+  <%# Render the modals used to login/register the user if he's not logged in%>
+  <% if current_user.nil? %>
+    <% @modalWindowIds = ['login', 'register', 'lost_password']  %>
+    <%= render :partial => "shared/modal_session", :locals => { :modalWindowIds => @modalWindowIds } %>
+  <% end %>
+
 </body>
 </html>
 <script type="text/javascript">

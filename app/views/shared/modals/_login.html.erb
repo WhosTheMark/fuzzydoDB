@@ -1,3 +1,5 @@
+<div ng-controller="LoginController">
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name),
     :html => {:class => "w3-container", :novalidate => true, "name" => "loginForm"}) do |f| %>
   <div class="modal-body">
@@ -68,3 +70,5 @@
       "ng-click" => "submitLogin($event)", "ng-disabled" => "loginForm.$pending" %>
   </div>
 <% end %>
+
+</div>
