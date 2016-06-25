@@ -1,7 +1,7 @@
 /// <reference path="../../typings/angular.d.ts" />
 
 angular.module("fuzzydodb.session")
-  .factory("SessionService", ["$http", "$q", function($http, $q: angular.IQService){
+  .service("SessionService", ["$http", "$q", function($http, $q: angular.IQService){
 
     // generic validate field
     var validateField = function(path: string, object){
@@ -18,29 +18,28 @@ angular.module("fuzzydodb.session")
       return deferred.promise;
     }
 
-    return {
-      validateUsername: function(viewValue) {
 
-        return validateField('/users/validateUsername/', { username: viewValue });
-      },
+    this.validateUsername = function(viewValue) {
 
-      validateEmail: function(viewValue) {
-        return validateField('/users/validateEmail/', { email: viewValue });
-      },
+      return validateField('/users/validateUsername/', { username: viewValue });
+    }
 
-      logIn: function(user){
+    this.validateEmail = function(viewValue) {
+      return validateField('/users/validateEmail/', { email: viewValue });
+    }
 
-        var deferred = $q.defer();
+    this.logIn = function(user){
 
-        $http.post("/en/users/sign_in.json", user)
-          .then(function(response) {
-            //resolve the promise as the data
-            deferred.resolve(response.data);
-          }, function(reason) {
-            deferred.reject(reason);
-        });
+      var deferred = $q.defer();
 
-        return deferred.promise;
-      }
+      $http.post("/en/users/sign_in.json", user)
+        .then(function(response) {
+          //resolve the promise as the data
+          deferred.resolve(response.data);
+        }, function(reason) {
+          deferred.reject(reason);
+      });
+
+      return deferred.promise;
     }
   }])

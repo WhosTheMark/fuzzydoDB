@@ -4,8 +4,8 @@
 angular.module("fuzzydodb.profilePhoto", [])
 
  // example Fiddle: https://jsfiddle.net/alexk111/rw6q9/
-  .controller("ProfilePhotoController", ["$scope", 'profileService', "$http",
-    function($scope, profileService, $http: angular.IHttpService) {
+  .controller("ProfilePhotoController", ["$scope", 'profileService',
+    function($scope, profileService) {
 
       var defaultPhoto = "/assets/team/default.png";
 
