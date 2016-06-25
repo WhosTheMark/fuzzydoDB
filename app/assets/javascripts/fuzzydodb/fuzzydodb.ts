@@ -10,6 +10,7 @@ var app = angular.module("fuzzydodb", [
   // FuzzydoDB modules
   "fuzzydodb.user",
   "fuzzydodb.profile",
+  "fuzzydodb.profilePhoto",
   "fuzzydodb.session"
 ]).run(function($http : angular.IHttpService) {
   $http.defaults.headers.post['X-CSRF-Token'] = $('meta[name="csrf-token"]').attr('content');
