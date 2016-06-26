@@ -61,7 +61,7 @@
       </table>
 
       <% if current_user.super_member? %>
-      <a class="btn btn-default" ng-click="saveRoles()" ng-disabled="userTable.$pending">
+      <a id="save-changes-btn" class="btn btn-default" ng-click="saveRoles()" ng-disabled="userTable.$pending">
         <span class="glyphicon icon-spin glyphicon-refresh" ng-if="userTable.$pending"></span>
         <%= t("labels.save_changes") %>
       </a>
