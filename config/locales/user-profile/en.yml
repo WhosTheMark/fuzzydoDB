@@ -21,6 +21,7 @@ en:
     current-password: "CURRENT PASSWORD"
     password: "NEW PASSWORD"
     password-confirmation: "NEW PASSWORD CONFIRMATION"
+    current-password: "CURRENT PASSWORD"
     edit-password:
       title: "EDIT PASSWORD"
 
