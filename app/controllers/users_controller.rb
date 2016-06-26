@@ -55,7 +55,7 @@ class UsersController < ApplicationController
        #sign_in @user, :bypass => true
        redirect_to root_path
     else
-      flash[:success] = "WEEEEEEE"
+      flash[:danger] = t("user-profile.edit-password.wrong-old-password")
       render "edit_password"
     end
   end
