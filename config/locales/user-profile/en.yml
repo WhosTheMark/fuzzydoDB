@@ -4,6 +4,7 @@ en:
       show: "SHOW PROFILE"
       edit: "EDIT PROFILE"
       edit_photo: "EDIT PHOTO"
+      update_password: "EDIT PASSWORD"
     show:
       title: "USER PROFILE"
     edit:
@@ -17,3 +18,9 @@ en:
     email: "EMAIL ADDRESS"
     name: "NAME"
     none-especified: "None especified"
+    current-password: "CURRENT PASSWORD"
+    password: "NEW PASSWORD"
+    password-confirmation: "NEW PASSWORD CONFIRMATION"
+    edit-password:
+      title: "EDIT PASSWORD"
+

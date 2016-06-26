@@ -50,13 +50,19 @@ class UsersController < ApplicationController
   end
 
   def update_password
-    #if @user.update(user_params)
+    if @user.update(user_params)
     #  # Sign in the user by passing validation in case their password changed
     #  sign_in @user, :bypass => true
     #  redirect_to root_path
-    #  else
-      render "edit_password"
-    #end
+       redirect_to root_path
+    else
+       redirect_to root_path
+    end
+  end
+
+  def edit_password
+    @user = current_user
+    render "edit_password"
   end
 
   # PATCH/PUT /users/1
@@ -143,6 +149,7 @@ class UsersController < ApplicationController
     User.change_roles(changed_users)
 
     respond_to do |format|
+
       format.html { redirect_to users_url }
       format.json { head :no_content }
     end
@@ -196,5 +203,4 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :name, :email, :occupation, :institution, :country, :password, :password_confirmation)
     end
-
 end

@@ -4,6 +4,7 @@ es:
       show: "MOSTRAR PERFIL"
       edit: "EDITAR PERFIL"
       edit_photo: "EDITAR FOTO"
+      update_password: "EDITAR CONTRASEÑA"
     show:
       title: "PERFIL DE USUARIO"
     edit:
@@ -17,3 +18,8 @@ es:
     email: "CORREO ELECTRÓNICO"
     name: "NOMBRE COMPLETO"
     none-especified: "Sin especificar"
+    current-password: "CONTRASEÑA ACTUAL"
+    password: "NUEVA CONTRASEÑA"
+    password-confirmation: "CONFIRME NUEVA CONTRASEÑA"
+    edit-password:
+      title: "EDITAR CONTRASEÑA"
