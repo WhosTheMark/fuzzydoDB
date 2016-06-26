@@ -50,13 +50,13 @@ class UsersController < ApplicationController
   end
 
   def update_password
-    if @user.update(user_params)
-    #  # Sign in the user by passing validation in case their password changed
-    #  sign_in @user, :bypass => true
-    #  redirect_to root_path
+    if @user.update_with_password(user_params)
+       #to continue online after password change uncomment this
+       #sign_in @user, :bypass => true
        redirect_to root_path
     else
-       redirect_to root_path
+      flash[:error] =  "I am here!!!"
+      render "edit_password"
     end
   end
 
@@ -201,6 +201,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :name, :email, :occupation, :institution, :country, :password, :password_confirmation)
+      params.require(:user).permit(:username, :name, :email, :occupation, :institution, :country, :password, :password_confirmation, :current_password)
     end
 end

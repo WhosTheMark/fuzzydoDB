@@ -96,5 +96,9 @@ angular.module("fuzzydodb.profile", [])
       }
 
       angular.element(document.querySelector('#fileInput')).on('change', handleFileSelect);
-  }]);
+  }])
 
+  .controller("ProfilePasswordController", ["$scope",
+    function($scope) {
+
+  }]);
