@@ -14,8 +14,8 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  # GET /users/1
-  # GET /users/1.json
+  # GET /profile/1
+  # GET /profile/1.json
   def show
   end
 
@@ -24,29 +24,14 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  # GET /users/1/edit
+  # GET /profile/1/edit
   def edit
     current_user_only! @user
   end
 
+  # GET /profile/1/editPhoto
   def edit_profile_photo
     current_user_only! @user
-  end
-
-  # POST /users
-  # POST /users.json
-  def create
-    @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   def update_password
@@ -59,8 +44,8 @@ class UsersController < ApplicationController
     #end
   end
 
-  # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
+  # PATCH/PUT /profile/1
+  # PATCH/PUT /profile/1.json
   def update
     respond_to do |format|
       current_user_only! @user
@@ -74,6 +59,8 @@ class UsersController < ApplicationController
     end
   end
 
+  # PATCH/PUT /profile/update_avatar
+  # PATCH/PUT /profile/update_avatar.json
   def update_avatar
 
     @user = current_user
@@ -103,6 +90,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # DELETE /profile/destroy_avatar
   def destroy_avatar
     @user = current_user
     @user.remove_avatar!

@@ -34,7 +34,7 @@ Rails.application.routes.draw do
       get 'transferRole' => 'users#show_transfer_role'
       post 'transferRole' => 'users#transfer_role'
       put 'users/changeRoles' => 'users#change_roles'
-      resources :users, except: :show
+      resources :users, except: [:show, :create] #show is handled in profile, create in registrations
     end
   end
 
