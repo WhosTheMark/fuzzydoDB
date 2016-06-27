@@ -44,6 +44,7 @@ class User
 
   validates :username, presence: true, uniqueness: true, format: /\A\w*\z/
   validates :name, presence: true
+  validates :role_cd, inclusion: { in: User.roles.values }
   before_validation :drop_the_case
   mount_uploader :avatar, AvatarUploader
 
@@ -67,11 +68,6 @@ class User
 
   def admin_or_super_member?
     self.admin? || self.super_member?
-  end
-
-  # Checks if an int is associated to a role
-  def self.role_exists?(int_role)
-    !self.roles.value(int_role).nil?
   end
 
   # Admin and super_member cannot be set to other users
@@ -103,8 +99,7 @@ class User
     int_changed_role = Integer(changed_user["role"])
     user = users.find { |u| u.username == changed_user["username"] }
 
-    if !user.admin_or_super_member? && self.role_exists?(int_changed_role) &&
-      self.setteable_role?(int_changed_role)
+    if !user.admin_or_super_member? && self.setteable_role?(int_changed_role)
 
       user.role_cd = int_changed_role
       user.save!

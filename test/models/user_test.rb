@@ -124,6 +124,24 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  test "invalid negative role" do
+    @user1.role_cd = -1
+    assert_raises Mongoid::Errors::Validations do
+      @user1.save!
+    end
+  end
+
+  test "invalid positive role" do
+    @user1.role_cd = 10
+    assert_raises Mongoid::Errors::Validations do
+      @user1.save!
+    end
+  end
+
+  test "default role" do
+    assert @user1.user?, "User is not created with role 'user' by default"
+  end
+
   test "well inserted user" do
     @user1.save!
     assert_not_nil User.find_by(:email => @user1.email), "User was not inserted"
@@ -150,6 +168,42 @@ class UserTest < ActiveSupport::TestCase
   test "username does not exists" do
     assert_not((User.exists_username? "10-10196@usb.ve"),
       "Function says username exists")
+  end
+
+  test "admin_or_super for user" do
+    @user1.user!
+    assert_not @user1.admin_or_super_member?
+  end
+
+  test "admin_or_super for member" do
+    @user1.member!
+    assert_not @user1.admin_or_super_member?
+  end
+
+  test "admin_or_super for admin" do
+    @user1.admin!
+    assert @user1.admin_or_super_member?
+  end
+
+  test "admin_or_super for super" do
+    @user1.super_member!
+    assert @user1.admin_or_super_member?
+  end
+
+  test "seatteable_role user" do
+    assert User.setteable_role?(User.roles[:user])
+  end
+
+  test "seatteable_role member" do
+    assert User.setteable_role?(User.roles[:member])
+  end
+
+  test "seatteable_role admin" do
+    assert_not User.setteable_role?(User.roles[:admin])
+  end
+
+  test "seatteable_role super" do
+    assert_not User.setteable_role?(User.roles[:super_member])
   end
 
 end
