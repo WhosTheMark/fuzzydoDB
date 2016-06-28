@@ -23,4 +23,5 @@ es:
     password-confirmation: "CONFIRME NUEVA CONTRASEÑA"
     edit-password:
       title: "EDITAR CONTRASEÑA"
-      wrong-old-password: "CONTRASEÑA ACTUAL ERRADA"
+      wrong-old-password: "La contraseña que ha ingresado no es correcta"
+      success: "Se cambió exitosamente la contraseña"

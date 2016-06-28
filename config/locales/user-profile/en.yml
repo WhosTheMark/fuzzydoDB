@@ -24,4 +24,5 @@ en:
     current-password: "CURRENT PASSWORD"
     edit-password:
       title: "EDIT PASSWORD"
-      wrong-old-password: "ACTUAL PASSWORD WRONG"
+      wrong-old-password: "You have entered a wrong password"
+      success: "Your password has been successfully changed"

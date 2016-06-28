@@ -50,19 +50,19 @@ class UsersController < ApplicationController
   end
 
   def update_password
-    if @user.update_with_password(user_params)
-       #to continue online after password change uncomment this
-       #sign_in @user, :bypass => true
-       redirect_to root_path
-    else
+    updated = @user.update_with_password(user_params)
+    flash.clear
+    if updated
+      flash[:success] = t("user-profile.edit-password.success")
+      sign_in @user, :bypass => true
+    elsif !updated
       flash[:danger] = t("user-profile.edit-password.wrong-old-password")
-      render "edit_password"
     end
+    render "edit_password"
   end
 
   def edit_password
     @user = current_user
-    render "edit_password"
   end
 
   # PATCH/PUT /users/1

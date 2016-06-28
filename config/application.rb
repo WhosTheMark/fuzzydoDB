@@ -36,5 +36,10 @@ module FuzzydoDB
 
     # Sets TypeScript to be more forgivable.
     Typescript::Rails::Compiler.default_options = %w(--target ES6)
+
+    # We dont want to use the default input field error style from rails
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance|
+      html_tag
+    }
   end
 end
