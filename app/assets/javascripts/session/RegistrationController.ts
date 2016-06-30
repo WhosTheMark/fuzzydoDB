@@ -1,8 +1,8 @@
 /// <reference path="../../typings/angular.d.ts" />
 /// <reference path="../../typings/jquery.d.ts" />
 
-angular.module("fuzzydodb.session", [])
-  .controller("RegsitrationController", ["$scope", "SessionService",
+angular.module("fuzzydodb.registration", [])
+  .controller("RegistrationController", ["$scope", "SessionService",
     function($scope, sessionService) {
 
       $scope.registerUser = {};

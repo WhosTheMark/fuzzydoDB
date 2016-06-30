@@ -1,5 +1,5 @@
 <% @sidebar_bar_items = ["show"] %>
-<% @sidebar_bar_items = @sidebar_bar_items + ["edit", "edit_photo"] if @user == current_user %>
+<% @sidebar_bar_items = @sidebar_bar_items + ["edit", "edit_photo", "update_password"] if @user == current_user %>
 <% @token_sidebar_namespace = "user-profile.menu." %>
 <% @links = [ url_for(controller: controller_name, action: "show") ]%>
 <% @links = @links + [url_for(controller: controller_name, action: "edit"),

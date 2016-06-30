@@ -23,6 +23,6 @@ en:
     password-confirmation: "New password confirmation"
     current-password: "Current password"
     edit-password:
-      title: "Edit password"
+      title: "EDIT PASSWORD"
       wrong-old-password: "You have entered a wrong password"
       success: "Your password has been successfully changed"

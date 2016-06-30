@@ -1,6 +1,6 @@
 /// <reference path="../../typings/angular.d.ts" />
 
-angular.module("fuzzydodb.session")
+angular.module("fuzzydodb.session", [])
   .service("SessionService", ["$http", "$q", function($http, $q: angular.IQService){
 
     // generic validate field
