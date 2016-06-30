@@ -4,7 +4,7 @@
 <% @links = [ url_for(controller: controller_name, action: "show") ]%>
 <% @links = @links + [url_for(controller: controller_name, action: "edit"),
                       url_for(controller: controller_name, action: "edit_profile_photo"),
-                      url_for(controller: controller_name, action: "update_password")] if @user == current_user %>
+                      url_for(controller: controller_name, action: "edit_password")] if @user == current_user %>
 
 <%= render :partial => "shared/sidebar",
     locals: { sidebar_bar_items: @sidebar_bar_items,

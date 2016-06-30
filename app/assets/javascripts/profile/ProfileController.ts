@@ -2,14 +2,25 @@
 /// <reference path="../../typings/jquery.d.ts" />
 
 angular.module("fuzzydodb.profile", [])
-  .controller("ProfileController", ["$scope", "$http", "ngRoute", "profileService",
-    function($scope, $http, $routeParams, profileService) {
+  .controller("ProfileController", ["$scope", "$http", "profileService",
+    function($scope, $http, profileService) {
 
-      $scope.userId = $routeParams.paramId1;
-      profileService.getProfile({email: $scope.actorEmail})
+      var username = $("#user_name").attr("value");
+
+      profileService.getProfile(username)
         .then(function(response) {
           $scope.user = response.data;
         });
 
-  }]);
+      /* don't send the form if it has errors */
+      $scope.sendProfile = function(event) {
 
+        // Forces form validation using angular onBlur
+        $(':focus').blur();
+
+        if ($scope.editForm.$invalid) {
+          event.preventDefault();
+        }
+      }
+
+  }]);

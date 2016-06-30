@@ -35,13 +35,19 @@ class UsersController < ApplicationController
   end
 
   def update_password
-    #if @user.update(user_params)
-    #  # Sign in the user by passing validation in case their password changed
-    #  sign_in @user, :bypass => true
-    #  redirect_to root_path
-    #  else
-      render "edit_password"
-    #end
+    updated = @user.update_with_password(user_params)
+    flash.clear
+    if updated
+      flash[:success] = t("user-profile.edit-password.success")
+      sign_in @user, :bypass => true
+    elsif !updated
+      flash[:danger] = t("user-profile.edit-password.wrong-old-password")
+    end
+    render "edit_password"
+  end
+
+  def edit_password
+    @user = current_user
   end
 
   # PATCH/PUT /profile/1
@@ -50,7 +56,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       current_user_only! @user
       if @user.update(user_params)
-        format.html { redirect_to profile_path(@user.username), notice: 'User was successfully updated.' }
+        format.html { redirect_to profile_path(@user.username)}
         format.json { render :show, status: :ok, location: profile_path(@user.username)}
       else
         format.html { render :edit }
@@ -69,7 +75,7 @@ class UsersController < ApplicationController
     @user.save!
 
     respond_to do |format|
-      format.html { redirect_to profile_path(@current_user.username), notice: 'User was successfully updated.' }
+      format.html { redirect_to profile_path(@current_user.username) }
       format.json { render :show, status: :ok }
     end
   end
@@ -131,6 +137,7 @@ class UsersController < ApplicationController
     User.change_roles(changed_users)
 
     respond_to do |format|
+
       format.html { redirect_to users_url }
       format.json { head :no_content }
     end
@@ -185,7 +192,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :name, :email, :occupation, :institution, :country, :password, :password_confirmation)
+      params.require(:user).permit(:username, :name, :email, :occupation, :institution, :country, :password, :password_confirmation, :current_password)
     end
-
 end

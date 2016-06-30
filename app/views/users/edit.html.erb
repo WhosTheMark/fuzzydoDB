@@ -5,6 +5,10 @@
   <%= render :partial => "user_sidebar",
         locals: { active_item: "edit"} %>
 
+  <div class="ng-hide" id="user_name" value="<%= @user.username%>">
+
+  </div>
+
   <div class="content-right">
     <h1><%= t("user-profile.edit.title") %></h1>
     <%= form_for(@user, method: :put, :url => profile_path(@user.id), :html => {:novalidate => true, "name" => "editForm"}) do |f| %>
@@ -88,7 +92,8 @@
       </p>
     </div>
 
-      <div class="actions"><%= f.submit t("labels.save_changes"), :class => "btn btn-default" %></div>
+      <div class="actions"><%= f.submit t("labels.save_changes"), :class => "btn btn-default",
+        "ng-click" => "sendProfile($event)" %></div>
     <% end %>
   </div>
 </div>
