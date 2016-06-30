@@ -1,7 +1,7 @@
 /// <reference path="../../typings/angular.d.ts" />
 
 angular.module("fuzzydodb.profile")
-.service('profileService', ['$http', function($http) {
+.service('profileService', ['$http', function($http: angular.IHttpService) {
     this.editProfile = function(args) {
         return  $http({
           url: "/profile",
@@ -10,11 +10,7 @@ angular.module("fuzzydodb.profile")
         });
     };
 
-    this.getProfile = function(args) {
-        return  $http({
-          url: "/profile/" ,
-          method: 'GET',
-          params: args
-        });
+    this.getProfile = function(username) {
+        return  $http.get("/profile/" + username + ".json");
     };
 }]);
