@@ -71,7 +71,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       current_user_only! @user
       if @user.update(user_params)
-        format.html { redirect_to profile_path(@user.username), notice: 'User was successfully updated.' }
+        format.html { redirect_to profile_path(@user.username)}
         format.json { render :show, status: :ok, location: profile_path(@user.username)}
       else
         format.html { render :edit }
@@ -88,7 +88,7 @@ class UsersController < ApplicationController
     @user.save!
 
     respond_to do |format|
-      format.html { redirect_to profile_path(@current_user.username), notice: 'User was successfully updated.' }
+      format.html { redirect_to profile_path(@current_user.username) }
       format.json { render :show, status: :ok }
     end
   end
