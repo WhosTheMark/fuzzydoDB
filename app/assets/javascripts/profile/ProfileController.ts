@@ -5,7 +5,7 @@ angular.module("fuzzydodb.profile", [])
   .controller("ProfileController", ["$scope", "$http", "profileService",
     function($scope, $http, profileService) {
 
-      var username = $("#user_name").attr("value");
+      var username = $("#user_username").attr("value");
 
       profileService.getProfile(username)
         .then(function(response) {
