@@ -6,10 +6,22 @@ angular.module("fuzzydodb.profile", [])
     function($scope, $http, profileService) {
 
       var username = $("#user_name").attr("value");
+
       profileService.getProfile(username)
         .then(function(response) {
           $scope.user = response.data;
         });
+
+      /* don't send the form if it has errors */
+      $scope.sendProfile = function(event) {
+
+        // Forces form validation using angular onBlur
+        $(':focus').blur();
+
+        if ($scope.editForm.$invalid) {
+          event.preventDefault();
+        }
+      }
 
   }])
 

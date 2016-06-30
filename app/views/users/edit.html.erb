@@ -92,7 +92,8 @@
       </p>
     </div>
 
-      <div class="actions"><%= f.submit t("labels.save_changes"), :class => "btn btn-default" %></div>
+      <div class="actions"><%= f.submit t("labels.save_changes"), :class => "btn btn-default",
+        "ng-click" => "sendProfile($event)" %></div>
     <% end %>
   </div>
 </div>
