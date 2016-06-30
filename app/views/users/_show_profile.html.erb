@@ -14,7 +14,7 @@
   <div class="col-xs-3 show-profile-field">
     <strong><%= t("user-profile.#{tag}") %>:</strong>
   </div>
-  <div class="col-xs-3 show-profile-field">
+  <div class="col-xs-3 show-profile-field" id="user_<%= tag %>">
     <%= field_value = @user.read_attribute tag
         if field_value.present?
           if tag.eql? "country"

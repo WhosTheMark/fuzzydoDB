@@ -4,9 +4,9 @@ class UserLoginTest < ActionDispatch::IntegrationTest
 
   setup do
     Capybara.current_driver = :selenium
-    @user1 = User.new(name: "Fuzzydo the Racoon",
-               username: "fuzzyracoon",
-               email: "racoon@fuzzydo.db",
+    @user1 = User.new(name: "Fuzzydo the Raccoon",
+               username: "fuzzyraccoon",
+               email: "raccoon@fuzzydo.db",
                password: "123123",
                password_confirmation: "123123")
     @user1.save!

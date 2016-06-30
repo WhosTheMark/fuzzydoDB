@@ -4,9 +4,9 @@ class UserRegistrationTest < ActionDispatch::IntegrationTest
 
   setup do
     Capybara.current_driver = :selenium
-    @user1 = User.new(name: "Fuzzydo the Racoon",
-               username: "fuzzyracoon",
-               email: "racoon@fuzzydo.db",
+    @user1 = User.new(name: "Fuzzydo the Raccoon",
+               username: "fuzzyraccoon",
+               email: "raccoon@fuzzydo.db",
                password: "123123",
                password_confirmation: "123123")
   end
@@ -254,12 +254,5 @@ class UserRegistrationTest < ActionDispatch::IntegrationTest
     assert has_email_error?, "Invalid email error was not shown"
 
   end
-
-  #Redirect to same page
-  #Validations
-  #Wrong login
-  #same user/email
-  #Capitalize email/user
-  #Stay in same page after login
 
 end
