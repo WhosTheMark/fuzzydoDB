@@ -2,20 +2,10 @@
 /// <reference path="../../typings/jquery.d.ts" />
 
 angular.module("fuzzydodb.registration", [])
-  .controller("RegistrationController", ["$scope", "SessionService",
-    function($scope, sessionService) {
+  .controller("RegistrationController", ["$scope",
+    function($scope) {
 
-      $scope.registerUser = {};
-      $scope.submitRegistration = function($event) {
 
-        // Forces form validation using angular onBlur
-        $(':focus').blur();
-        $scope.registrationForm.$submitted = true;
-
-        if ($scope.registrationForm.$invalid) {
-          $event.preventDefault();
-        };
-      };
   }])
 
   // Custom validator
