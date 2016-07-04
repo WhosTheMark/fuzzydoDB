@@ -23,7 +23,7 @@ angular.module("fuzzydodb.login", [])
           $scope.loginError = false;
 
           // creates user using form
-          let user = {
+          var user = {
             user: {
               email: $scope.loginUser.email,
               password: $scope.loginUser.password,
