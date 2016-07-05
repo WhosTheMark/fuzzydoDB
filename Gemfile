@@ -49,7 +49,7 @@ group :development do
   gem 'capistrano-secrets-yml', '~> 1.0.0'
 end
 
-gem 'capitate'
+#gem 'capitate'
 
 gem 'puma'
 
